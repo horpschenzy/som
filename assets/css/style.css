@@ -1041,13 +1041,14 @@ textarea:-ms-input-placeholder {
 input {
   background: #eceff8;
   border: 2px solid #eceff8;
-  height: 15px;
+  height: 20px;
   -webkit-box-shadow: none;
   box-shadow: none;
-  padding-left: 10px;
-  font-size: 14px;
+  padding: 10px;
+  margin: 5px 5px;
+  font-size: 18px;
   color: #333;
-  width: 100%;
+  width: 100px;
   display: inline-block; }
 
 select {
@@ -6074,7 +6075,7 @@ textarea:focus {
   border: 10px solid #00a651;
   border-right: none; }
   .contact-map #map {
-    height: 685px; }
+    height: 645px; }
     @media only screen and (max-width: 767px) {
       .contact-map #map {
         height: 400px; } }

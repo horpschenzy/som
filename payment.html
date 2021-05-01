@@ -27,27 +27,30 @@
     .card {
         position: relative;
         top: 10px;
-        height: 450px;
-        text-align: center;
+        height: 300px;
     }
 
     .pay {
         color: #ffffff;
         position: relative;
-        top: 120px;
+        top: 40px;
         left: 100px;
         width: 100px;
         background-color: #33B773;
     }
+    .pay a{
+        margin: 2px;
+    }
+    .onetime{
+        text-align: center;
+    }
     .form{
     	width: 150px;
-    	height: 30px;
-    	margin-left: 5px;
     }
     label{
     	width: 100px;
     	margin-left: 5px;
-    	display: block;
+    	display: inline;
     }
     </style>
 </head>
@@ -174,13 +177,12 @@
                	 			<div class="col-lg-6 col-md-6">
                	 				<div class="card">
                	 					<h2 class="onetime">INSTALLMENT</h2>
-										<div>
+										<div class="form">
 											<label class="radio-inline"><input type="radio" name="optradio">$5</label>
 											<label class="radio-inline"><input type="radio" name="optradio">$10</label>
 											<label class="radio-inline"><input type="radio" name="optradio">$15</label>
 											<label class="radio-inline"><input type="radio" name="optradio">$20</label>
-										</div>
-										<div class="form">
+																		
 										  <label for="usr">Other Amount</label>
 										  <input type="number" class="form" id="amt" name="amount" placeholder="$">
 										</div>
