@@ -1048,7 +1048,7 @@ input {
   margin: 5px 5px;
   font-size: 18px;
   color: #333;
-  width: 100px;
+  /* width: 100px; */
   display: inline-block; }
 
 select {
