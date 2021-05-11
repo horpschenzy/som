@@ -1041,17 +1041,19 @@ textarea:-ms-input-placeholder {
 input {
   background: #eceff8;
   border: 2px solid #eceff8;
-  height: 15px;
+  height: 20px;
   -webkit-box-shadow: none;
   box-shadow: none;
-  padding-left: 10px;
-  font-size: 14px;
+  padding: 10px;
+  margin: 5px 5px;
+  font-size: 18px;
   color: #333;
-  width: 100%;
+  /* width: 100px; */
   display: inline-block; }
 
 select {
   width: 100%;
+  height: 40px;
   background: transparent;
   border: 3px solid #eceff8;
   -webkit-box-shadow: none;
@@ -3405,7 +3407,7 @@ textarea:focus {
   .register-form form .contact-form-style input,
   .register-form form .contact-form-style textarea {
     background: #fff;
-    border: none;
+    border: 2px solid #eeeeee;
     height: 50px;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -6074,7 +6076,7 @@ textarea:focus {
   border: 10px solid #00a651;
   border-right: none; }
   .contact-map #map {
-    height: 685px; }
+    height: 645px; }
     @media only screen and (max-width: 767px) {
       .contact-map #map {
         height: 400px; } }
@@ -6112,7 +6114,9 @@ textarea:focus {
   color: #333;
   background: transparent;
   padding: 2px 20px;
-  margin-bottom: 25px; }
+  margin-bottom: 25px;
+  height: 50px;
+}
 
 .contact-form form textarea {
   border: 1px solid #eeeeee;
