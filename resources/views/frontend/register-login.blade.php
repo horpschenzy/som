@@ -4,7 +4,7 @@
 <div class="breadcrumb-area">
     <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-100 pb-95" style="background-image:url(assets/img/grad-group.png);">
         <div class="container">
-            <h2>Login</h2>
+            <h2>Register</h2>
             <p>We are called to reach the ends of the earth with the message of the new creation realities in Christ Jesus, stressing emphatically the integrity of God’s Word and communicating the healing presence and power of Jesus Christ to the whole world</p>
         </div>
     </div>
@@ -15,19 +15,19 @@
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
-                        <a class="active" data-toggle="tab" href="#lg1">
+                        <a  href="{{route('frontend.log-in')}}">
                             <h4> login </h4>
                         </a>
-                         <a  href="{{route('frontend.register')}}">
+                        <a class="active" data-toggle="tab" href="#lg2">
                             <h4> register </h4>
                         </a>
                     </div>
                     <div class="tab-content">
-                        <div id="lg1" class="tab-pane active">
+                        <div id="lg1" class="tab-pane ">
                             <div class="login-form-container">
                                 <div class="login-register-form">
                                     <form action="#" method="post">
-                                        <input type="text" name="user-name" placeholder="REG/2021/0000">
+                                        <input type="text" name="user-name" placeholder="Username">
                                         <input type="password" name="user-password" placeholder="Password">
                                         <div class="button-box">
                                             <div class="login-toggle-btn">
@@ -36,6 +36,40 @@
                                                 <a href="#">Forgot Password?</a>
                                             </div>
                                             <button class="default-btn" type="submit"><span>Login</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="lg2" class="tab-pane active">
+                            <div class="login-form-container">
+                                <div class="login-register-form">
+                                    <form action="/somregister" method="post">
+                                        @csrf
+                                        <input class="form-control" type="text" name="surname" placeholder="Surname">
+                                        <input class="form-control"  type="text" name="firstname" placeholder="Firstname">
+                                        <input class="form-control" type="text" name="phonenumber" placeholder="Phonenumber">
+                                        <input class="form-control" name="user-email" placeholder="Email" type="email">
+                                        <input class="form-control" type="text" name="church" placeholder="Your Church">
+                                        <select class="form-control mb-3" name="centre" id="">
+                                            <option value="null">Select your Preferred Centre</option>
+                                            <option value="Ile-Ife">Ile Ife</option>
+                                            <option value="Lekki">Lekki Lagos</option>
+                                            <option value="ikeja">Ikeja Lagos</option>
+                                            <option value="Agricola">Agricola Ibadan</option>
+                                            <option value="Akure">Akure</option>
+                                            <option value="Ondo">Ondo</option>
+                                            <option value="Osogbo">Osogbo</option>
+                                        </select>
+
+                                        <select class="form-control mb-3" name="payment" id="">
+                                            <option value="null"> Payment Option (One-off OR Installment)</option>
+                                            <option value="8000">One off &#8358;8,000</option>
+                                            <option value="4500">Two Payments (&#8358;3,000 & &#8358;6,000)</option>
+                                            <option value="3000">Three Payments &#8358;3,000</option>
+                                        </select>
+                                        <div class="button-box">
+                                            <button class="default-btn" type="submit"><span>Register</span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -113,7 +147,6 @@
 @push('scripts')
 <!-- JS
 ============================================ -->
-
 <!-- jQuery JS -->
 <script src="{{asset('frontendassets/js/vendor/jquery-1.12.4.min.js')}}"></script>
 <!-- Popper JS -->

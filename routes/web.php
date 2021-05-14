@@ -13,10 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+// FRONTEND
+Route::get('/', 'FrontendController@index')->name('frontend.index');
+Route::get('/courses', 'FrontendController@courses')->name('frontend.courses');
+Route::get('/about-us', 'FrontendController@about')->name('frontend.about');
+Route::get('/contact-us', 'FrontendController@contact')->name('frontend.contact');
+Route::get('/login-register', 'FrontendController@login')->name('frontend.log-in');
+Route::get('/register-login', 'FrontendController@register')->name('frontend.register');
+Route::post('/somregister', 'FrontendController@store')->name('frontend.store');
+Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
+
+

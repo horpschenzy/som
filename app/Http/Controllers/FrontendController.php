@@ -13,7 +13,37 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontend.index');
+    }
+
+    public function courses()
+    {
+        return view('frontend.course');
+    }
+
+    public function about()
+    {
+        return view('frontend.about-us');
+    }
+
+    public function contact()
+    {
+        return view('frontend.contact');
+    }
+
+    public function login()
+    {
+        return view('frontend.login-register');
+    }
+
+    public function register()
+    {
+        return view('frontend.register-login');
+    }
+
+    public function payment()
+    {
+        return view('frontend.payment');
     }
 
     /**
@@ -34,7 +64,7 @@ class FrontendController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

@@ -1,112 +1,10 @@
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
+@extends('frontend.layouts.frontend')
+@section('content')
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>SOTM'S School-of-Ministry</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo2.png">
-    
-    <!-- CSS
-	============================================ -->
-   
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="assets/css/icons.min.css">
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/css/plugins.css">
-    <!-- Main Style CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Modernizer JS -->
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
-<body>
-<header class="header-area">
-    <div class="header-top bg-img">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-7 col-12 col-sm-8">
-                    <div class="header-contact">
-                        <ul>
-                            <li><i class="fa fa-phone"></i> 07034635093</li>
-                            <li><i class="fa fa-envelope-o"></i><a href="#">gltlekki@glt.church</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-5 col-12 col-sm-4">
-                    <div class="login-register">
-                        <ul>
-                            <li><a href="login-register.html">Login</a></li>
-                            <li><a href="login-register.html">Register</a></li>
-                            <li><a href="payment.html">Pay for Course</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="header-bottom sticky-bar clearfix">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-6 col-4">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img alt="" src="assets/img/logo2.png" style="width: 80px; height: 40px;">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-10 col-md-6 col-8">
-                    <div class="menu-cart-wrap">
-                        <div class="main-menu">
-                            <nav>
-                                <ul>
-                                    <li><a href="index.html"> HOME </a></li>
-                                    <li><a href="about-us.html"> ABOUT  </a></li>
-                                    <li><a href="course.html"> COURSES </a></li>
-                                    <li><a href="contact.html"> CONTACT </a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="cart-search-wrap">
-                            <div class="header-search">
-                                <button class="search-toggle">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                                <div class="search-content">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search">
-                                        <button>
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mobile-menu-area">
-                <div class="mobile-menu">
-                    <nav id="mobile-menu-active">
-                        <ul class="menu-overflow">
-                            <li><a href="index.html">HOME</a></li>
-                            <li><a href="about-us.html">About</a></li>
-                            <li><a href="course.html"> COURSES </a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+
 <div class="slider-area">
     <div class="slider-active owl-carousel">
-        <div class="single-slider slider-height-1 bg-img" style="background-image:url(assets/img/slide-0.jpg);">
+        <div class="single-slider slider-height-1 bg-img" style="background-image:url({{asset('frontendassets/img/slide-0.jpg')}})">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9 col-md-7 col-12 col-sm-12">
@@ -114,7 +12,7 @@
                             <h1 class="animated">GET ANSWERS</h1>
                             <p class="animated">Grow &nbsp; | &nbsp; Discover &nbsp; | &nbsp; Reach your Potentials </p>
                             <div class="slider-btn">
-                                <a class="animated default-btn btn-green-color" href="course.html">CLASSES</a>
+                                <a class="animated default-btn btn-green-color" href="{{route('frontend.courses')}}">CLASSES</a>
                             </div>
                               <div class="elfsight-app-fc809c30-f4fc-4ce8-8cdf-b85e0d6ebea6">
                                     <a href="http://api.whatsapp.com/send?phone=+2348139127501" target="_blank"></a>
@@ -124,10 +22,10 @@
                             </div>
                         </div>
                     </div>
-                </div>                  
+                </div>
             </div>
         </div>
-       <!--  <div class="single-slider slider-height-1 bg-img" style="background-image:url(assets/img/slide-0.jpg);">
+       {{-- <div class="single-slider slider-height-1 bg-img" style="background-image:url({{asset('frontendassets/img/slide-4.jpg')}});">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9 col-md-7 col-12 col-sm-12">
@@ -142,7 +40,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div> --}}
     </div>
 </div>
 <div class="about-us pt-130 pb-130">
@@ -170,22 +68,22 @@
 
                         Our team of Facilitators is led by Pastor Segun and Funke Obadje.</p> -->
                     <div class="about-btn mt-45">
-                        <a class="default-btn" href="about-us.html">READ MORE</a>
+                        <a class="default-btn" href="{{route('frontend.about')}}">READ MORE</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="about-img default-overlay">
-                    <img src="assets/img/banner/banner-1.jpg" alt="">
+                    <img src="{{asset('frontendassets/img/ministry_basic.jpg')}}" alt="">
                     <a class="video-btn video-popup" href="https://www.youtube.com/watch?v=sv5hK4crIRc">
-                        <img class="animated" src="assets/img/icon-img/video.png" alt="">
+                        <img class="animated" src="{{asset('frontendassets/img/icon-img/video.png')}}" alt="">
                     </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="course-area bg-img pt-130 pb-10" style="background-image:url(assets/img/bg/bg-1.jpg);">
+<div class="course-area bg-img pt-130 pb-10" style="background-image:url{{asset('frontendassets/img/bg/bg-1.jpg')}};">
     <div class="container">
         <div class="section-title mb-75">
             <h2> <span>Our</span> Courses</h2>
@@ -194,7 +92,7 @@
         <div class="course-slider-active nav-style-1 owl-carousel">
             <div class="single-course">
                 <div class="course-img">
-                    <a href="course-details.html"><img class="animated" src="assets/img/ministry_basic.jpg" alt=""></a>
+                    <a href="course-details.html"><img class="animated" src="{{asset('frontendassets/img/ministry_basic.jpg')}}" alt=""></a>
                     <span>MBC</span>
                 </div>
                 <div class="course-content">
@@ -218,7 +116,7 @@
             </div>
             <div class="single-course">
                 <div class="course-img">
-                    <a href="course-details.html"><img class="animated" src="assets/img/church-mgt.jpg" alt=""></a>
+                    <a href="course-details.html"><img class="animated" src="{{asset('frontendassets/img/church-mgt.jpg')}}" alt=""></a>
                     <span>CMC</span>
                 </div>
                 <div class="course-content">
@@ -242,7 +140,7 @@
             </div>
             <div class="single-course">
                 <div class="course-img">
-                    <a href="course-details.html"><img class="animated" src="assets/img/world-evangelism.jpg" alt=""></a>
+                    <a href="course-details.html"><img class="animated" src="{{asset('frontendassets/img/world-evangelism.jpg')}}" alt=""></a>
                     <span>WEC</span>
                 </div>
                 <div class="course-content">
@@ -266,7 +164,7 @@
             </div>
             <div class="single-course">
                 <div class="course-img">
-                    <a href="course-details.html"><img class="animated" src="assets/img/leadership-and-ministry.jpg" alt=""></a>
+                    <a href="course-details.html"><img class="animated" src="{{asset('frontendassets/img/leadership-and-ministry.jpg')}}" alt=""></a>
                     <span>LME</span>
                 </div>
                 <div class="course-content">
@@ -290,7 +188,7 @@
             </div>
             <div class="single-course">
                 <div class="course-img">
-                    <a href="course-details.html"><img class="animated" src="assets/img/course/course-2.jpg" alt=""></a>
+                    <a href="course-details.html"><img class="animated" src="{{asset('frontendassets/img/course/course-2.jpg')}}" alt=""></a>
                     <span>CGC</span>
                 </div>
                 <div class="course-content">
@@ -314,7 +212,7 @@
             </div>
              <div class="single-course">
                 <div class="course-img">
-                    <a href="course-details.html"><img class="animated" src="assets/img/course/course-2.jpg" alt=""></a>
+                    <a href="course-details.html"><img class="animated" src="{{asset('frontendassets/img/course/course-2.jpg')}}" alt=""></a>
                     <span>DAC</span>
                 </div>
                 <div class="course-content">
@@ -349,7 +247,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-one">
                     <div class="count-img">
-                        <img src="assets/img/icon-img/achieve-1.png" alt="">
+                        <img src="{{asset('frontendassets/img/icon-img/achieve-1.png')}}" alt="">
                     </div>
                     <div class="count-content">
                         <h2 class="count">1,500</h2>
@@ -360,7 +258,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-two">
                     <div class="count-img">
-                        <img src="assets/img/icon-img/achieve-2.png" alt="">
+                        <img src="{{asset('frontendassets/img/icon-img/achieve-2.png')}}" alt="">
                     </div>
                     <div class="count-content">
                         <h2 class="count">3,000</h2>
@@ -368,10 +266,10 @@
                     </div>
                 </div>
             </div>
-           <!--  <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6">
+           {{-- <!--  <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-three">
                     <div class="count-img">
-                        <img src="assets/img/icon-img/achieve-3.png" alt="">
+                        <img src="{{asset('frontendassets/img/icon-img/achieve-3.png')}}" alt="">
                     </div>
                     <div class="count-content">
                         <h2 class="count">160</h2>
@@ -382,24 +280,24 @@
             <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-four">
                     <div class="count-img">
-                        <img src="assets/img/icon-img/achieve-4.png" alt="">
+                        <img src="{{asset('frontendassets/img/icon-img/achieve-4.png')}}" alt="">
                     </div>
                     <div class="count-content">
                         <h2 class="count">200</h2>
                         <span>FACULTIES</span>
                     </div>
                 </div>
-            </div> -->
+            </div> --> --}}
         </div>
-        <div class="testimonial-slider-wrap mt-45">
+        {{-- <div class="testimonial-slider-wrap mt-45">
             <div class="testimonial-text-slider">
                 <div class="testi-content-wrap">
                     <div class="testi-big-img">
-                        <!-- <img alt="" src="assets/img/pcs.jpg"> -->
+                        <img alt="" src="{{asset('frontendassets/img/pcs.jpg')}}">
                     </div>
                    <div class="row no-gutters">
                        <div class="ml-auto col-lg-6 col-md-12">
-                           <div class="testi-content bg-img default-overlay" style="background-image:url(assets/img/.jpg);">
+                           <div class="testi-content bg-img default-overlay" style="background-image:url({{asset('frontendassets/img/slide-4.jpg')}});">
                                 <div class="quote-style quote-left">
                                    <i class="fa fa-quote-left"></i>
                                 </div>
@@ -420,9 +318,9 @@
                        </div>
                    </div>
                 </div>
-               
-               
-             
+
+
+
             </div>
             <div class="testimonial-image-slider">
                 <div class="sin-testi-image">
@@ -435,16 +333,16 @@
                     <img src="assets/img/jackson.jpg" alt="">
                 </div>
                 <div class="sin-testi-image">
-                    <img src="assets/img/manuel.jpg" alt="">
+                    <img src="{{asset('frontendassets/img/womangraduating.jpg')}}" alt="">
                 </div>
             </div>
         </div>
         <div class="testimonial-text-img">
-            <img alt="" src="assets/img/pcs.png">
-        </div>
+            <img alt="" src="{{asset('frontendassets/img/womangraduating.jpg')}}">
+        </div> --}}
     </div>
 </div>
-<div class="register-area bg-img default-overlay pt-130 pb-130" style="background-image:url(assets/img/register.jpg);">
+{{-- <div class="register-area bg-img default-overlay pt-130 pb-130" style="background-image:url({{asset('frontendassets/img/register.jpg')}});">
     <div class="container">
         <div class="section-title-2 mb-75 white-text">
             <h2>Register <span>Now</span></h2>
@@ -502,147 +400,28 @@
     </div>
     <div id="register-1" class="mouse-bg"></div>
     <div id="register-2" class="mouse-bg"></div>
-</div>
-<footer class="footer-area">
-    <div class="footer-top bg-img default-overlay pt-130 pb-80" style="background-image:url(assets/img/footer.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer-widget mb-40">
-                        <div class="footer-title">
-                            <h4>ABOUT US</h4>
-                        </div>
-                        <div class="footer-about">
-                            <p>SOTM School of Ministry (SOM) is a life transforming experience that redefines the capabilities and boundaries available to one as a Christian and a minister of the gospel.</p>
-                            <div class="f-contact-info">
-                                <div class="single-f-contact-info">
-                                    <i class="fa fa-home"></i>
-                                    <span>Piccadilly Suites, 3 Piccadilly Street, By SAMSUNG Office Igbo-Efon Junction/Traffic Light, Lekki-Epe Express Road, Lekki</span>
-                                </div>
-                                <div class="single-f-contact-info">
-                                    <i class="fa fa-envelope-o"></i>
-                                    <span><a href="#">gltlekki@glt.church</a></span>
-                                </div>
-                                <div class="single-f-contact-info">
-                                    <i class="fa fa-phone"></i>
-                                    <span> 07034635093, 07032952025</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6">
-                    <div class="footer-widget mb-40">
-                        <div class="footer-title">
-                            <h4>QUICK LINK</h4>
-                        </div>
-                        <div class="footer-list">
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="course.html">Courses</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6">
-                    <div class="footer-widget negative-mrg-30 mb-40">
-                        <div class="footer-title">
-                            <h4>COURSES</h4>
-                        </div>
-                        <div class="footer-list">
-                            <ul>
-                                <li><a href="#">Ministry Basic Course </a></li>
-                                <li><a href="#">Church Management Course </a></li>
-                                <li><a href="#">World Evangelization Course</a></li>
-                                <li><a href="#">Leadership and Minstry Ethics</a></li>
-                                <li><a href="#">Church Growth Cuorse</a></li>
-                                <li><a href="#">Dynamics of the Anointing Course</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer-widget mb-40">
-                        <div class="footer-title">
-                            <h4>GALLERY</h4>
-                        </div>
-                        <div class="footer-gallery">
-                            <ul>
-                                <li><a href="#"><img src="assets/img/gallery/gallery-1.png" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/gallery/gallery-2.png" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/gallery/gallery-3.png" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/gallery/gallery-4.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom pt-15 pb-15">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4 col-md-12">
-                    <div class="copyright">
-                        <p>
-                            <a href="#">SOTM</a>
-                            School of Ministry © 2021
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-12">
-                    <div class="footer-menu-social">
-                        <div class="footer-menu">
-                            <ul>
-                                <li><a href="#">Privecy & Policy</a></li>
-                                <li><a href="#">Terms & Conditions of Use</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-social">
-                            <ul>
-                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+</div> --}}
+@endsection
 
-
-
-
-
-
-
-
-
-
-
-
+@push('scripts')
 
 <!-- JS
 ============================================ -->
 <script src="https://apps.elfsight.com/p/platform.js" defer></script>
 
 <!-- jQuery JS -->
-<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="{{asset('frontendassets/js/vendor/jquery-1.12.4.min.js')}}"></script>
 <!-- Popper JS -->
-<script src="assets/js/popper.min.js"></script>
+<script src="{{asset('frontendassets/js/popper.min.js')}}"></script>
 <!-- Bootstrap JS -->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="{{asset('frontendassets/js/bootstrap.min.js')}}"></script>
 <!-- Plugins JS -->
-<script src="assets/js/plugins.js"></script>
+<script src="{{asset('frontendassets/js/plugins.js')}}"></script>
 <!-- Ajax Mail -->
-<script src="assets/js/ajax-mail.js"></script>
+<script src="{{asset('frontendassets/js/ajax-mail.js')}}"></script>
 <!-- Main JS -->
-<script src="assets/js/main.js"></script>
+<script src="{{asset('frontendassets/js/main.js')}}"></script>
 
-</body>
 
-</html>
+@endpush
+

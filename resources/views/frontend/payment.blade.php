@@ -1,4 +1,72 @@
-<!DOCTYPE html>
+@extends('frontend.layouts.pay')
+
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 colsm-12">
+            <img src="assets/img/slide-1.jpg" style="width: 350px; height: 200px;">
+            <p style="font-size: 20px;"><strong>A six-week intensive bible training program,</strong>  where the word of God is taught extensively, SOM is where you will learn ministry basics and learn to fulfill your God given purpose.</p>
+
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="flex-box">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-12">
+                        <h1 class="donate">Make Payment</h1>
+                    </div>
+                    <div class="col-lg-4 co-md-4 col-sm-6">
+                            <select>
+                                <option value="usd" selected> USD  $</option>
+                                <option value="ngn"> NGN  &#8358;</option>
+                            </select>
+                    </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="card">
+                                <h2 class="onetime">ONE TIME</h2>
+                                        <div class="form text-center mt-5 mb-0">
+                                        <label class="radio-inline"><input type="radio" name="optradio">&#8358;8000</label>
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="" class="btn btn-success mr-2 mt-2">Proceed to pay</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="card">
+                                    <h2 class="onetime">INSTALLMENT</h2>
+                                    <div class="form">
+                                        <label class="radio-inline"><input type="radio" name="optradio">&#8358;3,000</label>
+                                        <label class="radio-inline"><input type="radio" name="optradio">&#8358;4,000</label>
+                                        <label class="radio-inline"><input type="radio" name="optradio">&#8358;6000</label>
+
+                                        <hr>
+                                     <h5 class="ml-2">Other Amount</h5>
+                                      <input type="number" class="form" id="amt" name="amount" placeholder="&#8358;">
+                                    </div>
+                                    <div class="pay">
+                                        <a href="">Proceed to pay</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
+
+@push('scripts')
+
+@endpush
+
+
+
+{{-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -18,49 +86,7 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Modernizer JS -->
-    <style type="text/css">
-    flex-box {
-        display: flex;
-        flex-wrap: wrap;
-    }
 
-    .card {
-        position: relative;
-        top: 10px;
-        height: 300px;
-    }
-
-    .pay {
-        color: #ffffff;
-        position: relative;
-        top: 150px;
-        left: 100px;
-        width: 100px;
-        background-color: #33B773;
-    }
-    .pay a{
-        margin: 2px;
-    }
-    .onetime{
-        text-align: center;
-    }
-  
-    label{
-    	width: 100px;
-    	margin-left: 5px;
-    }
-    .form{
-    width: 300px;
-    display: block;
-    margin-left: 10px;
-    background: transparent;
-    font-size: 24px;
-    color: #333;
-    height: 40px;
-    }
-
-   
-    </style>
 </head>
 <body>
     <header class="header-area">
@@ -142,68 +168,6 @@
             </div>
         </div>
     </header>
-    <div class="container">
-		<div class="row">
-			<div class="col-lg-4 col-md-4 colsm-12">
-				<img src="assets/img/slide-1.jpg" style="width: 350px; height: 200px;">
-				<p style="font-size: 20px;"><strong>A six-week intensive bible training program,</strong>  where the word of God is taught extensively, SOM is where you will learn ministry basics and learn to fulfill your God given purpose.</p>
-				
-			</div>
-			<div class="col-lg-8 col-md-8 col-sm-12">
-				<div class="flex-box">
-					<div class="row">
-						<div class="col-lg-8 col-md-8 col-sm-12">
-							<h1 class="donate">Make Payment</h1>
-						</div>
-						<div class="col-lg-4 co-md-4 col-sm-6">
-								<select>
-									<option value="usd" selected> USD  $</option>
-									<option value="ngn"> NGN  #</option>
-								</select>
-						</div>
-               	 	</div>
-               	 	<div class="row">
-               	 			<div class="col-lg-6 col-md-6">
-               	 				<div class="card">
-               	 					<h2 class="onetime">ONE TIME</h2>
-               	 						<div class="form">
-											<label class="radio-inline"><input type="radio" name="optradio">$10</label>
-											<label class="radio-inline"><input type="radio" name="optradio">$20</label>
-											<label class="radio-inline"><input type="radio" name="optradio">$30</label>
-											<label class="radio-inline"><input type="radio" name="optradio">$60</label>
-										
-										
-										  <label for="usd">Other Amount</label>
-										  <input type="number" class="form" id="amt" name="amount" placeholder="$">
-										</div>
-               	 					<div class="pay">
-               	 						<a href="">Proceed to pay</a>
-               	 					</div>
-               	 				</div>
-               	 			</div>
-               	 			<div class="col-lg-6 col-md-6">
-               	 				<div class="card">
-               	 					<h2 class="onetime">INSTALLMENT</h2>
-										<div class="form">
-											<label class="radio-inline"><input type="radio" name="optradio">$5</label>
-											<label class="radio-inline"><input type="radio" name="optradio">$10</label>
-											<label class="radio-inline"><input type="radio" name="optradio">$15</label>
-											<label class="radio-inline"><input type="radio" name="optradio">$20</label>
-																		
-										  <label for="usd">Other Amount</label>
-										  <input type="number" class="form" id="amt" name="amount" placeholder="$">
-										</div>
-               	 					<div class="pay">
-               	 						<a href="">Proceed to pay</a>
-               	 					</div>
 
-               	 				</div>
-               	 			</div>
-               	 		</div>
-               	 	</div>
-				</div>			
-			</div>		
-		</div>
-	</div>
 </body>
-</html>
+</html> --}}
