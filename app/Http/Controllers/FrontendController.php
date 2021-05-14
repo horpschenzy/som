@@ -46,6 +46,11 @@ class FrontendController extends Controller
         return view('frontend.payment');
     }
 
+    public function global()
+    {
+        return view('frontend.global-register');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -67,6 +72,11 @@ class FrontendController extends Controller
         dd($request);
     }
 
+
+    public function globalstore(Request $request)
+    {
+        dd($request);
+    }
     /**
      * Display the specified resource.
      *

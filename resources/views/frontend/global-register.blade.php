@@ -15,10 +15,10 @@
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
-                        <a  href="{{route('frontend.global')}}">
+                        <a class="active" data-toggle="tab" href="#lg2">
                             <h4> Global </h4>
                         </a>
-                        <a class="active" data-toggle="tab" href="#lg2">
+                        <a  href="{{route('frontend.register')}}">
                             <h4> Nigeria </h4>
                         </a>
                     </div>
@@ -44,14 +44,15 @@
                         <div id="lg2" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="/somregister" method="post">
+                                    <form action="/globalregister" method="post">
                                         @csrf
                                         <input class="form-control" type="text" name="surname" placeholder="Surname">
                                         <input class="form-control"  type="text" name="firstname" placeholder="Firstname">
                                         <input class="form-control" type="text" name="phonenumber" placeholder="Phonenumber">
                                         <input class="form-control" name="user-email" placeholder="Email" type="email">
                                         <input class="form-control" type="text" name="church" placeholder="Your Church">
-                                        <select class="form-control mb-3" name="centre" id="">
+                                        <input class="form-control" type="text" name="state" placeholder="Your State">
+                                        {{-- <select class="form-control mb-3" name="centre" id="">
                                             <option value="null">Select your Preferred Centre</option>
                                             <option value="Ile-Ife">Ile Ife</option>
                                             <option value="Lekki">Lekki Lagos</option>
@@ -60,13 +61,10 @@
                                             <option value="Akure">Akure</option>
                                             <option value="Ondo">Ondo</option>
                                             <option value="Osogbo">Osogbo</option>
-                                        </select>
+                                        </select> --}}
 
                                         <select class="form-control mb-3" name="payment" id="">
-                                            <option value="null"> Payment Option (One-off OR Installment)</option>
-                                            <option value="8000">One off &#8358;8,000</option>
-                                            <option value="4500">Two Payments (&#8358;3,000 & &#8358;6,000)</option>
-                                            <option value="3000">Three Payments &#8358;3,000</option>
+                                            <option value="20">One off $20</option>
                                         </select>
                                         <div class="button-box">
                                             <button class="default-btn" type="submit"><span>Register</span></button>
