@@ -106,11 +106,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register Now</a>
                     </div>
                 </div>
             </div>
@@ -130,11 +130,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register</a>
                     </div>
                 </div>
             </div>
@@ -154,11 +154,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register</a>
                     </div>
                 </div>
             </div>
@@ -178,11 +178,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register</a>
                     </div>
                 </div>
             </div>
@@ -202,11 +202,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register</a>
                     </div>
                 </div>
             </div>
@@ -226,11 +226,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register</a>
                     </div>
                 </div>
             </div>

@@ -48,7 +48,7 @@
                                         @csrf
                                         <input class="form-control" type="text" name="surname" placeholder="Surname">
                                         <input class="form-control"  type="text" name="firstname" placeholder="Firstname">
-                                        <input class="form-control" type="text" name="phonenumber" placeholder="Phonenumber">
+                                        <input class="form-control" type="text" name="phonenumber" placeholder="Phone number">
                                         <input class="form-control" name="user-email" placeholder="Email" type="email">
                                         <input class="form-control" type="text" name="church" placeholder="Your Church">
                                         <select class="form-control mb-3" name="centre" id="">
