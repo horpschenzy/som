@@ -12,10 +12,10 @@
 <div class="course-area bg-img pt-130">
     <div class="container">
         <div class="section-title mb-75 course-mrg-small">
-            <h2> <span>Undergraduate</span> Courses</h2>
+            <h2> <span>School of Ministry</span> Courses</h2>
             <p>A six-week intensive bible training program, <br> where the word of God is taught extensively </p>
         </div>
-   <div class="course-slider-active nav-style-1 owl-carousel">
+        <div class="course-slider-active-4">
             <div class="single-course">
                 <div class="course-img">
                     <a href="course-details.html"><img class="animated" src="assets/img/course/course-1.jpg" alt=""></a>
@@ -23,6 +23,7 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">MINISTRY BASIC COURSE (MBC)</a></h4>
+                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">
@@ -32,11 +33,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register</a>
                     </div>
                 </div>
             </div>
@@ -47,6 +48,7 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">CHURCH MANAGEMENT COURSE (CMC)</a></h4>
+                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">
@@ -56,11 +58,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register</a>
                     </div>
                 </div>
             </div>
@@ -71,6 +73,7 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">WORLD EVANGELIZATION COURSE (WEC)</a></h4>
+                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">
@@ -80,11 +83,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register</a>
                     </div>
                 </div>
             </div>
@@ -95,6 +98,7 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">LEADERSHIP AND MINISTRY ETHICS (LME)</a></h4>
+                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">
@@ -104,11 +108,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register</a>
                     </div>
                 </div>
             </div>
@@ -119,6 +123,7 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">CHURCH GROWTH COURSE (CGC)</a></h4>
+                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">
@@ -128,11 +133,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register</a>
                     </div>
                 </div>
             </div>
@@ -143,6 +148,7 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">DYNAMICS OF THE ANOINTING COURSE (DAC)</a></h4>
+                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">
@@ -152,18 +158,18 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="payment.html">APPLY NOW</a>
+                        <a class="default-btn" href="{{route('frontend.register')}}">Register</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="course-area bg-img">
+{{-- <div class="course-area bg-img">
     <div class="container">
         <div class="section-title mb-75 course-mrg-small">
             <h2> Graduate <span>Courses</span></h2>
@@ -187,11 +193,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="#">APPLY NOW</a>
+                        <a class="default-btn" href="#">Register</a>
                     </div>
                 </div>
             </div>
@@ -211,11 +217,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="#">APPLY NOW</a>
+                        <a class="default-btn" href="#">Register</a>
                     </div>
                 </div>
             </div>
@@ -235,11 +241,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="#">APPLY NOW</a>
+                        <a class="default-btn" href="#">Register</a>
                     </div>
                 </div>
             </div>
@@ -260,11 +266,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="#">APPLY NOW</a>
+                        <a class="default-btn" href="#">Register</a>
                     </div>
                 </div>
             </div>
@@ -284,11 +290,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="#">APPLY NOW</a>
+                        <a class="default-btn" href="#">Register</a>
                     </div>
                 </div>
             </div>
@@ -319,11 +325,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="#">APPLY NOW</a>
+                        <a class="default-btn" href="#">Register</a>
                     </div>
                 </div>
             </div>
@@ -343,11 +349,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="#">APPLY NOW</a>
+                        <a class="default-btn" href="#">Register</a>
                     </div>
                 </div>
             </div>
@@ -367,11 +373,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="#">APPLY NOW</a>
+                        <a class="default-btn" href="#">Register</a>
                     </div>
                 </div>
             </div>
@@ -392,11 +398,11 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="#">APPLY NOW</a>
+                        <a class="default-btn" href="#">Register</a>
                     </div>
                 </div>
             </div>
@@ -416,17 +422,17 @@
                         </div>
                         <div class="sin-credit-duration">
                             <i class="fa fa-clock-o"></i>
-                            <span>Duration : 4yrs</span>
+                            <span>Duration : 2 weeks</span>
                         </div>
                     </div>
                     <div class="course-btn">
-                        <a class="default-btn" href="#">APPLY NOW</a>
+                        <a class="default-btn" href="#">Register</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- <div class="brand-logo-area pb-130">
     <div class="container">
         <div class="brand-logo-active owl-carousel">
