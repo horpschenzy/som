@@ -4028,7 +4028,7 @@ textarea:focus {
 
 /*--------- 12. footer area ---------*/
 .footer-top.default-overlay:before {
-  background-color: #d438c0;
+  background-color: #252525;
   opacity: .89; }
 
 @media only screen and (max-width: 767px) {

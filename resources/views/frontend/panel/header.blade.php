@@ -6,7 +6,7 @@
                     <div class="header-contact">
                         <ul>
                             <li><i class="fa fa-phone"></i> 07034635093</li>
-                            <li><i class="fa fa-envelope-o"></i><a href="#">gltlekki@glt.church</a></li>
+                            <li><i class="fa fa-envelope-o"></i><a href="mailto:gltlekki@glt.church">gltlekki@glt.church</a></li>
                         </ul>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                 <div class="col-lg-2 col-md-6 col-4">
                     <div class="logo">
                         <a href="{{route('frontend.index')}}">
-                            <img alt="" src="{{asset('frontendassets/img/logo2.png')}}" style="width: 80px; height: 40px;">
+                            <img alt="" src="{{asset('frontendassets/img/logo2.png')}}" style="height: 40px;">
                         </a>
                     </div>
                 </div>
