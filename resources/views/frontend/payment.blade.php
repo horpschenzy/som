@@ -22,6 +22,7 @@
                                                 </p>
 
                                                 <input type="email" class="form-control" name="email" placeholder="Your Email"> {{-- required --}}
+                                                <label>Amount</label>
                                                 <select class="form-control mb-3" name="amount" id="">
                                                     <option disabled selected> Payment Option (One-off OR Installment)</option>
                                                     <option value="800000">One off &#8358;8,000</option>
@@ -132,6 +133,18 @@
 <script src="{{asset('frontendassets/js/ajax-mail.js')}}"></script>
 <!-- Main JS -->
 <script src="{{asset('frontendassets/js/main.js')}}"></script>
+
+<script>
+
+let selection = document.querySelector('select');
+let amount = document.querySelector('label');
+
+
+selection.addEventlisterner('change', () => {
+	amount.innerText = selection.options[selection.selectedIndex].text;
+});
+
+</script>
 
 
 @endpush

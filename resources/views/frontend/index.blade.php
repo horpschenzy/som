@@ -14,11 +14,7 @@
                             <div class="slider-btn">
                                 <a class="animated default-btn btn-green-color" href="{{route('frontend.courses')}}">CLASSES</a>
                             </div>
-                              <div class="elfsight-app-fc809c30-f4fc-4ce8-8cdf-b85e0d6ebea6">
-                                    <a href="http://api.whatsapp.com/send?phone=+2348139127501" target="_blank"></a>
-                                    <h5><i class="fa fa-whatsapp fa-3x " aria-hidden="true"></i></h5>
-                                </div>
-                                <div class="elfsight-app-fc809c30-f4fc-4ce8-8cdf-b85e0d6ebea6"></div>
+
                             </div>
                         </div>
                     </div>
@@ -73,8 +69,8 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
-                <div class="about-img default-overlay">
-                    <img src="{{asset('frontendassets/img/ministry_basic.jpg')}}" alt="">
+                <div class="about-img">
+                    <img src="{{asset('frontendassets/img/SOM 2021.jpg')}}" alt="">
                     <a class="video-btn video-popup" href="https://www.youtube.com/watch?v=sv5hK4crIRc">
                         <img class="animated" src="{{asset('frontendassets/img/icon-img/video.png')}}" alt="">
                     </a>
