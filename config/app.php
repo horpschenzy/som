@@ -162,9 +162,12 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
+
         /*
          * Package Service Providers...
          */
+        Unicodeveloper\Paystack\PaystackServiceProvider::class,
 
         /*
          * Application Service Providers...

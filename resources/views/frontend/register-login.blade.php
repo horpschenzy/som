@@ -14,6 +14,7 @@
         <div class="row">
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div class="login-register-wrapper">
+                    @include('frontend.inc.message')
                     <div class="login-register-tab-list nav">
                         <a  href="{{route('frontend.global')}}">
                             <h4> Global </h4>
@@ -44,15 +45,14 @@
                         <div id="lg2" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="/somregister" method="post">
+                                     <form action="/somregister" method="post">
                                         @csrf
-                                        <input class="form-control" type="text" name="surname" placeholder="Surname">
-                                        <input class="form-control"  type="text" name="firstname" placeholder="Firstname">
-                                        <input class="form-control" type="text" name="phonenumber" placeholder="Phone number">
-                                        <input class="form-control" name="user-email" placeholder="Email" type="email">
-                                        <input class="form-control" type="text" name="church" placeholder="Your Church">
-                                        <select class="form-control mb-3" name="centre" id="">
-                                            <option value="null">Select your Preferred Centre</option>
+                                        <input class="form-control" type="text" name="surname" placeholder="Surname" required>
+                                        <input class="form-control"  type="text" name="firstname" placeholder="Firstname" required>
+                                        <input class="form-control" type="number" name="phonenumber" placeholder="Phone number" required>
+                                        <input class="form-control" name="email" placeholder="Email" type="email" required>
+                                        <select class="form-control mb-4" name="centre" id="">
+                                            <option disabled selected>Select your Preferred Centre</option>
                                             <option value="Ile-Ife">Ile Ife</option>
                                             <option value="Lekki">Lekki Lagos</option>
                                             <option value="ikeja">Ikeja Lagos</option>
@@ -61,17 +61,22 @@
                                             <option value="Ondo">Ondo</option>
                                             <option value="Osogbo">Osogbo</option>
                                         </select>
-
+                                        <select name="paymenttype" class="form-control mb-4">
+                                            <option disabled selected>Select Payment Type</option>
+                                            <option value="one-off">One Off</option>
+                                            <option value="Installment">Installment</option>
+                                        </select>
                                         <select class="form-control mb-3" name="payment" id="">
-                                            <option value="null"> Payment Option (One-off OR Installment)</option>
-                                            <option value="8000">One off &#8358;8,000</option>
-                                            <option value="4500">Two Payments (&#8358;3,000 & &#8358;6,000)</option>
-                                            <option value="3000">Three Payments &#8358;3,000</option>
+                                            <option disabled selected> Payment Option (One-off OR Installment)</option>
+                                            <option value="800000">One off &#8358;8,000</option>
+                                            <option value="600000">Two Payments (&#8358;3,000 & &#8358;6,000)</option>
+                                            <option value="300000">Three Payments &#8358;3,000</option>
                                         </select>
                                         <div class="button-box">
                                             <button class="default-btn" type="submit"><span>Register</span></button>
                                         </div>
                                     </form>
+
                                 </div>
                             </div>
                         </div>

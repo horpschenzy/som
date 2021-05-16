@@ -28,6 +28,7 @@
 
     @include('frontend.panel.header')
 
+    @include('frontend.inc.message')
     @yield('content')
 
 
