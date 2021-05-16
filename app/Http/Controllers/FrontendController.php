@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\member;
 
 class FrontendController extends Controller
 {
@@ -43,7 +44,9 @@ class FrontendController extends Controller
 
     public function payment()
     {
+
         return view('frontend.payment');
+
     }
 
     public function global()
@@ -69,7 +72,32 @@ class FrontendController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+
+
+        $this->validate($request,[
+
+            'surname' => 'required',
+            'firstname' => 'required',
+            'phonenumber' => 'required',
+           'email' => 'required',
+            'centre' => 'required',
+           'payment' => 'required',
+           'paymenttype' => 'required',
+
+            ]);
+
+
+            $data = new member;
+            $data->surname = $request->input('surname');
+            $data->firstname = $request->input('firstname');
+            $data->email = $request->input('email');
+            $data->phonenumber = $request->input('phonenumber');
+            $data->centre = $request->input('centre');
+            $data->payment = $request->input('payment');
+            $data->paymenttype = $request->input('paymenttype');
+            $data->save();
+
+            return redirect('/payment')->with('success', 'kindly complete your registration by making payment');
     }
 
 

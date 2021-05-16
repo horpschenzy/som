@@ -35,3 +35,10 @@ Route::post('/globalregister', 'FrontendController@globalstore')->name('frontend
 Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
 
 
+// PAYSTACK
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+
+
+
+

@@ -47,12 +47,12 @@
                         </div>
                         <div class="footer-list">
                             <ul>
-                                <li><a href="#">Ministry Basic Course </a></li>
-                                <li><a href="#">Church Management Course </a></li>
-                                <li><a href="#">World Evangelization Course</a></li>
-                                <li><a href="#">Leadership and Minstry Ethics</a></li>
-                                <li><a href="#">Church Growth Cuorse</a></li>
-                                <li><a href="#">Dynamics of the Anointing Course</a></li>
+                                <li><a href="{{route('frontend.courses')}}">Ministry Basic Course </a></li>
+                                <li><a href="{{route('frontend.courses')}}">Church Management Course </a></li>
+                                <li><a href="{{route('frontend.courses')}}">World Evangelization Course</a></li>
+                                <li><a href="{{route('frontend.courses')}}">Leadership and Minstry Ethics</a></li>
+                                <li><a href="{{route('frontend.courses')}}">Church Growth Cuorse</a></li>
+                                <li><a href="{{route('frontend.courses')}}">Dynamics of the Anointing Course</a></li>
                             </ul>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="copyright">
                         <p>
-                            <a href="#">SOTM</a>
+                            <a href="https://segunobadje.org">SOTM</a>
                             School of Ministry © 2021
                         </p>
                     </div>
