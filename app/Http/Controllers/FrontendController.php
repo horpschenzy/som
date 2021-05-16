@@ -79,7 +79,7 @@ class FrontendController extends Controller
             'surname' => 'required',
             'firstname' => 'required',
             'phonenumber' => 'required',
-           'email' => 'required',
+           'email' => 'required|unique:members,email',
             'centre' => 'required',
            'payment' => 'required',
            'paymenttype' => 'required',
@@ -96,6 +96,12 @@ class FrontendController extends Controller
             $data->payment = $request->input('payment');
             $data->paymenttype = $request->input('paymenttype');
             $data->save();
+
+            $user  = new User;
+            $user->username = $request->surname;
+            $user->email   = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->save();
 
             return redirect('/payment')->with('success', 'kindly complete your registration by making payment');
     }

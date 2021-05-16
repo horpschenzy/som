@@ -45,12 +45,13 @@
                         <div id="lg2" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                     <form action="/somregister" method="post">
+                                     <form action="{{  route('frontend.store')}}" method="post">
                                         @csrf
                                         <input class="form-control" type="text" name="surname" placeholder="Surname" required>
                                         <input class="form-control"  type="text" name="firstname" placeholder="Firstname" required>
                                         <input class="form-control" type="number" name="phonenumber" placeholder="Phone number" required>
                                         <input class="form-control" name="email" placeholder="Email" type="email" required>
+                                        <input class="form-control" name="password" placeholder="Password" type="password" required>
                                         <select class="form-control mb-4" name="centre" id="">
                                             <option disabled selected>Select your Preferred Centre</option>
                                             <option value="Ile-Ife">Ile Ife</option>

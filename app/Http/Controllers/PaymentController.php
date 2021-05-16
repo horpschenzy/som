@@ -51,6 +51,8 @@ class PaymentController extends Controller
 
         $data->save();
 
+        
+
         return redirect('/payment')->with('success', ' payment Completed');
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
