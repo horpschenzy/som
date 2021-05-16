@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-lg-9 col-md-7 col-12 col-sm-12">
                         <div class="slider-content slider-animated-1 pt-230">
-                            <h1 class="animated">GET ANSWERS</h1>
+                            <h1 class="animated">Get Answers</h1>
                             <p class="animated">Grow &nbsp; | &nbsp; Discover &nbsp; | &nbsp; Reach your Potentials </p>
                             <div class="slider-btn">
                                 <a class="animated default-btn btn-green-color" href="{{route('frontend.courses')}}">CLASSES</a>
@@ -43,7 +43,7 @@
         </div> --}}
     </div>
 </div>
-<div class="about-us pt-130 pb-130">
+<div class="about-us pt-130 pb-10">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
@@ -234,13 +234,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
     </div>
 </div>
-<div class="achievement-area pt-130 pb-115">
+<div class="achievement-area pt-130 pb-100">
     <div class="container">
         <div class="section-title mb-75">
-            <h2> <span>QUALIFICATION</span></h2>
+            {{-- <div class="section-title mb-75"> --}}
+            <h2> <span>Qualification</span></h2>
             <p>SOM is an interdenominational school for all those who believe in Jesus. <br> Your passkey to this priceless offer that will revolutionize you forever is being born again genuinely. That’s all </p>
         </div>
         <div class="row">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\member;
+use App\User;
 
 class FrontendController extends Controller
 {

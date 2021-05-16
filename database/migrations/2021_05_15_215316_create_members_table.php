@@ -18,6 +18,7 @@ class CreateMembersTable extends Migration
             $table->string('surname');
             $table->string('firstname');
             $table->string('phonenumber');
+            $table->string('password');
             $table->string('email');
             $table->string('centre');
             $table->string('payment');
