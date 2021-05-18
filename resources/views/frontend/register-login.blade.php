@@ -24,23 +24,7 @@
                         </a>
                     </div>
                     <div class="tab-content">
-                        <div id="lg1" class="tab-pane ">
-                            <div class="login-form-container">
-                                <div class="login-register-form">
-                                    <form action="#" method="post">
-                                        <input type="text" name="user-name" placeholder="Username">
-                                        <input type="password" name="user-password" placeholder="Password">
-                                        <div class="button-box">
-                                            <div class="login-toggle-btn">
-                                                <input type="checkbox">
-                                                <label>Remember me</label>
-                                                <a href="#">Forgot Password?</a>
-                                            </div>
-                                            <button class="default-btn" type="submit"><span>Login</span></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+
                         </div>
                         <div id="lg2" class="tab-pane active">
                             <div class="login-form-container">
@@ -62,18 +46,13 @@
                                             <option value="Ondo">Ondo</option>
                                             <option value="Osogbo">Osogbo</option>
                                         </select>
-                                        <select name="paymenttype" class="form-control mb-4">
-                                            <option disabled selected>Select Payment Type</option>
-                                            <option value="one-off">One Off</option>
+                                        <select name="paymenttype" id="main_menu" class="form-control mb-4">
+                                            <option value="oneoff">One-Off</option>
                                             <option value="Installment">Installment</option>
                                         </select>
-                                        <select class="form-control mb-3" name="payment" id="">
-                                            <option disabled selected> Payment Option (One-off OR Installment)</option>
-                                            <option value="800000">One off &#8358;8,000</option>
-                                            <option value="600000">Two Payments (&#8358;3,000 & &#8358;6,000)</option>
-                                            <option value="300000">Three Payments &#8358;3,000</option>
-                                        </select>
-                                        <div class="button-box">
+                                        <select class="custom-select mb-10" name="payment" id="sub_menu"></select>
+
+                                        <div class="button-box mt-5">
                                             <button class="default-btn" type="submit"><span>Register</span></button>
                                         </div>
                                     </form>
@@ -87,65 +66,7 @@
         </div>
     </div>
 </div>
-{{-- <div class="register-area bg-img pt-130 pb-130">
-    <div class="container">
-        <div class="section-title-2 mb-75 white-text">
-            <h2>Register <span>Now</span></h2>
-            <p> Admission Is Going On. Portal is now open for registration for  batch 2021.</p>
-        </div>
-        <div class="register-wrap">
-            <div id="register-3" class="mouse-bg">
-               <!--  <div class="winter-banner">
-                    <img src="assets/img/banner/regi-1.png" alt="">
-                    <div class="winter-content">
-                        <span>WINTER </span>
-                        <h3>2019</h3>
-                        <span>ADMISSION </span>
-                    </div>
-                </div> -->
-            </div>
-            <div class="row">
-                <div class="col-lg-10 col-md-8">
-                    <div class="register-form">
-                        <h4>Get A free Registration</h4>
-                        <form>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="contact-form-style mb-20">
-                                        <input name="name" placeholder="First Name" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="contact-form-style mb-20">
-                                        <input name="name" placeholder="Last Name" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="contact-form-style mb-20">
-                                        <input name="name" placeholder="Phone" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="contact-form-style mb-20">
-                                        <input name="name" placeholder="Email" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="contact-form-style">
-                                        <textarea name="message" placeholder="Message"></textarea>
-                                        <button class="submit default-btn" type="submit">SUBMIT NOW</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="register-1" class="mouse-bg"></div>
-    <div id="register-2" class="mouse-bg"></div>
-</div> --}}
+
 
 @endsection
 
@@ -165,6 +86,8 @@
 <script src="{{asset('frontendassets/js/ajax-mail.js')}}"></script>
 <!-- Main JS -->
 <script src="{{asset('frontendassets/js/main.js')}}"></script>
+
+
 
 
 @endpush

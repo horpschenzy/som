@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('frontendassets/css/style.css')}}">
     <!-- Modernizer JS -->
     <script src="{{ asset('frontendassets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+
 </head>
 <body>
 
@@ -35,7 +36,7 @@
     @include('frontend.panel.footer')
 
     @stack('scripts')
-
+    @include('frontend.panel.scripts')
 </body>
 
 </html>

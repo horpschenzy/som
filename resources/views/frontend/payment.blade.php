@@ -140,7 +140,7 @@ let selection = document.querySelector('select');
 let amount = document.querySelector('label');
 
 
-selection.addEventlisterner('change', () => {
+selection.addEventListener('change', () => {
 	amount.innerText = selection.options[selection.selectedIndex].text;
 });
 
