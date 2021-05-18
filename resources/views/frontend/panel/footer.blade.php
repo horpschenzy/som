@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-envelope-o"></i>
-                                    <span><a href="#">gltlekki@glt.church</a></span>
+                                    <span><a href="mailto:som@segunobadje.org"> som@segunobadje.org</a></span>
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-phone"></i>

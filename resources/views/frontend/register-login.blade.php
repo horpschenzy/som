@@ -31,10 +31,10 @@
                                 <div class="login-register-form">
                                      <form action="{{  route('frontend.store')}}" method="post">
                                         @csrf
-                                        <input class="form-control" type="text" name="surname" placeholder="Surname" required>
-                                        <input class="form-control"  type="text" name="firstname" placeholder="Firstname" required>
-                                        <input class="form-control" type="number" name="phonenumber" placeholder="Phone number" required>
-                                        <input class="form-control" name="email" placeholder="Email" type="email" required>
+                                        <input class="form-control" type="text" name="surname" placeholder="Surname" required value="{{old('surname')}}">
+                                        <input class="form-control"  type="text" name="firstname" placeholder="Firstname" required  value="{{old('firstname')}}">
+                                        <input class="form-control" type="number" name="phonenumber" placeholder="Phone number" required  value="{{old('phonenumber')}}">
+                                        <input class="form-control" name="email" placeholder="Email" type="email" required  value="{{old('email')}}">
                                         <input class="form-control" name="password" placeholder="Password" type="password" required>
                                         <select class="form-control mb-4" name="centre" id="">
                                             <option disabled selected>Select your Preferred Centre</option>
@@ -45,12 +45,17 @@
                                             <option value="Akure">Akure</option>
                                             <option value="Ondo">Ondo</option>
                                             <option value="Osogbo">Osogbo</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                         <select name="paymenttype" id="main_menu" class="form-control mb-4">
                                             <option value="oneoff">One-Off</option>
                                             <option value="Installment">Installment</option>
                                         </select>
-                                        <select class="custom-select mb-10" name="payment" id="sub_menu"></select>
+                                        <select class="custom-select mb-10" name="payment" id="sub_menu">
+                                            <option value="800000">One off &#8358;8,000</option>
+                                            <option value="600000">Two Payments (&#8358;3,000 & &#8358;6,000)</option>
+                                            <option value="300000">Three Payments &#8358;3,000</option>
+                                        </select>
 
                                         <div class="button-box mt-5">
                                             <button class="default-btn" type="submit"><span>Register</span></button>

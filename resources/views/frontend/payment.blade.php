@@ -22,11 +22,11 @@
                                                 </p>
 
                                                 <input type="email" class="form-control" name="email" placeholder="Your Email"> {{-- required --}}
-                                                <label>Amount</label>
+
                                                 <select class="form-control mb-3" name="amount" id="">
                                                     <option disabled selected> Payment Option (One-off OR Installment)</option>
                                                     <option value="800000">One off &#8358;8,000</option>
-                                                    <option value="600000">Two Payments (&#8358;3,000 & &#8358;6,000)</option>
+                                                    <option value="600000">Two Payments (1st &#8358;6,000 & 2nd &#8358;3,000)</option>
                                                     <option value="300000">Three Payments &#8358;3,000</option>
                                                 </select>{{-- required in kobo --}}
                                                 <input type="hidden" name="quantity" value="1">
@@ -134,7 +134,7 @@
 <!-- Main JS -->
 <script src="{{asset('frontendassets/js/main.js')}}"></script>
 
-<script>
+{{-- <script>
 
 let selection = document.querySelector('select');
 let amount = document.querySelector('label');
@@ -144,7 +144,7 @@ selection.addEventListener('change', () => {
 	amount.innerText = selection.options[selection.selectedIndex].text;
 });
 
-</script>
+</script> --}}
 
 
 @endpush

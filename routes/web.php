@@ -33,6 +33,7 @@ Route::get('/global-register', 'FrontendController@global')->name('frontend.glob
 Route::post('/somregister', 'FrontendController@store')->name('frontend.store');
 Route::post('/globalregister', 'FrontendController@globalstore')->name('frontend.gbobalstore');
 Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
+Route::get('/globalpayment', 'FrontendController@globalpayment')->name('frontend.globalpayment');
 
 
 // PAYSTACK

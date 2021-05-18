@@ -51,6 +51,12 @@ class FrontendController extends Controller
 
     }
 
+    public function globalpayment()
+    {
+
+        return view('frontend.paymentusd');
+
+    }
     public function global()
     {
         return view('frontend.global-register');
@@ -85,6 +91,7 @@ class FrontendController extends Controller
             'centre' => 'required',
            'payment' => 'required',
            'paymenttype' => 'required',
+           'password',
 
             ]);
 
@@ -94,13 +101,14 @@ class FrontendController extends Controller
             $data->firstname = $request->input('firstname');
             $data->email = $request->input('email');
             $data->phonenumber = $request->input('phonenumber');
+            $data->password = $request->input('password');
             $data->centre = $request->input('centre');
             $data->payment = $request->input('payment');
             $data->paymenttype = $request->input('paymenttype');
             $data->save();
 
             $user  = new User;
-            $user->username = $request->surname;
+            $user->name = $request->surname;
             $user->email   = $request->email;
             $user->password = Hash::make($request->password);
             $user->save();
@@ -111,7 +119,39 @@ class FrontendController extends Controller
 
     public function globalstore(Request $request)
     {
-        dd($request);
+        $this->validate($request,[
+
+            'surname' => 'required',
+            'firstname' => 'required',
+            'phonenumber' => 'required',
+           'email' => 'required|unique:members,email',
+           'centre' => 'required',
+           'payment' => 'required',
+           'paymenttype' => 'required',
+           'password',
+
+
+            ]);
+
+
+            $data = new member;
+            $data->surname = $request->input('surname');
+            $data->firstname = $request->input('firstname');
+            $data->email = $request->input('email');
+            $data->password = $request->input('password');
+            $data->phonenumber = $request->input('phonenumber');
+            $data->centre = $request->input('centre');
+            $data->payment = $request->input('payment');
+            $data->paymenttype = $request->input('paymenttype');
+            $data->save();
+
+            $user  = new User;
+            $user->name = $request->surname;
+            $user->email   = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return redirect('/globalpayment')->with('success', 'kindly complete your registration by making payment');
     }
     /**
      * Display the specified resource.

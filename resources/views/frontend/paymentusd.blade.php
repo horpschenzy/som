@@ -1,74 +1,48 @@
 @extends('frontend.layouts.frontend')
 @section('content')
 
-<div class="breadcrumb-area">
-    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-100 pb-95" style="background-image:url(assets/img/grad-group.png);">
-        <div class="container">
-            <h2>Register</h2>
-            <p>We are called to reach the ends of the earth with the message of the new creation realities in Christ Jesus, stressing emphatically the integrity of God’s Word and communicating the healing presence and power of Jesus Christ to the whole world</p>
-        </div>
-    </div>
-</div>
 <div class="login-register-area pt-130 pb-130">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div class="login-register-wrapper">
-                    <div class="login-register-tab-list nav">
-                        <a class="active" data-toggle="tab" href="#lg2">
-                            <h4> Global </h4>
-                        </a>
-                        <a  href="{{route('frontend.register')}}">
-                            <h4> Nigeria </h4>
-                        </a>
-                    </div>
                     <div class="tab-content">
-                        <div id="lg1" class="tab-pane ">
-                            <div class="login-form-container">
-                                <div class="login-register-form">
-                                    <form action="#" method="post">
-                                        <input type="text" name="user-name" placeholder="Username">
-                                        <input type="password" name="user-password" placeholder="Password">
-                                        <div class="button-box">
-                                            <div class="login-toggle-btn">
-                                                <input type="checkbox">
-                                                <label>Remember me</label>
-                                                <a href="#">Forgot Password?</a>
-                                            </div>
-                                            <button class="default-btn" type="submit"><span>Login</span></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+
                         <div id="lg2" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="/globalregister" method="post">
-                                        @csrf
-                                        <input class="form-control" type="text" name="surname" placeholder="Surname" value="{{old('surname')}}">
-                                        <input class="form-control"  type="text" name="firstname" placeholder="Firstname" value="{{old('firstname')}}">
-                                        <input class="form-control" type="text" name="phonenumber" placeholder="Phonenumber" value="{{old('phonenumber')}}">
-                                        <input class="form-control" name="email" placeholder="Email" type="email" value="{{old('email')}}">
-                                        <input class="form-control" name="password" placeholder="Password" type="password" required>
-                                        <select name="centre" id="main_menu" class="form-control mb-4">
-                                            <option value="US">US</option>
-                                            <option value="Europe">Europe</option>
-                                            <option value="Asia">Asia</option>
-                                            <option value="UAE">UAE</option>
-                                            <option value="Others">Others</option>
-                                        </select>
+                                    <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+                                        <div class="row" style="margin-bottom:40px;">
+                                            <div class="col-md-8 col-md-offset-2">
+                                                <p>
+                                                    {{-- <div>
+                                                        <h5>Thank you</h5>
+                                                        Registration fee:
+                                                    </div> --}}
+                                                </p>
 
-                                        <select name="paymenttype" id="main_menu" class="form-control mb-4">
-                                            <option value="oneoff">One-Off</option>
-                                        </select>
-                                        <select class="form-control mb-3" name="payment" id="">
-                                            <option value="20">$20</option>
-                                        </select>
-                                        <div class="button-box">
-                                            <button class="default-btn" type="submit"><span>Register</span></button>
+                                                <input type="email" class="form-control" name="email" placeholder="Your Email"> {{-- required --}}
+                                                <select class="form-control mb-3" name="amount" id="">
+                                                    <option disabled selected> Payment Option (One-off OR Installment)</option>
+                                                    <option value="800000">One off $20</option>
+                                                </select>{{-- required in kobo --}}
+                                                <input type="hidden" name="quantity" value="1">
+                                                <input type="hidden" name="currency" value="USD">
+                                                <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value', 'key_name' => 'value',]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
+                                                <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
+                                                {{ csrf_field() }} {{-- works only when using laravel 5.1, 5.2 --}}
+
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}"> {{-- employ this in place of csrf_field only in laravel 5.0 --}}
+
+                                                <p>
+                                                    <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
+                                                        <i class="fa fa-plus-circle fa-lg"></i> Pay Now!
+                                                    </button>
+                                                </p>
+                                            </div>
                                         </div>
                                     </form>
+
                                 </div>
                             </div>
                         </div>
@@ -156,6 +130,18 @@
 <script src="{{asset('frontendassets/js/ajax-mail.js')}}"></script>
 <!-- Main JS -->
 <script src="{{asset('frontendassets/js/main.js')}}"></script>
+
+{{-- <script>
+
+let selection = document.querySelector('select');
+let amount = document.querySelector('label');
+
+
+selection.addEventListener('change', () => {
+	amount.innerText = selection.options[selection.selectedIndex].text;
+});
+
+</script> --}}
 
 
 @endpush

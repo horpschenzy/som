@@ -36,7 +36,7 @@
     @include('frontend.panel.footer')
 
     @stack('scripts')
-    @include('frontend.panel.scripts')
+
 </body>
 
 </html>
