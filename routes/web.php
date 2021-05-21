@@ -41,5 +41,8 @@ Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 
 
+//ADMIN
+Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+
 
 

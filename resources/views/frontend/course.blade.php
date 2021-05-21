@@ -23,7 +23,7 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">MINISTRY BASIC COURSE (MBC)</a></h4>
-                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
+                    <p>This is the hub of the School of Ministry. This course covers the rudiments and foundation of Ministry, the understanding that every believer must have as touching what ministry is and how to run ministry effectively.</p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">CHURCH MANAGEMENT COURSE (CMC)</a></h4>
-                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
+                    <p>Management is not just a 21st-century concept, its origin is dated back to the creation of heaven and earth. This course will teach the students the importance of Management in the church and how it impacts significantly on the ministry of the Word and Spirit. It will also give the students practical insights into the 21st-century Management of the church as it relates to Administration, Organising, Directing, Controlling, and judiciously Utilising the resources of the church to maximum productivity.</p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">
@@ -73,7 +73,8 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">WORLD EVANGELIZATION COURSE (WEC)</a></h4>
-                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
+                    <p>The foundation on which Christianity is built is the finished works of Jesus Christ our Lord and the mandate given to every believer by the Lord Jesus Christ Himself is to evangelise the world. This course will teach the students in practical terms how to evangelise the world and disciple men from all walks of life.
+                    </p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">
@@ -98,7 +99,7 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">LEADERSHIP AND MINISTRY ETHICS (LME)</a></h4>
-                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
+                    <p>Everything rises and falls on leadership. This course is set to bring the students to the knowledge of Ministry Leadership and also Ministry Ethic as elucidated in the Scriptures.</p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">
@@ -123,7 +124,7 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">CHURCH GROWTH COURSE (CGC)</a></h4>
-                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
+                    <p>This course gives students a brief rich Church History and will help them know and understand what church growth is and also equip them with the necessary knowledge to achieve growth in every circumstance/situation.</p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">
@@ -148,7 +149,7 @@
                 </div>
                 <div class="course-content">
                     <h4><a href="course-details.html">DYNAMICS OF THE ANOINTING COURSE (DAC)</a></h4>
-                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
+                    <p>This course aims at giving the students a deep and practical insight into the Anointing; the Person of the Anointing, the flows of the Anointing, How to activate the Anointing, and how to walk in the Anointing.</p>
                 </div>
                 <div class="course-position-content">
                     <div class="credit-duration-wrap">

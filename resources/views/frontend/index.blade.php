@@ -12,7 +12,7 @@
                             <h1 class="animated">Get Answers</h1>
                             <p class="animated">Grow &nbsp; | &nbsp; Discover &nbsp; | &nbsp; Reach your Potentials </p>
                             <div class="slider-btn">
-                                <a class="animated default-btn btn-green-color" href="{{route('frontend.courses')}}">CLASSES</a>
+                                <a class="animated default-btn btn-green-color" href="{{route('frontend.register')}}">Register</a>
                             </div>
 
                             </div>

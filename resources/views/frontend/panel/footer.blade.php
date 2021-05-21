@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-phone"></i>
-                                    <span> 07034635093, 07032952025</span>
+                                    <span>08065686560</span>
                                 </div>
                             </div>
                         </div>
