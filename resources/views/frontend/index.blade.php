@@ -258,7 +258,7 @@
                         <img src="{{asset('frontendassets/img/icon-img/achieve-2.png')}}" alt="">
                     </div>
                     <div class="count-content">
-                        <h2 class="count">2,500+</h2>
+                        <h2><strong class="count">2,500</strong>+</h2>
                         <span>SOM GRADUATES Making a Difference Today</span>
                     </div>
                 </div>
