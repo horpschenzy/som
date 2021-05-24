@@ -32,7 +32,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-10 col-md-6 col-8">
+                <div class="col-lg-10 col-md-6 col-8" style="align-self: center;">
                     <div class="menu-cart-wrap">
                         <div class="main-menu">
                             <nav>
@@ -62,14 +62,14 @@
                     </div>
                 </div>
             </div>
-            <div class="mobile-menu-area">
+            <div class="mobile-menu-area" style="margin-top: -7px;">
                 <div class="mobile-menu">
                     <nav id="mobile-menu-active">
                         <ul class="menu-overflow">
-                            <li><a href="index.html">HOME</a></li>
-                            <li><a href="about-us.html">About</a></li>
-                            <li><a href="course.html"> COURSES </a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="{{route('frontend.index')}}"> HOME </a></li>
+                            <li><a href="{{route('frontend.about')}}"> ABOUT  </a></li>
+                            <li><a href="{{route('frontend.courses')}}"> COURSES </a></li>
+                            <li><a href="{{route('frontend.contact')}}"> CONTACT </a></li>
                         </ul>
                     </nav>
                 </div>

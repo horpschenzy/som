@@ -720,6 +720,14 @@
         animation: 'fade'
     });
     
+    $('#centre').on('change', function(e){
+        if( $(this).val() == 'Others'){
+            $('#other_location').show();
+         console.log($(this).val());
+        }else{
+            $('#other_location').hide();
+        }
+    });
     
     
     

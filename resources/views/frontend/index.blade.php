@@ -241,7 +241,7 @@
             <p>SOM is an interdenominational school for all those who believe in Jesus. <br> Your passkey to this priceless offer that will revolutionize you forever is being born again genuinely. That’s all </p>
         </div>
         <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+            <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-one">
                     <div class="count-img">
                         <img src="{{asset('frontendassets/img/icon-img/achieve-1.png')}}" alt="">
@@ -251,14 +251,14 @@
                         <span>STUDENTS Currently Studying in the SOM</span>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <div class="single-count mb-30 count-two">
+            </div> -->
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="single-count mb-30 count-two single-count-without-border" style="justify-content: center;text-align: center;">
                     <div class="count-img">
                         <img src="{{asset('frontendassets/img/icon-img/achieve-2.png')}}" alt="">
                     </div>
                     <div class="count-content">
-                        <h2 class="count">3,000</h2>
+                        <h2><strong class="count">2,500</strong>+</h2>
                         <span>SOM GRADUATES Making a Difference Today</span>
                     </div>
                 </div>
@@ -419,6 +419,15 @@
 <!-- Main JS -->
 <script src="{{asset('frontendassets/js/main.js')}}"></script>
 
-
+<style type="text/css">
+    .single-count-without-border:before {
+        position: absolute;
+        top: 8px;
+        background-color: #e1dddd;
+        content: "";
+        width: 0px !important;
+        height: 0px !important;
+    }
+</style>
 @endpush
 

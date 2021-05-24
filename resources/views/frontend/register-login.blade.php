@@ -36,7 +36,7 @@
                                         <input class="form-control" type="number" name="phonenumber" placeholder="Phone number" required  value="{{old('phonenumber')}}">
                                         <input class="form-control" name="email" placeholder="Email" type="email" required  value="{{old('email')}}">
                                         <input class="form-control" name="password" placeholder="Password" type="password" required>
-                                        <select class="form-control mb-4" name="centre" id="">
+                                        <select class="form-control mb-4" name="centre" id="centre">
                                             <option disabled selected>Select your Preferred Centre</option>
                                             <option value="Ile-Ife">Ile Ife</option>
                                             <option value="Lekki">Lekki Lagos</option>
@@ -47,6 +47,7 @@
                                             <option value="Osogbo">Osogbo</option>
                                             <option value="Others">Others</option>
                                         </select>
+                                        <input class="form-control" type="text" name="other_location" id="other_location" placeholder="City, Country" value="{{old('other_location')}}">
                                         <select name="paymenttype" id="main_menu" class="form-control mb-4">
                                             <option value="oneoff">One-Off</option>
                                             <option value="Installment">Installment</option>

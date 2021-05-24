@@ -105,6 +105,11 @@ class FrontendController extends Controller
             $data->centre = $request->input('centre');
             $data->payment = $request->input('payment');
             $data->paymenttype = $request->input('paymenttype');
+            if($request->has('other_location')){
+                $data->other_location = $request->input('other_location');
+            }
+            
+            
             $data->save();
 
             $user  = new User;
