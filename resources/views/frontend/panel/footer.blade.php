@@ -51,7 +51,7 @@
                                 <li><a href="{{route('frontend.courses')}}">Church Management Course </a></li>
                                 <li><a href="{{route('frontend.courses')}}">World Evangelization Course</a></li>
                                 <li><a href="{{route('frontend.courses')}}">Leadership and Minstry Ethics</a></li>
-                                <li><a href="{{route('frontend.courses')}}">Church Growth Cuorse</a></li>
+                                <li><a href="{{route('frontend.courses')}}">Church Growth Course</a></li>
                                 <li><a href="{{route('frontend.courses')}}">Dynamics of the Anointing Course</a></li>
                             </ul>
                         </div>

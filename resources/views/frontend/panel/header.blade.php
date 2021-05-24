@@ -15,7 +15,7 @@
                         <ul>
                             <li><a href="{{route('frontend.log-in')}}">Login</a></li>
                             <li><a href="{{route('frontend.register')}}">Register</a></li>
-                            <li><a href="{{route('frontend.payment')}}">Pay for Course</a></li>
+                            <li><a href="{{route('frontend.payment')}}">Payment</a></li>
                         </ul>
                     </div>
                 </div>

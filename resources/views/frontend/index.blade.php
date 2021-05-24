@@ -4,7 +4,7 @@
 
 <div class="slider-area">
     <div class="slider-active owl-carousel">
-        <div class="single-slider slider-height-1 bg-img" style="background-image:url({{asset('frontendassets/img/slide-0.jpg')}})">
+        <div class="single-slider slider-height-1 bg-img" style="background-image:url({{asset('frontendassets/img/SOMhomehero.jpg')}})">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9 col-md-7 col-12 col-sm-12">
@@ -70,7 +70,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="about-img">
-                    <img src="{{asset('frontendassets/img/SOM 2021.jpg')}}" alt="">
+                    <img src="{{asset('frontendassets/img/SOM About.jpg')}}" alt="">
                     <a class="video-btn video-popup" href="https://www.youtube.com/watch?v=sv5hK4crIRc">
                         <img class="animated" src="{{asset('frontendassets/img/icon-img/video.png')}}" alt="">
                     </a>
@@ -247,7 +247,7 @@
                         <img src="{{asset('frontendassets/img/icon-img/achieve-1.png')}}" alt="">
                     </div>
                     <div class="count-content">
-                        <h2 class="count">1,500</h2>
+                        <h2 class="count">600</h2>
                         <span>STUDENTS Currently Studying in the SOM</span>
                     </div>
                 </div>
