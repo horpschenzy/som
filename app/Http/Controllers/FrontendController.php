@@ -72,6 +72,11 @@ class FrontendController extends Controller
         //
     }
 
+    public function invoice(){
+
+        return view('frontend.invoice');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -108,8 +113,8 @@ class FrontendController extends Controller
             if($request->has('other_location')){
                 $data->other_location = $request->input('other_location');
             }
-            
-            
+
+
             $data->save();
 
             $user  = new User;
