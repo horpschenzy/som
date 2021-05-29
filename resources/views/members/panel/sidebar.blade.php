@@ -10,55 +10,38 @@
                 <li class="menu-title">Main</li>
 
                 <li>
-                    <a href="{{route('dashboard')}}" class="waves-effect">
+                    <a href="{{route('member.dashboard')}}" class="waves-effect">
                         <i class="mdi mdi-view-dashboard"></i>
                         <span class="badge rounded-pill bg-primary float-end">2</span>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-teach"></i>
+                    <a href="{{route('member.classroom')}}" class=" waves-effect">
+                        <i class="mdi mdi-calendar-check"></i>
                         <span>Classroom</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('livestream')}}">
-                            <i class="mdi mdi-monitor-cellphone"></i>
-                            Add Class</a>
-                        </li>
-                        <li><a href="{{route('classroom')}}">
-                            <i class="mdi mdi-teach"></i>
-                            <span> View Classroom</span>
-                           </a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-folder-account-outline"></i>
+                        <i class="mdi mdi-email-outline"></i>
                         <span>Exam and Test</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('test')}}">
-                            <i class="mdi mdi-border-color"></i>
-                            <span>Add Test</span>
-                        </a></li>
-                        <li><a href="{{route('result')}}">
-                            <i class="mdi mdi-book-open"></i>
-                            <span>Results</span>
-                        </a></li>
+                        <li><a href="{{route('member.test')}}">Start Test</a></li>
+                        <li><a href="{{route('member.result')}}">Results</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="calendar.html" class=" waves-effect">
-                        <i class="mdi mdi-book-multiple"></i>
+                        <i class="mdi mdi-calendar-check"></i>
                         <span>Assignment</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('transaction')}}" class=" waves-effect">
-                        <i class="mdi mdi-cash-multiple"></i>
+                    <a href="{{route('member.transaction')}}" class=" waves-effect">
+                        <i class="mdi mdi-calendar-check"></i>
                         <span>Payment</span>
                     </a>
                 </li>

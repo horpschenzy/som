@@ -39,6 +39,9 @@
         <div class="container">
             <h2>Contact Us</h2>
             <p>Get Messages, Books and other Spiritual Material at any time anywhere on any device. Get blessed by awesome messages by Pastor Segun and Funke Obadje</p>
+
+
+
         </div>
     </div>
 </div>

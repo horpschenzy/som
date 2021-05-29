@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('members.layouts.app')
 
 @section('content')
 <div class="main-content">
@@ -17,37 +17,38 @@
                                 <thead>
                                     <tr>
                                         <th>Date</th>
-                                        <th>Transaction ID</th>
-                                        <th>Payment Status</th>
-                                        <th>Email</th>
-                                        <th>Gateway Response</th>
-                                        <th>Payment Channel</th>
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>Description</th>
-                                        <th>Currnecy</th>
-                                        <th>Amount</th>
+                                        <th>Amount paid</th>
                                         <th>Balance</th>
+                                        <th>Payment Due</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>17-03-2021</td>
-                                        <td>2343489009FG</td>
-                                        <td><span class="badge rounded-pill bg-success">successful</span></td>
-                                        <td>sisanmi.smith@gmail.com</td>
-                                        <td>open</td>
-                                        <td>Card payment</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>One-Off</td>
-                                        <td>NGN</td>
-                                        <td> 8,000</td>
-
-                                        <td>none</td>
+                                        <th>17-03-2021</th>
+                                        <td>Sisanmi</td>
+                                        <td>Smith</td>
+                                        <td>Installment</td>
+                                        <td> 3,000</td>
+                                        <td><span class="badge rounded-pill bg-danger">6,000</span></td>
+                                        <td>24-06-2021</td>
                                         <td>
-                                            <a href="#" class="btn btn-primary">Review</a>
+                                            <a href="#" class="btn btn-success">Paid</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>25-06-2021</th>
+                                        <td>Sisanmi</td>
+                                        <td>Smith</td>
+                                        <td>Installment</td>
+                                        <td> 3,000</td>
+                                        <td><span class="badge rounded-pill bg-danger">3,000</span></td>
+                                        <td>14-07-2021</td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary">Pay Now</a>
                                         </td>
                                     </tr>
 

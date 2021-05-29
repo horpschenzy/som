@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('frontend.layouts.pay')
 
 @section('content')
 <div class="container">

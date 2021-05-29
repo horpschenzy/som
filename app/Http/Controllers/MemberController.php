@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class MemberController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,37 +18,33 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
-    }
-
-    public function livestream()
-    {
-        return view('admin.livestream');
-    }
-
-    public function test()
-    {
-        return view('admin.test');
+        return view('members.index');
     }
 
     public function result()
     {
-        return view('admin.result');
+        return view('members.result');
     }
 
     public function classroom()
     {
-        return view('admin.classroom');
+        return view('members.classroom');
     }
 
-    public function transaction()
+    public function test()
     {
-        return view('admin.transaction');
+        return view('members.test');
     }
 
     public function profile()
     {
-        return view('admin.profile');
+        return view('members.profile');
+    }
+
+
+    public function transaction()
+    {
+        return view('members.transaction');
     }
     /**
      * Show the form for creating a new resource.

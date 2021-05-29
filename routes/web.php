@@ -47,6 +47,16 @@ Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 Route::get('/transaction', 'AdminController@transaction')->name('transaction');
 Route::get('/profile', 'AdminController@profile')->name('profile');
 Route::get('/classroom', 'AdminController@classroom')->name('classroom');
+Route::get('/test', 'AdminController@test')->name('test');
+Route::get('/result', 'AdminController@result')->name('result');
+Route::get('/livestream', 'AdminController@livestream')->name('livestream');
 
 
+//MEMBER
 
+Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');
+Route::get('/member/classroom', 'MemberController@classroom')->name('member.classroom');
+Route::get('/member/test', 'MemberController@test')->name('member.test');
+Route::get('/member/transaction', 'MemberController@transaction')->name('member.transaction');
+Route::get('/member/profile', 'MemberController@profile')->name('member.profile');
+Route::get('/member/result', 'MemberController@result')->name('member.result');

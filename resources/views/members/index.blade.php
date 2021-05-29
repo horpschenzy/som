@@ -1,19 +1,9 @@
-@extends('admin.layouts.app')
-
-@push('extra-css')
-        <link href="assets/libs/@fullcalendar/core/main.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/libs/@fullcalendar/daygrid/main.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/libs/@fullcalendar/bootstrap/main.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/libs/@fullcalendar/timegrid/main.min.css" rel="stylesheet" type="text/css" />
-
-@endpush
-
-
+@extends('members.layouts.app')
 @section('content')
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
-    {{-- <div class="main-content">
+     <div class="main-content">
         <div class="page-content">
             <div class="container-fluid">
 
@@ -108,12 +98,12 @@
         <!-- End Page-content -->
 
 
-    </div> --}}
+    </div>
     <!-- end main content-->
     <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
-            <div class="main-content">
+            {{-- <div class="main-content">
 
                 <div class="page-content">
                     <div class="container-fluid">
@@ -139,7 +129,7 @@
                             <div class="col-xl-3">
                                 <div class="card">
                                     <div class="card-body mt-n3 d-grid">
-                                        {{-- <button class="btn btn-primary btn-block" id="btn-new-event"><i class="mdi mdi-plus-circle-outline"></i> Create New Event</button> --}}
+                                        <button class="btn btn-primary btn-block" id="btn-new-event"><i class="mdi mdi-plus-circle-outline"></i> Create New Event</button>
 
 
                                         <div id="external-events">
@@ -156,7 +146,7 @@
                                             </div>
                                             <div class="external-event fc-event bg-danger" data-class="bg-danger">
                                                 <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Create New theme
-                                            </div> --}}
+                                            </div>
                                         </div>
 
                                         <div class="mt-5">
@@ -290,7 +280,7 @@
                         </div>
                     </div>
                 </footer>
-            </div>
+            </div> --}}
             <!-- end main content-->
 
 
@@ -299,24 +289,18 @@
 @push('scripts')
 
 <!-- JAVASCRIPT -->
-<script src="assets/libs/jquery/jquery.min.js"></script>
-<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/libs/metismenu/metisMenu.min.js"></script>
-<script src="assets/libs/simplebar/simplebar.min.js"></script>
-<script src="assets/libs/node-waves/waves.min.js"></script>
-<script src="assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+<script src="{{asset('assets/libs/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets/libs/metismenu/metisMenu.min.js')}}"></script>
+<script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+<script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
+<script src="{{asset('assets/libs/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
 
-<!-- plugin js -->
-<script src="assets/libs/moment/min/moment.min.js"></script>
-<script src="assets/libs/jquery-ui-dist/jquery-ui.min.js"></script>
-<script src="assets/libs/@fullcalendar/core/main.min.js"></script>
-<script src="assets/libs/@fullcalendar/bootstrap/main.min.js"></script>
-<script src="assets/libs/@fullcalendar/daygrid/main.min.js"></script>
-<script src="assets/libs/@fullcalendar/timegrid/main.min.js"></script>
-<script src="assets/libs/@fullcalendar/interaction/main.min.js"></script>
+<!--Morris Chart-->
+<script src="{{asset('assets/libs/morris.js/morris.min.js')}}"></script>
+<script src="{{asset('assets/libs/raphael/raphael.min.js')}}"></script>
 
-<!-- Calendar init -->
-<script src="assets/js/pages/calendar.init.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="{{asset('assets/js/pages/dashboard.init.js')}}"></script>
 
+<script src="{{asset('assets/js/app.js')}}"></script>
 @endpush
