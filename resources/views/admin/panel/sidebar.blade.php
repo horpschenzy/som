@@ -10,33 +10,43 @@
                 <li class="menu-title">Main</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="{{route('dashboard')}}" class="waves-effect">
                         <i class="mdi mdi-view-dashboard"></i>
                         <span class="badge rounded-pill bg-primary float-end">2</span>
                         <span>Dashboard</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="calendar.html" class=" waves-effect">
+                    <a href="{{route('classroom')}}" class=" waves-effect">
                         <i class="mdi mdi-calendar-check"></i>
-                        <span>Calendar</span>
+                        <span>Classroom</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-email-outline"></i>
-                        <span>Email</span>
+                        <span>Exam and Test</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="">Inbox</a></li>
-                        <li><a href="">Email Read</a></li>
-                        <li><a href="">Email Compose</a></li>
+                        <li><a href="calendar.html">Start Test</a></li>
+                        <li><a href="calendar.html">Results</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="calendar.html" class=" waves-effect">
+                        <i class="mdi mdi-calendar-check"></i>
+                        <span>Assignment</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('transaction')}}" class=" waves-effect">
+                        <i class="mdi mdi-calendar-check"></i>
+                        <span>Payment</span>
+                    </a>
+                </li>
 
-                <li class="menu-title">Components</li>
+                {{-- <li class="menu-title">Components</li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -215,7 +225,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
             </ul>
         </div>

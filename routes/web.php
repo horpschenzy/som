@@ -44,6 +44,9 @@ Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 
 //ADMIN
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+Route::get('/transaction', 'AdminController@transaction')->name('transaction');
+Route::get('/profile', 'AdminController@profile')->name('profile');
+Route::get('/classroom', 'AdminController@classroom')->name('classroom');
 
 
 

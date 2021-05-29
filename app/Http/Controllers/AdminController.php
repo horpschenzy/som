@@ -16,6 +16,20 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    public function classroom()
+    {
+        return view('admin.classroom');
+    }
+
+    public function transaction()
+    {
+        return view('admin.transaction');
+    }
+
+    public function profile()
+    {
+        return view('admin.profile');
+    }
     /**
      * Show the form for creating a new resource.
      *
