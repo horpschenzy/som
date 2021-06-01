@@ -2,14 +2,14 @@
 @section('content')
 
 <div class="breadcrumb-area">
-    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-100 pb-95" style="background-image:url(assets/img/grad-group.png);">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-50 pb-50" style="background-image:url(assets/img/grad-group.png);">
         <div class="container">
             <h2>Register</h2>
-            <p>We are called to reach the ends of the earth with the message of the new creation realities in Christ Jesus, stressing emphatically the integrity of God’s Word and communicating the healing presence and power of Jesus Christ to the whole world</p>
+            <p style="width: 100%">We are called to reach the ends of the earth with the message of the new creation realities in Christ Jesus, stressing emphatically the integrity of God’s Word and communicating the healing presence and power of Jesus Christ to the whole world</p>
         </div>
     </div>
 </div>
-<div class="login-register-area pt-130 pb-130">
+<div class="login-register-area pt-50 pb-50">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
@@ -29,7 +29,7 @@
                                         <input class="form-control" type="number" name="phonenumber" placeholder="Phone number" required  value="{{old('phonenumber')}}">
                                         <input class="form-control" name="email" placeholder="Email" type="email" required  value="{{old('email')}}">
                                         <input class="form-control" name="password" placeholder="Password" type="password" required>
-                                        <input class="form-control" type="text" name="other_location" id="other_location" placeholder="City, Country" value="{{old('other_location')}}">
+                                        <input class="form-control hidden" type="text" name="other_location" id="other_location" placeholder="City, Country" value="{{old('other_location')}}">
                                         <select class="form-control mb-4" name="centre" id="centre">
                                             <option disabled selected>Select your Preferred Centre</option>
                                             <option value="Ile-Ife">Ile Ife</option>
@@ -42,14 +42,12 @@
                                             <option value="Others">Others</option>
                                         </select>
 
-                                        <select name="paymenttype" id="main_menu" class="form-control mb-4">
+                                        <select name="paymenttype" class="form-control mb-4" id="payment-type">
                                             <option value="oneoff">One-Off</option>
-                                            <option value="Installment">Installment</option>
+                                            <option value="installment">Installment</option>
                                         </select>
-                                        <select class="custom-select mb-10" name="payment" id="sub_menu">
-                                            <option value="800000">One off &#8358;8,000</option>
-                                            <option value="600000">Two Installment (&#8358;3,000 & &#8358;6,000)</option>
-                                            <option value="300000">Three Installment &#8358;3,000</option>
+                                        <select class="custom-select mb-10" name="payment">
+                                            <option value="800000">&#8358;8,000</option>
                                         </select>
 
                                         <div class="button-box mt-5">

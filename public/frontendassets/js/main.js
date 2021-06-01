@@ -1,12 +1,12 @@
 (function ($) {
     "use strict";
-    
-    
+
+
     /* cart search */
     $(".icon-cart , .search-toggle").on("click", function() {
         $(this).parent().find('.shopping-cart-content , .search-content').slideToggle('medium');
     })
-    
+
     /* slider active */
     $('.slider-active').owlCarousel({
         loop: true,
@@ -28,8 +28,8 @@
             }
         }
     })
-    
-    
+
+
     /* course-slider-active */
     $('.slider-active-2').owlCarousel({
         loop: true,
@@ -52,8 +52,8 @@
             }
         }
     })
-    
-    
+
+
     /* course-slider-active */
     $('.course-slider-active').owlCarousel({
         loop: true,
@@ -79,7 +79,7 @@
             }
         }
     })
-    
+
     /* event-active */
     $('.event-active').owlCarousel({
         loop: true,
@@ -106,7 +106,7 @@
             }
         }
     })
-    
+
     /* event-active */
     $('.course-slider-active-2').owlCarousel({
         loop: true,
@@ -165,7 +165,7 @@
             }
         }
     })
-    
+
     /* Product img slider */
     $('.producta-active').slick({
         infinite: true,
@@ -200,7 +200,7 @@
             }
         ]
     });
-    
+
     /* Product img slider */
     $('.related-slider-active').slick({
         infinite: true,
@@ -235,7 +235,7 @@
             }
         ]
     });
-    
+
     /* Product img slider */
     $('.course-slider-active-3').slick({
         infinite: true,
@@ -276,7 +276,7 @@
             }
         ]
     });
-    
+
     /* Product img slider */
     $('.course-slider-active-4').slick({
         infinite: true,
@@ -317,7 +317,7 @@
             }
         ]
     });
-    
+
     /* Product img slider */
     $('.course-slider-active-5').slick({
         infinite: true,
@@ -358,7 +358,7 @@
             }
         ]
     });
-    
+
     /* event-active */
     $('.brand-logo-active').owlCarousel({
         loop: true,
@@ -387,7 +387,7 @@
             }
         }
     })
-    
+
     /* Product img slider */
     $('.blog-active').slick({
         infinite: true,
@@ -404,7 +404,7 @@
             }
           ]
     });
-    
+
     /* Product img slider */
     $('.event-active-2').slick({
         infinite: true,
@@ -416,30 +416,30 @@
             {
               breakpoint: 992,
               settings: {
-                
+
               }
             },
             {
               breakpoint: 768,
               settings: {
-                
+
               }
             },
             {
               breakpoint: 767,
               settings: {
-                
+
               }
             },
             {
               breakpoint: 420,
               settings: {
-                
+
               }
             }
         ]
     });
-    
+
     /*--
     Service Active
     -----------------------------------*/
@@ -465,7 +465,7 @@
         $(this).addClass('active2');
     });
 
-    
+
     /*--
     Service Active
     -----------------------------------*/
@@ -474,33 +474,33 @@
         $('.producta-active .owl-nav div').removeClass('active');
         $(this).addClass('active');
     });
-    
+
     /* magnificPopup video popup */
     $('.video-popup').magnificPopup({
         type: 'iframe'
     });
-    
+
     /* counterUp */
     $('.count').counterUp({
         delay: 10,
         time: 1000
     });
-    
-    
+
+
     // MOUSE MOVING BACKGTOUND 1
     $('#register-1').mouseParallax({
         moveFactor: 2
     });
-    
+
     $('#register-2').mouseParallax({
         moveFactor: 2
     });
-    
+
     $('#register-3').mouseParallax({
         moveFactor: 1
     });
-    
-    
+
+
     /*--
     Testimonial Slick Carousel
     -----------------------------------*/
@@ -512,7 +512,7 @@
         fade: true,
         asNavFor: '.testimonial-image-slider',
     });
-    
+
     /*--
         Testimonial Slick Carousel as Nav
     -----------------------------------*/
@@ -562,8 +562,8 @@
         }
       ]
     });
-    
-    
+
+
     /*--
     Menu Stick
     -----------------------------------*/
@@ -574,22 +574,22 @@
         if (scroll < 200) {
             header.removeClass('stick');
         } else {
-            header.addClass('stick'); 
+            header.addClass('stick');
         }
     });
-    
+
     /* jQuery MeanMenu */
     $('#mobile-menu-active').meanmenu({
         meanScreenWidth: "991",
         meanMenuContainer: ".mobile-menu-area .mobile-menu",
     });
-    
+
     $('.commrnt-toggle a').on('click', function(e) {
         e.preventDefault();
         $('.blog-comment-content-wrap').slideToggle(1000);
     });
-    
-    
+
+
     /*--------------------------
         Product Zoom
 	---------------------------- */
@@ -602,7 +602,7 @@
         zoomType: "inner",
         cursor: "crosshair"
     });
-    
+
     /*---------------------
         Product dec slider
     --------------------- */
@@ -635,7 +635,7 @@
             }
         ]
     });
-    
+
     /*--
 	   pro-details color Active
     -----------------------------------*/
@@ -644,7 +644,7 @@
 		$('.pro-details-color2-content ul li').removeClass('active');
 		$(this).addClass('active');
 	});
-    
+
     /*----------------------------
     	Cart Plus Minus Button
     ------------------------------ */
@@ -666,7 +666,7 @@
         }
         $button.parent().find("input").val(newVal);
     });
-    
+
     /*-------------------------
         Create an account toggle
     --------------------------*/
@@ -677,8 +677,8 @@
     $('.checkout-toggle').on('click', function() {
         $('.open-toggle').slideToggle(1000);
     });
-    
-    
+
+
     /*-------------------------------------
         Thumbnail Product activation
     --------------------------------------*/
@@ -709,7 +709,7 @@
     $('.thumb-menu a').on('click', function() {
         $('.thumb-menu a').removeClass('active');
     })
-    
+
     /*--------------------------
         ScrollUp
     ---------------------------- */
@@ -719,7 +719,7 @@
         scrollSpeed: 900,
         animation: 'fade'
     });
-    
+
     $('#centre').on('change', function(e){
         if( $(this).val() == 'Others'){
             $('#other_location').show();
@@ -728,7 +728,28 @@
             $('#other_location').hide();
         }
     });
-    
-    
-    
-})(jQuery);	
+
+    $('#payment-type').on('change', function(e){
+        $('[name=payment] option').remove();
+        switch ($(this).val()) {
+            case 'oneoff':
+                $('[name=payment]').html('<option value="800000">&#8358;8,000</option>');
+                break;
+            case 'installment':
+                $('[name=payment]').html('<option value="600000">&#8358;6,000</option><option value="300000">&#8358;3,000</option>');
+                break;
+            default:
+
+                break;
+        }
+        if( $(this).val() == 'Others'){
+            $('#other_location').show();
+            console.log($(this).val());
+        }else{
+            $('#other_location').hide();
+        }
+    });
+
+
+
+})(jQuery);

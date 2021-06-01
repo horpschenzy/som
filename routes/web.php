@@ -31,9 +31,9 @@ Route::get('/login-register', 'FrontendController@login')->name('frontend.log-in
 Route::get('/register-login', 'FrontendController@register')->name('frontend.register');
 Route::get('/global-register', 'FrontendController@global')->name('frontend.global');
 Route::post('/somregister', 'FrontendController@store')->name('frontend.store');
-Route::post('/globalregister', 'FrontendController@globalstore')->name('frontend.gbobalstore');
+//Route::post('/globalregister', 'FrontendController@globalstore')->name('frontend.gbobalstore');
 Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
-Route::get('/globalpayment', 'FrontendController@globalpayment')->name('frontend.globalpayment');
+//Route::get('/globalpayment', 'FrontendController@globalpayment')->name('frontend.globalpayment');
 Route::get('/invoice', 'FrontendController@invoice')->name('frontend.invoice');
 
 
@@ -60,3 +60,7 @@ Route::get('/member/test', 'MemberController@test')->name('member.test');
 Route::get('/member/transaction', 'MemberController@transaction')->name('member.transaction');
 Route::get('/member/profile', 'MemberController@profile')->name('member.profile');
 Route::get('/member/result', 'MemberController@result')->name('member.result');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
+});

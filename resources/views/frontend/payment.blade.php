@@ -1,6 +1,5 @@
 @extends('frontend.layouts.frontend')
 @section('content')
-
 <div class="login-register-area pt-130 pb-130">
     <div class="container">
         <div class="row">
@@ -12,26 +11,23 @@
                             <div class="login-form-container">
                                 <div class="login-register-form">
                                     <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
-                                        <div class="row" style="margin-bottom:40px;">
+                                        <div class="row" style="margin-bottom:40px;justify-content: center;">
                                             <div class="col-md-8 col-md-offset-2">
+                                                <strong style="text-align: center">
+                                                   Name: {{ $member->firstname. " " . $member->surname  }}
+                                                </strong>
                                                 <p>
-                                                    {{-- <div>
-                                                        <h5>Thank you</h5>
-                                                        Registration fee:
-                                                    </div> --}}
+                                                    Email: {{ $user->email }} <br />
+                                                    Amount: {{ $member->payment / 100 }}
                                                 </p>
 
-                                                <input type="email" class="form-control" name="email" placeholder="Your Email"> {{-- required --}}
 
-                                                <select class="form-control mb-3" name="amount" id="">
-                                                    <option disabled selected> Payment Option (One-off OR Installment)</option>
-                                                    <option value="800000">One off &#8358;8,000</option>
-                                                    <option value="600000">Two Payments (1st &#8358;6,000 & 2nd &#8358;3,000)</option>
-                                                    <option value="300000">Three Payments &#8358;3,000</option>
-                                                </select>{{-- required in kobo --}}
+                                                <input type="email" class="form-control hidden" name="email" value="{{$user->email}}" placeholder="Your Email">
+                                                <input type="text" class="form-control hidden" name="amount" value="{{$member->payment}}" placeholder="Your Amount">
+
                                                 <input type="hidden" name="quantity" value="1">
                                                 <input type="hidden" name="currency" value="NGN">
-                                                <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value', 'key_name' => 'value',]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
+                                                <input type="hidden" name="metadata" value="{{ json_encode($array = ['first_name' => $member->firstname, 'last_name' => $member->surname,'phonenumber' => $member->phonenumber]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
                                                 <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
                                                 {{ csrf_field() }} {{-- works only when using laravel 5.1, 5.2 --}}
 
