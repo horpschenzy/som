@@ -41,7 +41,6 @@ class MemberController extends Controller
     public function profile()
     {
         $data = Auth::user();
-        $member = Member::where('email',$user->email)->first();
         return view('members.profile', compact('data'));
     }
 
