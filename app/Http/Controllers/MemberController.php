@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\member;
 
 class MemberController extends Controller
 {
@@ -38,7 +40,9 @@ class MemberController extends Controller
 
     public function profile()
     {
-        return view('members.profile');
+        $data = Auth::user();
+        $member = Member::where('email',$user->email)->first();
+        return view('members.profile', compact('data'));
     }
 
 
@@ -98,7 +102,7 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
     }
 
     /**
