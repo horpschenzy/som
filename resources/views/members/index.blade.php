@@ -13,83 +13,73 @@
                         <div class="page-title-box">
                             <h4>Dashboard</h4>
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Lexa</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">School of Ministry</a></li>
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Dashboard</li>
+                                    <li class="breadcrumb-item active">Time Table</li>
                                 </ol>
                         </div>
                     </div>
                 </div>
                 <!-- end page title -->
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">SOM Time table</h4>
+                            <p class="card-title-desc">Start time: 8am</p>
 
-                <div class="row">
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card mini-stat bg-primary">
-                            <div class="card-body mini-stat-img">
-                                <div class="mini-stat-icon">
-                                    <i class="mdi mdi-cube-outline float-end"></i>
-                                </div>
-                                <div class="text-white">
-                                    <h6 class="text-uppercase mb-3 font-size-16 text-white">Orders</h6>
-                                    <h2 class="mb-4 text-white">1,587</h2>
-                                    <span class="badge bg-info"> +11% </span> <span class="ms-2">From previous period</span>
-                                </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered border-primary mb-0">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Week</th>
+                                            <th>Date</th>
+                                            <th>Course</th>
+                                            <th>Duration</th>
+                                            <th>Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Saturday, June 5</td>
+                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                            <td>3 hours</td>
+                                            <td><a href="#modalfriday" class="btn btn-primary">View</a></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Friday, June 11</td>
+                                            <td>Project Writing and Presentation </td>
+                                            <td>1 hour</td>
+                                            <td><a href="#modalfriday" class="btn btn-primary">View</a></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Saturday, June 12 </td>
+                                            <td>Ministry Basic Course <strong>(MBC) </strong></td>
+                                            <td>2 hour</td>
+                                            <td><a href="#modalsaturday" class="btn btn-primary">View</a></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Friday, June 18
+                                            </td>
+                                            <td>Event Management Course
+                                                <strong>(EMC)</strong>/ Social Media for
+                                                Ministry <strong>(SMM)</strong>
+                                                </td>
+                                                <td>1 hour</td>
+                                            <td><a href="#modalfriday" class="btn btn-primary">View</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card mini-stat bg-primary">
-                            <div class="card-body mini-stat-img">
-                                <div class="mini-stat-icon">
-                                    <i class="mdi mdi-buffer float-end"></i>
-                                </div>
-                                <div class="text-white">
-                                    <h6 class="text-uppercase mb-3 font-size-16 text-white">Revenue</h6>
-                                    <h2 class="mb-4 text-white">$46,782</h2>
-                                    <span class="badge bg-danger"> -29% </span> <span class="ms-2">From previous period</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card mini-stat bg-primary">
-                            <div class="card-body mini-stat-img">
-                                <div class="mini-stat-icon">
-                                    <i class="mdi mdi-tag-text-outline float-end"></i>
-                                </div>
-                                <div class="text-white">
-                                    <h6 class="text-uppercase mb-3 font-size-16 text-white">Average Price</h6>
-                                    <h2 class="mb-4 text-white">$15.9</h2>
-                                    <span class="badge bg-warning"> 0% </span> <span class="ms-2">From previous period</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card mini-stat bg-primary">
-                            <div class="card-body mini-stat-img">
-                                <div class="mini-stat-icon">
-                                    <i class="mdi mdi-briefcase-check float-end"></i>
-                                </div>
-                                <div class="text-white">
-                                    <h6 class="text-uppercase mb-3 font-size-16 text-white">Product Sold</h6>
-                                    <h2 class="mb-4 text-white">1890</h2>
-                                    <span class="badge bg-info"> +89% </span> <span class="ms-2">From previous period</span>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
-                <!-- end row -->
 
-
-                <!-- end row -->
-
-
-                <!-- end row -->
-
-
-                <!-- end row -->
 
 
             </div>

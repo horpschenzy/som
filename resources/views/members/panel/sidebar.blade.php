@@ -18,30 +18,29 @@
                 </li>
                 <li>
                     <a href="{{route('member.classroom')}}" class=" waves-effect">
-                        <i class="mdi mdi-calendar-check"></i>
+                        <i class="mdi mdi-teach"></i>
                         <span>Classroom</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-email-outline"></i>
+                        <i class="mdi mdi-folder-account-outline"></i>
                         <span>Exam and Test</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('member.test')}}">Start Test</a></li>
-                        <li><a href="{{route('member.result')}}">Results</a></li>
+                        <li><a href="{{route('member.test')}}"><i class="mdi mdi-border-color"></i>Start Test</a></li>
+                        <li><a href="{{route('member.result')}}"><i class="mdi mdi-book-open"></i>Results</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="calendar.html" class=" waves-effect">
-                        <i class="mdi mdi-calendar-check"></i>
+                        <i class="mdi mdi-book-multiple"></i>
                         <span>Assignment</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{route('member.transaction')}}" class=" waves-effect">
-                        <i class="mdi mdi-calendar-check"></i>
+                        <i class="mdi mdi-cash-multiple"></i>
                         <span>Payment</span>
                     </a>
                 </li>
