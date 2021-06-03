@@ -129,7 +129,7 @@ body {
                     </div>
                 </div>
                 <!-- end page title -->
-                <div class="col-lg-8">
+                <div class="col-lg-10">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">SOM Time table</h4>
@@ -142,44 +142,94 @@ body {
                                         <tr>
                                             <th>Week</th>
                                             <th>Date</th>
-                                            <th>Course</th>
-                                            <th>Duration</th>
-                                            <th>Details</th>
+                                            <th colspan="3"><div class="text-center"> Time</div></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Saturday, June 5</td>
-                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
-                                            <td>3 hours</td>
-                                            <td><a href="#modalfriday" class="btn btn-primary">View</a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Friday, June 11</td>
-                                            <td>Project Writing and Presentation </td>
-                                            <td>1 hour</td>
-                                            <td><a href="#modalfriday" class="btn btn-primary">View</a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Saturday, June 12 </td>
-                                            <td>Ministry Basic Course <strong>(MBC) </strong></td>
-                                            <td>2 hour</td>
-                                            <td><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">View</button></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Friday, June 18
-                                            </td>
-                                            <td>Event Management Course
-                                                <strong>(EMC)</strong>/ Social Media for
-                                                Ministry <strong>(SMM)</strong>
+                                            <th>1</th>
+                                            <td>FRIDAY
+                                                11/06/2021
                                                 </td>
-                                                <td>1 hour</td>
-                                            <td><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">View</button></td>
+                                            <td colspan="3"><div class="text-center"> NIL</div></td>
+
+
                                         </tr>
+                                        <tr>
+                                            <th>1</th>
+                                            <td>SATURDAY
+                                                12/06/2021
+                                                </td>
+                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                            <td>Break</td>
+                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th>2</th>
+                                            <td>FRIDAY
+                                                18/06/2021
+                                                </td>
+                                            <td>Project Writing and Presentation <strong>(PWP)</strong></td>
+                                            <td>Break</td>
+                                            <td>World evangelization Course  <strong>(WEC)</strong></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th>2</th>
+                                            <td>SATURDAY
+                                                19/06/2021
+                                                </td>
+                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                            <td>Break</td>
+                                            <td>World evangelization Course  <strong>(WEC)</strong></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th>3</th>
+                                            <td>FRIDAY 25/06/2021</td>
+                                            <td colspan="3"><div class="text-center">Church Growth Course <strong>(CGC)</strong></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th>3</th>
+                                            <td>SATURDAY
+                                                26/06/2021
+                                                </td>
+                                            <td>Church Management Course  <strong>(CMC)</strong></td>
+                                            <td>Break</td>
+                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <th>4</th>
+                                            <td>FRIDAY
+                                                02/07/2021
+                                                </td>
+                                            <td>Social Media for Ministry <strong>(PMC / SMM)</strong></td>
+                                            <td>Break</td>
+                                            <td>Leadership and Ministry Ethics <strong>(LME)</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <th>4</th>
+                                            <td>SATURDAY
+                                                03/07/2021
+                                                </td>
+                                            <td>Social Media for Ministry <strong>(DAC)</strong></td>
+                                            <td>Break</td>
+                                            <td>Church Management Course  <strong>(CMC)</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <th>5</th>
+                                            <td>FRIDAY
+                                                09/07/2021
+                                                </td>
+                                            <td>Leadership and Ministry Ethics <strong>(LME)</strong></td>
+                                            <td>Break</td>
+                                            <td>Media and Music for Ministry / Emotional
+                                                Intelligence
+                                                  <strong>(MMM / EIM)</strong></td>
+                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>

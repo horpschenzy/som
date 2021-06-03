@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/member/test', 'MemberController@test')->name('member.test');
         Route::get('/member/transaction', 'MemberController@transaction')->name('member.transaction');
         Route::get('/member/profile', 'MemberController@profile')->name('member.profile');
+        Route::get('/member/assignment', 'MemberController@assignment')->name('member.assignment');
         Route::post('/member/profile/save', 'MemberController@updateProfile')->name('member.profile.update');
 
         Route::get('/member/result', 'MemberController@result')->name('member.result');
