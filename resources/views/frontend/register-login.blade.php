@@ -24,8 +24,8 @@
                                 <div class="login-register-form">
                                      <form action="{{  route('frontend.store')}}" method="post">
                                         @csrf
-                                        <input class="form-control" type="text" name="surname" placeholder="Surname" required value="{{old('surname')}}">
                                         <input class="form-control"  type="text" name="firstname" placeholder="Firstname" required  value="{{old('firstname')}}">
+                                        <input class="form-control" type="text" name="surname" placeholder="Surname" required value="{{old('surname')}}">
                                         <input class="form-control" type="number" name="phonenumber" placeholder="Phone number" required  value="{{old('phonenumber')}}">
                                         <input class="form-control" name="email" placeholder="Email" type="email" required  value="{{old('email')}}">
                                         <input class="form-control" name="password" placeholder="Password" type="password" required>

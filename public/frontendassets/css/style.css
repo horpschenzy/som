@@ -1359,7 +1359,7 @@ textarea:focus {
         @media only screen and (min-width: 576px) and (max-width: 767px) {
           .login-register ul li a {
             font-size: 14px; } }
-      .login-register ul li:before {
+      /* .login-register ul li:before {
         position: absolute;
         top: 3px;
         right: -16px;
@@ -1368,7 +1368,7 @@ textarea:focus {
         height: 10px;
         width: 1px; }
       .login-register ul li:last-child:before {
-        display: none; }
+        display: none; } */
 
 .logo {
   margin-top: 31px; }

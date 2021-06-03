@@ -12,34 +12,41 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5 col-12 col-sm-4">
-                    <div class="login-register">
+                    <div class="login-register" style="margin-top: -10px">
                         <ul>
                             @guest
 
-                                <li><a href="{{route('frontend.log-in')}}">Login</a></li>
-                                <li><a href="{{route('frontend.register')}}">Register</a></li>
-                                <li><a href="{{route('frontend.payment')}}">Payment</a></li>
+                            <li><a href="{{route('frontend.log-in')}}">Login</a></li>
+                            <li><a href="{{route('frontend.register')}}">Register</a></li>
+                            <li><a href="{{route('frontend.payment')}}">Payment</a></li>
                             @else
+                                @if (Auth::user()->user_type == \App\Interfaces\UserTypes::STUDENT)
+                                    <li class="nav-item dashboard-btn"><a class="nav-link" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{{ route('member.dashboard')}}">Dashboard</a></li>
+                                @elseif(Auth::user()->user_type == \App\Interfaces\UserTypes::ADMIN)
+                                    <li class="nav-item dashboard-btn"><a class="nav-link" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  href="{{ route('dashboard')}}">Dashboard</a></li>
+                                @endif
 
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" style="color: #212529;" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
                                     </a>
 
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" style="color: #212529;" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                              class="d-none">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
                             @endguest
                         </ul>
                     </div>

@@ -42,27 +42,34 @@ Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 
 
-//ADMIN
-Route::get('/dashboard', 'AdminController@index')->name('dashboard');
-Route::get('/transaction', 'AdminController@transaction')->name('transaction');
-Route::get('/profile', 'AdminController@profile')->name('profile');
-Route::get('/classroom', 'AdminController@classroom')->name('classroom');
-Route::get('/test', 'AdminController@test')->name('test');
-Route::get('/result', 'AdminController@result')->name('result');
-Route::get('/livestream', 'AdminController@livestream')->name('livestream');
-Route::get('/assignment', 'AdminController@assignment')->name('assignment');
+Route::get('migrate-old-users', 'MemberController@migrateOldUsers')->name('migrate-old-users');
 
 
-//MEMBER
 
-Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');
-Route::get('/member/classroom', 'MemberController@classroom')->name('member.classroom');
-Route::get('/member/test', 'MemberController@test')->name('member.test');
-Route::get('/member/transaction', 'MemberController@transaction')->name('member.transaction');
-Route::get('/member/profile', 'MemberController@profile')->name('member.profile');
-Route::get('/member/result', 'MemberController@result')->name('member.result');
-Route::get('/member/assignment', 'MemberController@assignment')->name('member.assignment');
 
-Route::group(['middleware' => 'auth'], function(){
-    Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['user.student'])->group(function () {
+        Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
+        Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');
+        Route::get('/member/classroom', 'MemberController@classroom')->name('member.classroom');
+        Route::get('/member/test', 'MemberController@test')->name('member.test');
+        Route::get('/member/transaction', 'MemberController@transaction')->name('member.transaction');
+        Route::get('/member/profile', 'MemberController@profile')->name('member.profile');
+        Route::post('/member/profile/save', 'MemberController@updateProfile')->name('member.profile.update');
+
+        Route::get('/member/result', 'MemberController@result')->name('member.result');
+        Route::post('/member/password/change', 'MemberController@changePassword')->name('member.password.change');
+
+
+    });
+
+    Route::middleware(['user.admin'])->group(function () {
+        Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+        Route::get('/transaction', 'AdminController@transaction')->name('transaction');
+        Route::get('/profile', 'AdminController@profile')->name('profile');
+        Route::get('/classroom', 'AdminController@classroom')->name('classroom');
+        Route::get('/test', 'AdminController@test')->name('test');
+        Route::get('/result', 'AdminController@result')->name('result');
+        Route::get('/livestream', 'AdminController@livestream')->name('livestream');
+    });
 });

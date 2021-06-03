@@ -1,0 +1,20 @@
+.dashboard-btn{
+    background-color: #882380;
+}
+
+.dashboard-btn:hover{
+    background-color: #6f0f67;
+}
+
+.form-group {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.member-dashboard button.close {
+    display: none;
+}
+
+.header-profile-user {
+    object-fit: cover;
+}
