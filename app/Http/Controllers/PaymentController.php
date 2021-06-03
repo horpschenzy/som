@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\member;
+use App\Member;
 use Illuminate\Support\Facades\Redirect;
 use Paystack;
-use App\payment;
+use App\Payment;
 
 
 class PaymentController extends Controller
@@ -35,21 +35,21 @@ class PaymentController extends Controller
      */
     public function handleGatewayCallback()
     {
-        $paymentDetails = Paystack::getPaymentData();
+        $paymentDetails = Paystack::getPaymentpayment();
 
 
 
-        $data = new payment;
-        $data->transactionId = $paymentDetails['data'] ['id'];
-        $data->status = $paymentDetails['status'];
-        $data->customeremail = $paymentDetails['data']['customer']['email'];
-        $data->gateway_response = $paymentDetails['data']['gateway_response'];
-        $data->paid_at = $paymentDetails['data']['paid_at'];
-        $data->channel = $paymentDetails['data']['channel'];
-        $data->requested_amount = $paymentDetails['data']['requested_amount'];
-        $data->currency = $paymentDetails['data']['currency'];
+        $payment = new Payment;
+        $payment->transactionId = $paymentDetails['payment'] ['id'];
+        $payment->status = $paymentDetails['status'];
+        $payment->customeremail = $paymentDetails['payment']['customer']['email'];
+        $payment->gateway_response = $paymentDetails['payment']['gateway_response'];
+        $payment->paid_at = $paymentDetails['payment']['paid_at'];
+        $payment->channel = $paymentDetails['payment']['channel'];
+        $payment->requested_amount = $paymentDetails['payment']['requested_amount'];
+        $payment->currency = $paymentDetails['payment']['currency'];
 
-        $data->save();
+        $payment->save();
 
 
 

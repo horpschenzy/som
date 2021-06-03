@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\member;
+use App\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -103,29 +103,32 @@ class FrontendController extends Controller
             'password',
 
         ]);
+        
 
-
-        $data = new member;
-        $data->surname = $request->input('surname');
-        $data->firstname = $request->input('firstname');
-        $data->email = $request->input('email');
-        $data->phonenumber = $request->input('phonenumber');
-        $data->password = $request->input('password');
-        $data->centre = $request->input('centre');
-        $data->payment = $request->input('payment');
-        $data->paymenttype = $request->input('paymenttype');
-        if ($request->has('other_location')) {
-            $data->other_location = $request->input('other_location');
-        }
-
-
-        $data->save();
 
         $user = new User;
-        $user->name = $request->surname;
+        $user->name = $request->firstname . " " . $request->surname;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
+
+        $member = new Member;
+        $member->user_id = $user->id;
+        $member->surname = $request->input('surname');
+        $member->firstname = $request->input('firstname');
+        $member->email = $request->input('email');
+        $member->phonenumber = $request->input('phonenumber');
+        $member->password = "";
+        $member->centre = $request->input('centre');
+        $member->payment = $request->input('payment');
+        $member->paymenttype = $request->input('paymenttype');
+        if ($request->has('other_location')) {
+            $member->other_location = $request->input('other_location');
+        }
+        $member->save();
+
+
+        
 
         $this->generateRegistrationNumber($user);
 
@@ -171,16 +174,16 @@ class FrontendController extends Controller
         ]);
 
 
-        $data = new member;
-        $data->surname = $request->input('surname');
-        $data->firstname = $request->input('firstname');
-        $data->email = $request->input('email');
-        $data->password = $request->input('password');
-        $data->phonenumber = $request->input('phonenumber');
-        $data->centre = $request->input('centre');
-        $data->payment = $request->input('payment');
-        $data->paymenttype = $request->input('paymenttype');
-        $data->save();
+        $member = new Member;
+        $member->surname = $request->input('surname');
+        $member->firstname = $request->input('firstname');
+        $member->email = $request->input('email');
+        $member->password = $request->input('password');
+        $member->phonenumber = $request->input('phonenumber');
+        $member->centre = $request->input('centre');
+        $member->payment = $request->input('payment');
+        $member->paymenttype = $request->input('paymenttype');
+        $member->save();
 
         $user = new User;
         $user->name = $request->surname;

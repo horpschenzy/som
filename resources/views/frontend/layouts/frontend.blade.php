@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('frontendassets/css/plugins.css')}}">
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('frontendassets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontendassets/css/additional.css')}}">
     <!-- Modernizer JS -->
     <script src="{{ asset('frontendassets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
 

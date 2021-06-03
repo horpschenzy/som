@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class member extends Model
+class Member extends Model
 {
-    public function payments(){
+    protected $fillable = ['firstname', 'surname', 'othername', 'phonenumber', 'address', 'marital_status', 'gender', 'is_born_again', 'born_again_time', 'is_spirit_filled', 'current_church', 'reason', 'expectation'];
+    public function payments()
+    {
         return $this->hasMany(Payment::class);
-        }
+    }
 }

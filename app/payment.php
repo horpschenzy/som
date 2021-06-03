@@ -4,11 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class payment extends Model
+class Payment extends Model
 {
     public function member()
     {
-    return $this->belongsTo(Member::class);
+        return $this->belongsTo(Member::class);
     }
-
 }
