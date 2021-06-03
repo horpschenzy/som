@@ -50,6 +50,7 @@ Route::get('/classroom', 'AdminController@classroom')->name('classroom');
 Route::get('/test', 'AdminController@test')->name('test');
 Route::get('/result', 'AdminController@result')->name('result');
 Route::get('/livestream', 'AdminController@livestream')->name('livestream');
+Route::get('/assignment', 'AdminController@assignment')->name('assignment');
 
 
 //MEMBER
@@ -60,6 +61,7 @@ Route::get('/member/test', 'MemberController@test')->name('member.test');
 Route::get('/member/transaction', 'MemberController@transaction')->name('member.transaction');
 Route::get('/member/profile', 'MemberController@profile')->name('member.profile');
 Route::get('/member/result', 'MemberController@result')->name('member.result');
+Route::get('/member/assignment', 'MemberController@assignment')->name('member.assignment');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
