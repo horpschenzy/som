@@ -42,7 +42,7 @@ Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 
 
-
+Route::get('migrate-old-users', 'MemberController@migrateOldUsers')->name('migrate-old-users');
 
 
 

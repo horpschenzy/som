@@ -198,4 +198,14 @@ class MemberController extends Controller
     {
         //
     }
+
+    public function migrateOldUsers(){
+        $users = User::all();
+        foreach($users as $user){
+            $member = \App\Member::where('email', $user->email)->update([
+                'user_id' => $user->id
+            ]);
+        }
+
+    }
 }
