@@ -60,6 +60,10 @@
                                                 alt="profile image" height="128">
 
                                         </a>
+
+
+
+
                                         {{-- <div class=" ml-5 mt-75">
                                             <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
                                                 <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer" for="account-upload">Upload new photo</label>
@@ -72,6 +76,8 @@
                                             </p>
                                         </div> --}}
                                     </div>
+                                    <br />
+                                    <h3>{{ $user->reg_no }}</h3>
                                     <hr>
                                     {{-- <form novalidate>
                                         <div class="row">
