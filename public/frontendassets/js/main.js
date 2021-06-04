@@ -729,6 +729,8 @@
         }
     });
 
+
+
     $('#payment-type').on('change', function(e){
         $('[name=payment] option').remove();
         switch ($(this).val()) {
