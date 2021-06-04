@@ -43,11 +43,6 @@ Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 
 
-Route::get('migrate-old-users', 'MemberController@migrateOldUsers')->name('migrate-old-users');
-
-
-
-
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['user.student'])->group(function () {
         Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
