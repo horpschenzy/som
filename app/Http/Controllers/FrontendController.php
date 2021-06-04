@@ -62,7 +62,7 @@ class FrontendController extends Controller
 
     public function global()
     {
-        return view('frontend.global-register');
+        return view('frontend.confirmation');
     }
 
     /**
@@ -103,7 +103,7 @@ class FrontendController extends Controller
             'password',
 
         ]);
-        
+
 
 
         $user = new User;
@@ -128,7 +128,7 @@ class FrontendController extends Controller
         $member->save();
 
 
-        
+
 
         $this->generateRegistrationNumber($user);
 

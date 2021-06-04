@@ -30,6 +30,7 @@ Route::get('/contact-us', 'FrontendController@contact')->name('frontend.contact'
 Route::get('/login-register', 'FrontendController@login')->name('frontend.log-in');
 Route::get('/register-login', 'FrontendController@register')->name('frontend.register');
 Route::get('/global-register', 'FrontendController@global')->name('frontend.global');
+Route::get('/confirmation', 'FrontendController@global')->name('frontend.confirmation');
 Route::post('/somregister', 'FrontendController@store')->name('frontend.store');
 Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
 Route::get('/invoice', 'FrontendController@invoice')->name('frontend.invoice');
@@ -53,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/member/result', 'MemberController@result')->name('member.result');
         Route::post('/member/password/change', 'MemberController@changePassword')->name('member.password.change');
+
 
 
     });
