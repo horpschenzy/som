@@ -27,6 +27,7 @@
                         <div class="login-register-form">
                             <form action="{{  route('frontend.store')}}" method="post">
                                 @csrf
+                                <input type="hidden" name="region" id="region" value="NG">
                                 <input class="form-control" type="text" name="firstname" placeholder="Firstname"
                                     required value="{{old('firstname')}}">
                                 <input class="form-control" type="text" name="surname" placeholder="Surname" required

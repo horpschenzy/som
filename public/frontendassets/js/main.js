@@ -825,6 +825,7 @@
         $(".region-navigator a").removeClass("active");
         $(this).addClass("active");
         registrationRegion = $(this).data("region");
+        $('#region').val(registrationRegion);
 
         $("#other_location").hide();
         center = "";

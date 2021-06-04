@@ -48,16 +48,14 @@ class FrontendController extends Controller
     public function payment()
     {
         $user = Auth::user();
-        $member = Member::where('email',$user->email)->first();
-        return view('frontend.payment', compact('user','member'));
-
+        $member = Member::where('email', $user->email)->first();
+        return view('frontend.payment', compact('user', 'member'));
     }
 
     public function globalpayment()
     {
 
         return view('frontend.paymentusd');
-
     }
 
     public function global()
@@ -90,7 +88,6 @@ class FrontendController extends Controller
     public function store(Request $request)
     {
 
-
         $this->validate($request, [
 
             'surname' => 'required',
@@ -100,6 +97,7 @@ class FrontendController extends Controller
             'centre' => 'required',
             'payment' => 'required',
             'paymenttype' => 'required',
+            'region' => 'required',
             'password',
 
         ]);
@@ -134,7 +132,18 @@ class FrontendController extends Controller
 
         $this->logUserIn(['email' => $user->email, 'password' => $request->password]);
 
-        return redirect('/payment')->with('success', 'kindly complete your registration by making payment');
+        switch ($request->region) {
+            case 'NG':
+                return redirect()->route('frontend.payment')->with('success', 'kindly complete your registration by making payment');
+                break;
+            case 'IN':
+                return redirect()->route('frontend.confirmation')->with('success', 'kindly complete your registration by making payment');
+                break;
+
+            default:
+                return redirect()->route('frontend.payment')->with('success', 'kindly complete your registration by making payment');
+                break;
+        }
     }
 
     private function generateRegistrationNumber(User $user)
@@ -144,15 +153,15 @@ class FrontendController extends Controller
             $member_id = "00" . $user_id;
         } elseif ($user_id > 9 && $user_id < 100) {
             $member_id = "0" . $user_id;
-        }
-        else{
+        } else {
             $member_id = $user_id;
         }
-        $user->reg_no = "SOM/2021/".$member_id;
+        $user->reg_no = "SOM/2021/" . $member_id;
         $user->save();
     }
 
-    private function logUserIn($credentials){
+    private function logUserIn($credentials)
+    {
         $auth = Auth::attempt($credentials);
     }
 
