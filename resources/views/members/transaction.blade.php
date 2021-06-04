@@ -28,7 +28,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th>17-03-2021</th>
+                                        {{-- <th>17-03-2021</th>
                                         <td>Sisanmi</td>
                                         <td>Smith</td>
                                         <td>Installment</td>
@@ -37,10 +37,10 @@
                                         <td>24-06-2021</td>
                                         <td>
                                             <a href="#" class="btn btn-success">Paid</a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     <tr>
-                                        <th>25-06-2021</th>
+                                        {{-- <th>25-06-2021</th>
                                         <td>Sisanmi</td>
                                         <td>Smith</td>
                                         <td>Installment</td>
@@ -49,7 +49,7 @@
                                         <td>14-07-2021</td>
                                         <td>
                                             <a href="#" class="btn btn-primary">Pay Now</a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
 
                                 </tbody>

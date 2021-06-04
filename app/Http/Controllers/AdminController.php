@@ -16,6 +16,11 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    public function assignment()
+    {
+        return view('admin.assignment');
+    }
+
     public function livestream()
     {
         return view('admin.livestream');

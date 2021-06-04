@@ -5,7 +5,7 @@
 
     <div class="page-content">
         <div class="container-fluid">
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xl-3 col-sm-6">
                     <div class="card mini-stat bg-primary">
                         <div class="card-body mini-stat-img">
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

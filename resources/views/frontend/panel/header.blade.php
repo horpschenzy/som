@@ -22,10 +22,10 @@
                             @else
                                 @if (Auth::user()->user_type == \App\Interfaces\UserTypes::STUDENT)
                                     <li class="nav-item dashboard-btn"><a class="nav-link" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{{ route('member.dashboard')}}">Dashboard</a></li>
+                                         href="{{ route('member.dashboard')}}">Dashboard</a></li>
                                 @elseif(Auth::user()->user_type == \App\Interfaces\UserTypes::ADMIN)
                                     <li class="nav-item dashboard-btn"><a class="nav-link" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  href="{{ route('dashboard')}}">Dashboard</a></li>
+                                          href="{{ route('dashboard')}}">Dashboard</a></li>
                                 @endif
 
 
@@ -60,7 +60,7 @@
                 <div class="col-lg-2 col-md-6 col-4">
                     <div class="logo">
                         <a href="{{route('frontend.index')}}">
-                            <img alt="" src="{{asset('frontendassets/img/logo2.png')}}" style="height: 40px;">
+                            <img alt="SOTM" src="{{asset('frontendassets/img/sotmlogocolored.png')}}" style="height: 50px;">
                         </a>
                     </div>
                 </div>

@@ -12,7 +12,6 @@
                 <li>
                     <a href="{{route('member.dashboard')}}" class="waves-effect">
                         <i class="mdi mdi-view-dashboard"></i>
-                        <span class="badge rounded-pill bg-primary float-end">2</span>
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -33,7 +32,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="calendar.html" class=" waves-effect">
+                    <a href="{{ route('member.assignment')}}" class=" waves-effect">
                         <i class="mdi mdi-book-multiple"></i>
                         <span>Assignment</span>
                     </a>

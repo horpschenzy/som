@@ -51,7 +51,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="calendar.html" class=" waves-effect">
+                    <a href="{{ route('assignment')}}" class=" waves-effect">
                         <i class="mdi mdi-book-multiple"></i>
                         <span>Assignment</span>
                     </a>

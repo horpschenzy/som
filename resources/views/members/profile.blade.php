@@ -8,11 +8,11 @@
                 <div class="col-sm-6">
                     <div class="page-title-box">
                         <h4>Classroom</h4>
-                        <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-                            {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                            <li class="breadcrumb-item active">{{Auth::user()->name}} Profile</li>
-                        </ol>
+                            <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="{{route('member.dashboard')}}">Dashboard</a></li>
+                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
+                                <li class="breadcrumb-item active">{{Auth::user()->name}} Profile</li>
+                            </ol>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                                                 alt="profile image" height="64" width="64"> --}}
                                                 <img src="{{ url( 'storage/image/'.$user->member->profile_picture )}}" class="rounded mr-75"
                                                 alt="profile image" height="128">
-                                                
+
                                         </a>
                                         {{-- <div class=" ml-5 mt-75">
                                             <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
@@ -269,7 +269,7 @@
 
                                     </div>
                                 </div>
-                              
+
                                 <div class="tab-pane {{ old('change-password-form') == 'yes' ? 'active' : ''  }} p-3" id="profile-1" role="tabpanel">
                                     @if(old('change-password-form') == 'yes')
                                         @include('frontend.inc.message')

@@ -40,6 +40,11 @@ class MemberController extends Controller
         return view('members.test');
     }
 
+    public function assignment()
+    {
+        return view('members.assignment');
+    }
+
     public function profile()
     {
         $user = Auth::user();
