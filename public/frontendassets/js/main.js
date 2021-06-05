@@ -740,9 +740,9 @@
     var registrationRegion = "NG"; // "NG" | "IN"
     var paymentType = "oneoff";
     var center = "";
-    var oneOffOptions = '<option value="800000">&#8358;8,000</option>';
+    var oneOffOptions = '<option value="825000">&#8358;8,000</option>';
     var intallmentOptions =
-        '<option value="600000">&#8358;6,000</option><option value="300000">&#8358;3,000</option>';
+        '<option value="625000">&#8358;6,000</option><option value="315000">&#8358;3,000</option>';
 
     $("#centre").on("change", function (e) {
         center = $(this).val();
