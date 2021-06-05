@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Member;
+use App\Livestream;
+use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Member;
-use App\User;
-use App\Payment;
 use Illuminate\Support\Facades\Hash;
 
 class MemberController extends Controller
@@ -33,7 +34,8 @@ class MemberController extends Controller
 
     public function classroom()
     {
-        return view('members.classroom');
+        $livestream = Livestream::where('status', 'started')->first();
+        return view('members.classroom', compact('livestream'));
     }
 
     public function test()
