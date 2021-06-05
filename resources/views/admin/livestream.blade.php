@@ -19,9 +19,10 @@
             </div>
             <!-- end page title -->
             <div class="row">
+                @include('flash')
                 <div class="col-12">
                     <div class="card">
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <form method="POST" action="/livestream" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="mb-3 row">
@@ -107,13 +108,13 @@
                                 </thead>
 
                                 <tbody>
-
+                                    @foreach ($livestreams as $livestream)
                                     <tr>
-                                        <td>event_name</td>
-                                        <td>url</td>
-                                        <td>type</td>
-                                        <td><p style="text-align: justify; text-justify: inter-word;">description</p></td>
-                                        <td>status</td>
+                                        <td>{{ $livestream->event_name }}</td>
+                                        <td>{{ $livestream->url }}</td>
+                                        <td>{{ $livestream->type }}</td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ $livestream->description }}</p></td>
+                                        <td>{{ ucfirst($livestream->status) }}</td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -121,18 +122,19 @@
                                                     </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
-                                                        <a class="dropdown-item" onclick="startStream(id)">Start</a>
+                                                    @if ($livestream->status == 'not started')
+                                                        <a class="dropdown-item" onclick="startStream({{ $livestream->id }})">Start</a>
                                                         <div class="dropdown-divider"></div>
-
-                                                        <a class="dropdown-item" onclick="endStream(id)">End</a>
+                                                        @elseif ($livestream->status == 'started')
+                                                        <a class="dropdown-item" onclick="endStream({{ $livestream->id }})">End</a>
                                                         <div class="dropdown-divider"></div>
-
-                                                    <a class="dropdown-item" onclick="deleteStream(id)">Delete</a>
+                                                    @endif
+                                                    <a class="dropdown-item" onclick="deleteStream({{ $livestream->id }})">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -172,7 +174,112 @@
 <!-- plugin js -->
 <script src="{{ asset('assets/libs/moment/min/moment.min.js')}}"></script>
 <script src="{{ asset('assets/libs/jquery-ui-dist/jquery-ui.min.js')}}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function startStream(id){
+        swal({
+            title: "Are you sure you want to start this stream?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: false,
+          })
+          .then((start_stream) => {
+            if (start_stream) {
+                let _token   = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    url: "/start",
+                    type:"POST",
+                    data:{
+                      id:id,
+                      _token: _token
+                    },
 
+                    success:function(response){
+                      console.log(response);
+                      if(response) {
+                        swal("Poof! Stream Started Successfully!", {
+                            icon: "success", });
+
+                        location.reload();
+                      }
+                    },
+                });
+
+            } else {
+              swal("Stream Discarded!");
+            }
+          });
+    }
+    function endStream(id){
+        swal({
+            title: "Are you sure you want to end this stream?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: false,
+          })
+          .then((end_stream) => {
+            if (end_stream) {
+                let _token   = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    url: "/end",
+                    type:"POST",
+                    data:{
+                      id:id,
+                      _token: _token
+                    },
+
+                    success:function(response){
+                      console.log(response);
+                      if(response) {
+                        swal("Poof! Stream Ended Successfully!", {
+                            icon: "success", });
+
+                        location.reload();
+                      }
+                    },
+                });
+
+            } else {
+              swal("Stream Discarded!");
+            }
+          });
+    }
+    function deleteStream(id)
+    {
+        swal({
+            title: "Are you sure you want to delete this stream?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((delete_stream) => {
+            if (delete_stream) {
+                let _token   = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    url: "/delete/stream",
+                    type:"POST",
+                    data:{
+                      id:id,
+                      _token: _token
+                    },
+
+                    success:function(response){
+                      console.log(response);
+                      if(response) {
+                        swal("Poof! Stream Deleted Successfully!", {
+                            icon: "success", });
+
+                        location.reload();
+                      }
+                    },
+                });
+
+            } else {
+              swal("Stream Discarded!");
+            }
+          });
+    }
+</script>
 <!-- App js -->
 <script src="{{asset('assets/js/app.js')}}"></script>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Livestream;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -23,7 +24,14 @@ class AdminController extends Controller
 
     public function livestream()
     {
-        return view('admin.livestream');
+        $livestreams = Livestream::all();
+        return view('admin.livestream', compact('livestreams'));
+    }
+
+    public function classroom()
+    {
+        $livestream = Livestream::where('status', 'started')->first();
+        return view('admin.classroom', compact('livestream'));
     }
 
     public function test()
@@ -34,11 +42,6 @@ class AdminController extends Controller
     public function result()
     {
         return view('admin.result');
-    }
-
-    public function classroom()
-    {
-        return view('admin.classroom');
     }
 
     public function transaction()

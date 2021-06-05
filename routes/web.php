@@ -67,5 +67,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/test', 'AdminController@test')->name('test');
         Route::get('/result', 'AdminController@result')->name('result');
         Route::get('/livestream', 'AdminController@livestream')->name('livestream');
+        Route::post('/livestream', 'LivestreamController@store');
+        Route::post('/end', 'LivestreamController@end');
+        Route::post('/start', 'LivestreamController@start');
+        Route::post('/delete/stream', 'LivestreamController@delete');
     });
 });

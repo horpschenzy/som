@@ -50,12 +50,12 @@
                         </a></li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ route('assignment')}}" class=" waves-effect">
                         <i class="mdi mdi-book-multiple"></i>
                         <span>Assignment</span>
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{route('transaction')}}" class=" waves-effect">
                         <i class="mdi mdi-cash-multiple"></i>
