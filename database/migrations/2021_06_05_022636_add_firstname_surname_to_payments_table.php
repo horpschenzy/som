@@ -14,7 +14,8 @@ class AddFirstnameSurnameToPaymentsTable extends Migration
     public function up()
     {
         Schema::table('payments', function (Blueprint $table) {
-            $table->string('firstname')->after('id')->nullable();
+            $table->string('user_id')->after('id')->nullable();
+            $table->string('firstname')->after('user_id')->nullable();
             $table->string('surname')->after('firstname')->nullable();
             $table->string('description')->after('surname')->nullable();
         });
@@ -28,6 +29,7 @@ class AddFirstnameSurnameToPaymentsTable extends Migration
     public function down()
     {
         Schema::table('payments', function (Blueprint $table) {
+            $table->string('user_id');
             $table->string('firstname');
             $table->string('surname');
             $table->string('description');
