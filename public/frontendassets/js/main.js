@@ -778,9 +778,9 @@
     const resetPaymentType = () => {
         switch (registrationRegion) {
             case "NG":
-                oneOffOptions = '<option value="800000">&#8358;8,000</option>';
+                oneOffOptions = '<option value="825000">&#8358;8,000</option>';
                 intallmentOptions =
-                    '<option value="600000">&#8358;6,000</option><option value="300000">&#8358;3,000</option>';
+                    '<option value="625000">&#8358;6,000</option><option value="315000">&#8358;3,000</option>';
                 $("#payment-type").html(
                     '<option value="oneoff">One-Off Payment</option><option value="installment">Installment Payment</option>'
                 );
@@ -793,9 +793,9 @@
                 );
                 break;
             default:
-                oneOffOptions = '<option value="800000">&#8358;8,000</option>';
+                oneOffOptions = '<option value="825000">&#8358;8,000</option>';
                 intallmentOptions =
-                    '<option value="600000">&#8358;6,000</option><option value="300000">&#8358;3,000</option>';
+                    '<option value="625000">&#8358;6,000</option><option value="315000">&#8358;3,000</option>';
                 $("#payment-type").html(
                     '<option value="oneoff">One-Off Payment</option><option value="installment">Installment Payment</option>'
                 );

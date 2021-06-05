@@ -60,7 +60,7 @@
                                     <option value="installment">Installment Payment</option>
                                 </select>
                                 <select class="custom-select mb-10" name="payment">
-                                    <option value="800000">&#8358;8,000</option>
+                                    <option value="825000">&#8358;8,000</option>
                                 </select>
 
                                 <div class="button-box mt-5">

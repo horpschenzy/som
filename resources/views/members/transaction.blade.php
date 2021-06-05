@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Payment for School of Ministry</h4>
-                       <p class="card-title-desc">All payments must be made before 29th of June.</p>
+                       <p class="card-title-desc">All payments must be made before 24th of June.</p>
 
                         <div class="table-responsive">
                             <table class="table table-bordered border-primary mb-0">
@@ -17,28 +17,37 @@
                                 <thead>
                                     <tr>
                                         <th>Date</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
+                                        <th>Transaction ID</th>
+                                        <th>Email</th>
                                         <th>Description</th>
                                         <th>Amount paid</th>
                                         <th>Balance</th>
                                         <th>Payment Due</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if ($data)
+
+
+
                                     <tr>
-                                        {{-- <th>17-03-2021</th>
-                                        <td>Sisanmi</td>
-                                        <td>Smith</td>
-                                        <td>Installment</td>
-                                        <td> 3,000</td>
-                                        <td><span class="badge rounded-pill bg-danger">6,000</span></td>
-                                        <td>24-06-2021</td>
-                                        <td>
-                                            <a href="#" class="btn btn-success">Paid</a>
-                                        </td> --}}
+                                        <th>{{ $data->paid_at}}</th>
+                                        <td>{{ $data->customeremail}}</td>
+                                        <td>{{ $data->customeremail}}</td>
+                                        <td>{{ $data->customeremail}}</td>
+                                        <td>{{ $data->requested_amount / 100 }}</td>
+                                        <td>{{ $data->customeremail}}</td>
+                                        <td>{{ $data->customeremail}}</td>
                                     </tr>
+
+
+
+                                    @else
+
+                                    <p>No Record Found</p>
+
+                                    @endif
+
                                     <tr>
                                         {{-- <th>25-06-2021</th>
                                         <td>Sisanmi</td>
