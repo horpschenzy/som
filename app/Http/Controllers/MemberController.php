@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Member;
 use App\Livestream;
+use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -138,7 +139,10 @@ class MemberController extends Controller
 
     public function transaction()
     {
-        return view('members.transaction');
+
+        $user = Auth::user();
+        $data = Payment::where('customeremail', $user->email)->first();
+        return view('members.transaction', compact('data'));
     }
     /**
      * Show the form for creating a new resource.

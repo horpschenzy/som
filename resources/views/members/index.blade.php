@@ -113,6 +113,7 @@ body {
     <!-- ============================================================== -->
      <div class="main-content">
         <div class="page-content">
+            @include('members.inc.message')
             <div class="container-fluid">
 
                 <!-- start page title -->
