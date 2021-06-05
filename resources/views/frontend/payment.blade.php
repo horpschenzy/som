@@ -18,7 +18,7 @@
                                                 </strong>
                                                 <p>
                                                     Email: {{ $user->email }} <br />
-                                                    Amount: {{ $member->payment / 100 }}
+                                                    Amount: {{ getAmountToPay() }}
                                                 </p>
 
 
