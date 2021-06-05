@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Member;
+use App\User;
 use Illuminate\Support\Facades\Redirect;
 use Paystack;
 use App\Payment;
-
+use App\Interfaces\PaymentAmounts;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
@@ -47,9 +49,6 @@ class PaymentController extends Controller
         // $paymentDetails = Paystack::getPaymentpayment();
         $paymentDetails = Paystack::getPaymentData();
 
-
-
-
         $payment = new Payment;
         $payment->transactionId = $paymentDetails['data'] ['id'];
         $payment->status = $paymentDetails['status'];
@@ -59,9 +58,33 @@ class PaymentController extends Controller
         $payment->channel = $paymentDetails['data']['channel'];
         $payment->requested_amount = $paymentDetails['data']['requested_amount'];
         $payment->currency = $paymentDetails['data']['currency'];
+        $payment->user_id = $paymentDetails['data']['metadata']['user_id'];
 
         $payment->save();
 
+
+        if($payment->status ){
+            $amount_left = getAmountToPay($payment->user_id);
+            $initial_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('INITIAL_PAYMENT_CUTOFF') );
+            $final_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('FINAL_PAYMENT_CUTOFF') );
+            $give_access = false;
+
+            if($amount_left = 0){
+                $give_access = true;
+                
+            }
+            elseif($amount_left <= PaymentAmounts::SMALL_INSTALLMENT && Carbon::now()->lessThan( $final_payment_cutoff)){
+                $give_access = true;
+            }
+
+
+            if($give_access){
+                User::where('id',$payment->user_id)->update([
+                    'access' => 1
+                ]);
+            }
+
+        }
 
 
         return redirect('/member/profile')->with('success', ' Payment Successful - Kindly update your profile');

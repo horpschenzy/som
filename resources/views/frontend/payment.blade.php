@@ -18,16 +18,16 @@
                                                 </strong>
                                                 <p>
                                                     Email: {{ $user->email }} <br />
-                                                    Amount: {{ getAmountToPay() }}
+                                                    Amount: {{ getAmountToPay() / 100 }}
                                                 </p>
 
 
                                                 <input type="email" class="form-control hidden" name="email" value="{{$user->email}}" placeholder="Your Email">
-                                                <input type="text" class="form-control hidden" name="amount" value="{{$member->payment}}" placeholder="Your Amount">
+                                                <input type="text" class="form-control hidden" name="amount" value="{{getAmountToPay()}}" placeholder="Your Amount">
 
                                                 <input type="hidden" name="quantity" value="1">
                                                 <input type="hidden" name="currency" value="NGN">
-                                                <input type="hidden" name="metadata" value="{{ json_encode($array = ['first_name' => $member->firstname, 'last_name' => $member->surname,'phonenumber' => $member->phonenumber, 'paymenttype' => $member->paymenttype]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
+                                                <input type="hidden" name="metadata" value="{{ json_encode($array = ['first_name' => $member->firstname, 'last_name' => $member->surname,'phonenumber' => $member->phonenumber, 'paymenttype' => $member->paymenttype, 'user_id' => $user->id]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
                                                 <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
                                                 {{ csrf_field() }} {{-- works only when using laravel 5.1, 5.2 --}}
 
