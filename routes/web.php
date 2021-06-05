@@ -42,7 +42,7 @@ Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::middleware(['user.student'])->group(function () {
+    Route::middleware(['user.student', 'member.access'])->group(function () {
         Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
         Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');
         Route::get('/member/classroom', 'MemberController@classroom')->name('member.classroom');
