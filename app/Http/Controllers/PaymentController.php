@@ -59,6 +59,9 @@ class PaymentController extends Controller
         $payment->requested_amount = $paymentDetails['data']['requested_amount'];
         $payment->currency = $paymentDetails['data']['currency'];
         $payment->user_id = $paymentDetails['data']['metadata']['user_id'];
+        $payment->firstname = $paymentDetails['data']['metadata']['first_name'];
+        $payment->surname = $paymentDetails['data']['metadata']['last_name'];
+        $payment->description = $paymentDetails['data']['metadata']['paymenttype'];
 
         $payment->save();
 
@@ -71,7 +74,7 @@ class PaymentController extends Controller
 
             if($amount_left = 0){
                 $give_access = true;
-                
+
             }
             elseif($amount_left <= PaymentAmounts::SMALL_INSTALLMENT && Carbon::now()->lessThan( $final_payment_cutoff)){
                 $give_access = true;
