@@ -21,27 +21,20 @@
                                         <th>Email</th>
                                         <th>Description</th>
                                         <th>Amount paid</th>
-                                        <th>Balance</th>
-                                        <th>Payment Due</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if ($data)
-
-
-
                                     <tr>
                                         <th>{{ $data->paid_at}}</th>
+                                        <th>{{ $data->transactionId}}</th>
                                         <td>{{ $data->customeremail}}</td>
-                                        <td>{{ $data->customeremail}}</td>
-                                        <td>{{ $data->customeremail}}</td>
+                                        <td>{{ $data->description}}</td>
                                         <td>{{ $data->requested_amount / 100 }}</td>
-                                        <td>{{ $data->customeremail}}</td>
-                                        <td>{{ $data->customeremail}}</td>
+
+
                                     </tr>
-
-
-
                                     @else
 
                                     <p>No Record Found</p>
