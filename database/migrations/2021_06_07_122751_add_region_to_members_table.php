@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddMemberAccessFlag extends Migration
+class AddRegionToMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddMemberAccessFlag extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('access')->default(false)->after('user_type');
+        Schema::table('members', function (Blueprint $table) {
+            $table->string('region')->default('NG')->before('created_at');
         });
     }
 
@@ -25,8 +25,8 @@ class AddMemberAccessFlag extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('access');
+        Schema::table('members', function (Blueprint $table) {
+            $table->dropColumn('region');
         });
     }
 }

@@ -120,6 +120,7 @@ class FrontendController extends Controller
         $member->centre = $request->input('centre');
         $member->payment = $request->input('payment');
         $member->paymenttype = $request->input('paymenttype');
+        $member->region = $request->region;
         if ($request->has('other_location')) {
             $member->other_location = $request->input('other_location');
         }

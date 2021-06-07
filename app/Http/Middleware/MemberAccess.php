@@ -20,7 +20,19 @@ class MemberAccess
         if ((Auth::check() && Auth::user()->access) || $request->routeIs('frontend.payment')) {
             return $next($request);
         } else {
-            return redirect()->route('frontend.payment');
+            $region = Auth::user()->member->region;
+            switch ($region) {
+                case 'NG':
+                    return redirect()->route('frontend.payment');
+                    break;
+                case 'IN':
+                    return redirect()->route('frontend.confirmation');
+                    break;
+
+                default:
+                    return redirect()->route('frontend.payment');
+                    break;
+            }
         }
     }
 }
