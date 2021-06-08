@@ -41,4 +41,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Member::class,'user_id','id');
     }
+
+    public function isAdmin(){
+        return $this->user_type == "ADMIN";
+    }
+
+    public function isStudent(){
+        return $this->user_type == "STUDENT";
+    }
 }
