@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Livestream;
+use App\Payment;
+use App\Member;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,7 +16,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $members = Member::count();
+        $paidmembers = Payment::count();
+        $revenuengn = Payment::sum('requested_amount');
+        return view('admin.index', compact('members', 'paidmembers', 'revenuengn'));
     }
 
     public function assignment()
@@ -46,7 +51,8 @@ class AdminController extends Controller
 
     public function transaction()
     {
-        return view('admin.transaction');
+        $payments = Payment::all();
+        return view('admin.transaction', compact('payments'));
     }
 
     public function profile()

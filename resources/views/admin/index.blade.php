@@ -10,106 +10,7 @@
 
 
 @section('content')
-    <!-- ============================================================== -->
-    <!-- Start right Content here -->
-    <!-- ============================================================== -->
-    {{-- <div class="main-content">
-        <div class="page-content">
-            <div class="container-fluid">
 
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="page-title-box">
-                            <h4>Dashboard</h4>
-                                <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Lexa</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Dashboard</li>
-                                </ol>
-                        </div>
-                    </div>
-                </div>
-                <!-- end page title -->
-
-                <div class="row">
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card mini-stat bg-primary">
-                            <div class="card-body mini-stat-img">
-                                <div class="mini-stat-icon">
-                                    <i class="mdi mdi-cube-outline float-end"></i>
-                                </div>
-                                <div class="text-white">
-                                    <h6 class="text-uppercase mb-3 font-size-16 text-white">Orders</h6>
-                                    <h2 class="mb-4 text-white">1,587</h2>
-                                    <span class="badge bg-info"> +11% </span> <span class="ms-2">From previous period</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card mini-stat bg-primary">
-                            <div class="card-body mini-stat-img">
-                                <div class="mini-stat-icon">
-                                    <i class="mdi mdi-buffer float-end"></i>
-                                </div>
-                                <div class="text-white">
-                                    <h6 class="text-uppercase mb-3 font-size-16 text-white">Revenue</h6>
-                                    <h2 class="mb-4 text-white">$46,782</h2>
-                                    <span class="badge bg-danger"> -29% </span> <span class="ms-2">From previous period</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card mini-stat bg-primary">
-                            <div class="card-body mini-stat-img">
-                                <div class="mini-stat-icon">
-                                    <i class="mdi mdi-tag-text-outline float-end"></i>
-                                </div>
-                                <div class="text-white">
-                                    <h6 class="text-uppercase mb-3 font-size-16 text-white">Average Price</h6>
-                                    <h2 class="mb-4 text-white">$15.9</h2>
-                                    <span class="badge bg-warning"> 0% </span> <span class="ms-2">From previous period</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card mini-stat bg-primary">
-                            <div class="card-body mini-stat-img">
-                                <div class="mini-stat-icon">
-                                    <i class="mdi mdi-briefcase-check float-end"></i>
-                                </div>
-                                <div class="text-white">
-                                    <h6 class="text-uppercase mb-3 font-size-16 text-white">Product Sold</h6>
-                                    <h2 class="mb-4 text-white">1890</h2>
-                                    <span class="badge bg-info"> +89% </span> <span class="ms-2">From previous period</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end row -->
-
-
-                <!-- end row -->
-
-
-                <!-- end row -->
-
-
-                <!-- end row -->
-
-
-            </div>
-            <!-- container-fluid -->
-        </div>
-        <!-- End Page-content -->
-
-
-    </div> --}}
-    <!-- end main content-->
     <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -122,11 +23,11 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="page-title-box">
-                                    <p class="info"><strong>Welcome</strong> Sisanmi Smith</p>
+                                    <p class="info"><strong>Welcome</strong> {{ Auth::user()->name }}</p>
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">SOM</a></li>
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                            <li class="breadcrumb-item active">Time Table</li>
+
                                         </ol>
                                 </div>
                             </div>
@@ -134,6 +35,64 @@
 
                         </div>
                         <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="card mini-stat bg-primary">
+                                    <div class="card-body mini-stat-img">
+                                        <div class="mini-stat-icon">
+                                            <i class="mdi mdi-account-outline float-end"></i>
+                                        </div>
+                                        <div class="text-white">
+                                            <h6 class="text-uppercase mb-3 font-size-16 text-white">Total Applicants</h6>
+                                            <h2 class="mb-4 text-white">{{ $members - 1 }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="card mini-stat bg-primary">
+                                    <div class="card-body mini-stat-img">
+                                        <div class="mini-stat-icon">
+                                            <i class="mdi mdi-account-outline float-end"></i>
+                                        </div>
+                                        <div class="text-white">
+                                            <h6 class="text-uppercase mb-3 font-size-16 text-white">Paid Students</h6>
+                                            <h2 class="mb-4 text-white">{{ $paidmembers }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="card mini-stat bg-primary">
+                                    <div class="card-body mini-stat-img">
+                                        <div class="mini-stat-icon">
+                                            <i class="mdi mdi-cash float-end"></i>
+                                        </div>
+                                        <div class="text-white">
+                                            <h6 class="text-uppercase mb-3 font-size-16 text-white">Revenue (NGN)</h6>
+                                            <h2 class="mb-4 text-white">&#8358;{{$revenuengn / 100}}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="card mini-stat bg-primary">
+                                    <div class="card-body mini-stat-img">
+                                        <div class="mini-stat-icon">
+                                            <i class="mdi mdi-cash-usd float-end"></i>
+                                        </div>
+                                        <div class="text-white">
+                                            <h6 class="text-uppercase mb-3 font-size-16 text-white">Revenue (USD)</h6>
+                                            <h2 class="mb-4 text-white">$0</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- row ends here -->
 
                         <div class="row mb-4">
                             <div class="col-xl-3">
@@ -200,13 +159,116 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> <!-- end col-->
+                            </div>
+                            <!-- end col-->
 
                             <div class="col-xl-9">
                                 <div class="card mt-4 mt-xl-0 mb-0">
-                                    <div class="card-body">
-                                        <div id="calendar"></div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">SOM Time table</h4>
+                                            <p class="card-title-desc">Start time: 8am</p>
 
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered border-primary mb-0">
+
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Week</th>
+                                                            <th>Date</th>
+                                                            <th colspan="3"><div class="text-center"> Time</div></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>1</th>
+                                                            <td>FRIDAY
+                                                                11/06/2021
+                                                                </td>
+                                                            <td colspan="3"><div class="text-center"> NIL</div></td>
+
+
+                                                        </tr>
+                                                        <tr>
+                                                            <th>1</th>
+                                                            <td>SATURDAY
+                                                                12/06/2021
+                                                                </td>
+                                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                                            <td>Break</td>
+                                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <th>2</th>
+                                                            <td>FRIDAY
+                                                                18/06/2021
+                                                                </td>
+                                                            <td>Project Writing and Presentation <strong>(PWP)</strong></td>
+                                                            <td>Break</td>
+                                                            <td>World evangelization Course  <strong>(WEC)</strong></td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <th>2</th>
+                                                            <td>SATURDAY
+                                                                19/06/2021
+                                                                </td>
+                                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                                            <td>Break</td>
+                                                            <td>World evangelization Course  <strong>(WEC)</strong></td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <th>3</th>
+                                                            <td>FRIDAY 25/06/2021</td>
+                                                            <td colspan="3"><div class="text-center">Church Growth Course <strong>(CGC)</strong></div></td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <th>3</th>
+                                                            <td>SATURDAY
+                                                                26/06/2021
+                                                                </td>
+                                                            <td>Church Management Course  <strong>(CMC)</strong></td>
+                                                            <td>Break</td>
+                                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>4</th>
+                                                            <td>FRIDAY
+                                                                02/07/2021
+                                                                </td>
+                                                            <td>Social Media for Ministry <strong>(PMC / SMM)</strong></td>
+                                                            <td>Break</td>
+                                                            <td>Leadership and Ministry Ethics <strong>(LME)</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>4</th>
+                                                            <td>SATURDAY
+                                                                03/07/2021
+                                                                </td>
+                                                            <td>Social Media for Ministry <strong>(DAC)</strong></td>
+                                                            <td>Break</td>
+                                                            <td>Church Management Course  <strong>(CMC)</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>5</th>
+                                                            <td>FRIDAY
+                                                                09/07/2021
+                                                                </td>
+                                                            <td>Leadership and Ministry Ethics <strong>(LME)</strong></td>
+                                                            <td>Break</td>
+                                                            <td>Media and Music for Ministry / Emotional
+                                                                Intelligence
+                                                                  <strong>(MMM / EIM)</strong></td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div> <!-- end col -->
