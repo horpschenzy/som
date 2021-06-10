@@ -16,6 +16,7 @@
 
                                 <thead>
                                     <tr>
+
                                         <th>Date</th>
                                         <th>Transaction ID</th>
                                         <th>Payment Status</th>
@@ -27,29 +28,24 @@
                                         <th>Description</th>
                                         <th>Currnecy</th>
                                         <th>Amount</th>
-                                        <th>Balance</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($payments as $data)
                                     <tr>
-                                        <td>17-03-2021</td>
-                                        <td>2343489009FG</td>
-                                        <td><span class="badge rounded-pill bg-success">successful</span></td>
-                                        <td>sisanmi.smith@gmail.com</td>
-                                        <td>open</td>
-                                        <td>Card payment</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>One-Off</td>
-                                        <td>NGN</td>
-                                        <td> 8,000</td>
-
-                                        <td>none</td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary">Review</a>
-                                        </td>
+                                        <td>{{$data->paid_at}}</td>
+                                        <td>{{ $data->transactionId}}</td>
+                                        <td><span class="badge rounded-pill bg-success">{{ isset( $data->status ) ? 'Success' : 'Failed' }}</span></td>
+                                        <td>{{ $data->customeremail}}</td>
+                                        <td>{{ $data->gateway_response}}</td>
+                                        <td>{{ $data->channel}}</td>
+                                        <td>{{ $data->firstname }}</td>
+                                        <td>{{ $data->surname}}</td>
+                                        <td>{{ $data->description }}</td>
+                                        <td>{{ $data->currency }}</td>
+                                        <td>{{ $data->requested_amount / 100 }}</td>
                                     </tr>
+                                    @endforeach
 
                                 </tbody>
                             </table>

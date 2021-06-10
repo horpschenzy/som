@@ -12,7 +12,7 @@
                 <li>
                     <a href="{{route('dashboard')}}" class="waves-effect">
                         <i class="mdi mdi-view-dashboard"></i>
-                        <span class="badge rounded-pill bg-primary float-end">2</span>
+                        {{-- <span class="badge rounded-pill bg-primary float-end">2</span> --}}
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -50,12 +50,23 @@
                         </a></li>
                     </ul>
                 </li>
-                {{-- <li>
-                    <a href="{{ route('assignment')}}" class=" waves-effect">
-                        <i class="mdi mdi-book-multiple"></i>
-                        <span>Assignment</span>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-folder-account-outline"></i>
+                        <span>Attendance</span>
                     </a>
-                </li> --}}
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('attendance')}}">
+                            <i class="mdi mdi-border-color"></i>
+                            <span>Mark Attendance</span>
+                        </a></li>
+                        <li><a href="{{route('attendanceresult')}}">
+                            <i class="mdi mdi-book-open"></i>
+                            <span>Results</span>
+                        </a></li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="{{route('transaction')}}" class=" waves-effect">
                         <i class="mdi mdi-cash-multiple"></i>

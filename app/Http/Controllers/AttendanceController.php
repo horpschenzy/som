@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Livestream;
-use App\Payment;
-use App\Member;
+use App\Interfaces\UserTypes;
 use Illuminate\Http\Request;
+use App\Livestream;
+use App\Member;
+use App\User;
 
-class AdminController extends Controller
+class AttendanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,48 +17,20 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $members = Member::count();
-        $paidmembers = Payment::count();
-        $revenuengn = Payment::sum('requested_amount');
-        return view('admin.index', compact('members', 'paidmembers', 'revenuengn'));
+        $livestream = Livestream::all();
+        $members = Member::all();
+        $users = User::where('user_type', 'STUDENT')->get();
+        return view('admin.attendance', compact('livestream', 'members', 'users'));
     }
 
-    public function assignment()
+    public function attendanceresult()
     {
-        return view('admin.assignment');
+        return view('admin.attendanceresult');
     }
 
-    public function livestream()
+    public function mark()
     {
-        $livestreams = Livestream::all();
-        return view('admin.livestream', compact('livestreams'));
-    }
-
-    public function classroom()
-    {
-        $livestream = Livestream::where('status', 'started')->first();
-        return view('admin.classroom', compact('livestream'));
-    }
-
-    public function test()
-    {
-        return view('admin.test');
-    }
-
-    public function result()
-    {
-        return view('admin.result');
-    }
-
-    public function transaction()
-    {
-        $payments = Payment::all();
-        return view('admin.transaction', compact('payments'));
-    }
-
-    public function profile()
-    {
-        return view('admin.profile');
+        return view('admin.mark');
     }
     /**
      * Show the form for creating a new resource.

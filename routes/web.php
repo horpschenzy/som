@@ -61,6 +61,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['user.admin'])->group(function () {
         Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+        Route::get('/attendance', 'AttendanceController@index')->name('attendance');
+        Route::get('/attendanceresult', 'AttendanceController@attendanceresult')->name('attendanceresult');
+        Route::get('/mark', 'AttendanceController@mark')->name('mark');
         Route::get('/transaction', 'AdminController@transaction')->name('transaction');
         Route::get('/profile', 'AdminController@profile')->name('profile');
         Route::get('/classroom', 'AdminController@classroom')->name('classroom');
