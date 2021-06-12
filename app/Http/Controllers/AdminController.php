@@ -22,6 +22,21 @@ class AdminController extends Controller
         return view('admin.index', compact('members', 'paidmembers', 'revenuengn'));
     }
 
+    public function regstudent()
+    {
+        $members = Member::all();
+        $paidmembers = Payment::all();
+        return view('admin.regstudent', compact('members', 'paidmembers'));
+    }
+
+    public function paidstudent()
+    {
+        $members = Member::all();
+        $paidmembers = Payment::all();
+        return view('admin.paidstudent', compact('members', 'paidmembers'));
+    }
+
+
     public function assignment()
     {
         return view('admin.assignment');

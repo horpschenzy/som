@@ -18,6 +18,23 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span>Student</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('regstudent')}}">
+                            <i class="mdi mdi-account"></i>
+                            Registered Students</a>
+                        </li>
+                        <li><a href="{{route('paidstudent')}}">
+                            <i class="mdi mdi-account"></i>
+                            <span>Paid Students</span>
+                           </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-teach"></i>
                         <span>Classroom</span>
                     </a>
