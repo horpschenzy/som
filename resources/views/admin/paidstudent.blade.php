@@ -32,54 +32,27 @@
                                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Class</th>
-                                            <th>Reg No.</th>
-                                            <th>Action</th>
+                                            <th>Surname</th>
+                                            <th>Firstname</th>
+                                            <th>Amount</th>
+                                            <th>Description</th>
+                                            <th>Center</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td> <div class="form-check form-switch form-switch-lg" dir="ltr">
-                                                <input type="checkbox" class="form-check-input" id="customSwitchsizelg">
-                                            </div></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td> <div class="form-check form-switch form-switch-lg" dir="ltr">
-                                                <input type="checkbox" class="form-check-input" id="customSwitchsizelg">
-                                            </div></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td> <div class="form-check form-switch form-switch-lg" dir="ltr">
-                                                <input type="checkbox" class="form-check-input" id="customSwitchsizelg">
-                                            </div></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td> <div class="form-check form-switch form-switch-lg" dir="ltr">
-                                                <input type="checkbox" class="form-check-input" id="customSwitchsizelg">
-                                            </div></td>
-                                        </tr>
+
+                                            @foreach ($paidmembers as $paidmember)
+                                            <tr>
+                                                <td>{{ $paidmember->surname }}</td>
+                                                <td>{{ $paidmember->firstname }}</td>
+                                                <td>{{ ($paidmember->requested_amount) / 100 }}</td>
+                                                <td> {{ $paidmember->description }}</td>
+                                            </tr>
+                                            @endforeach
                                     </tbody>
                                 </table>
-                                <a href="#" class="btn btn-primary w-100">Submit</a>
+
                             </div>
 
                         </div>
