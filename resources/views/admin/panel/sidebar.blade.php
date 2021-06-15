@@ -17,6 +17,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('announcement')}}" class="wave-effect">
+                        <i class="mdi mdi-microphone-plus"></i>
+                        <span>Announcement</span>
+                    </a>
+                </li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-account-multiple"></i>
                         <span>Student</span>

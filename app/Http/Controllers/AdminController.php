@@ -22,6 +22,10 @@ class AdminController extends Controller
         return view('admin.index', compact('members', 'paidmembers', 'revenuengn'));
     }
 
+    public function announcement(){
+        return view('admin.announcement');
+    }
+
     public function regstudent()
     {
         $members = Member::all();
