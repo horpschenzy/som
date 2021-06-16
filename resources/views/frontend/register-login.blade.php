@@ -45,7 +45,7 @@
                                     <option disabled selected>Select your Preferred Centre</option>
                                     <option value="Ile-Ife">Ile Ife</option>
                                     <option value="Lekki">Lekki Lagos</option>
-                                    <option value="ikeja">Ikeja Lagos</option>
+                                    <option value="Ikeja">Ikeja Lagos</option>
                                     <option value="Agricola">Agricola Ibadan</option>
                                     <option value="Akure">Akure</option>
                                     <option value="Ondo">Ondo</option>

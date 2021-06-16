@@ -25,7 +25,10 @@
                                          href="{{ route('member.dashboard')}}">Dashboard</a></li>
                                 @elseif(Auth::user()->user_type == \App\Interfaces\UserTypes::ADMIN)
                                     <li class="nav-item dashboard-btn"><a class="nav-link" role="button"
-                                          href="{{ route('dashboard')}}">Dashboard</a></li>
+                                          href="{{ route('dashboard')}}">Admin Dashboard</a></li>
+                                @elseif(Auth::user()->user_type == \App\Interfaces\UserTypes::SUPERVISOR)
+                                          <li class="nav-item dashboard-btn"><a class="nav-link" role="button"
+                                                href="{{ route('dashboard')}}">Supervisor Dashboard</a></li>
                                 @endif
 
 

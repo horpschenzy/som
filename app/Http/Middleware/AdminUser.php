@@ -17,7 +17,7 @@ class AdminUser
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->user_type == UserTypes::ADMIN) {
+        if (Auth::check() && (in_array(Auth::user()->user_type, [UserTypes::SUPERVISOR, UserTypes::ADMIN]))) {
             return $next($request);
         } else {
             abort(401);

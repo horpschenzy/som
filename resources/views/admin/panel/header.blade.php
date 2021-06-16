@@ -26,6 +26,8 @@
                 <i class="mdi mdi-menu"></i>
             </button>
 
+            <h3 style="align-self: center;">{{ auth()->user()->user_type == \App\Interfaces\UserTypes::SUPERVISOR ? "Supervisor (".auth()->user()->supervisor_location.")" : "" }}</h3>
+
             {{-- <div class="d-none d-sm-block">
                 <div class="dropdown dropdown-topbar pt-3 mt-1 d-inline-block">
                     <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,6 +46,7 @@
         </div>
 
         <div class="d-flex">
+
 
             <!-- App Search-->
             <form class="app-search d-none d-lg-block">
