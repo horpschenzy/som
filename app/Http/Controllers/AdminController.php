@@ -19,18 +19,12 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         if ($user->isSupervisor()) {
-            $members = Member::where('centre',$user->supervisor_location)->count();
-            $paidmembers = Payment::whereHas('user',function($q) use($user){
-                $q->whereHas('member', function($query) use($user) {
-                    $query->where('centre',$user->supervisor_location);
-                });
-                
+            $members = Member::where('centre', $user->supervisor_location)->count();
+            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
+                $query->where('centre', $user->supervisor_location);
             })->distinct('user_id')->count();
-            $revenuengn = Payment::whereHas('user',function($q) use($user){
-                $q->whereHas('member', function($query) use($user) {
-                    $query->where('centre','$user->supervisor_location');
-                });
-                
+            $revenuengn = Payment::whereHas('user.member', function ($query) use ($user) {
+                $query->where('centre', $user->supervisor_location);
             })->sum('requested_amount');
         } else {
             $members = Member::count();
@@ -45,12 +39,9 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         if ($user->isSupervisor()) {
-            $members = Member::where('centre',$user->supervisor_location)->get();
-            $paidmembers = Payment::whereHas('user',function($q) use($user){
-                $q->whereHas('member', function($query) use($user) {
-                    $query->where('centre',$user->supervisor_location);
-                });
-                
+            $members = Member::where('centre', $user->supervisor_location)->get();
+            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
+                $query->where('centre', $user->supervisor_location);
             })->get();
         } else {
             $members = Member::all();
@@ -64,12 +55,9 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         if ($user->isSupervisor()) {
-            $members = Member::where('centre',$user->supervisor_location)->get();
-            $paidmembers = Payment::whereHas('user',function($q) use($user){
-                $q->whereHas('member', function($query) use($user) {
-                    $query->where('centre',$user->supervisor_location);
-                });
-                
+            $members = Member::where('centre', $user->supervisor_location)->get();
+            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
+                $query->where('centre', $user->supervisor_location);
             })->get();
         } else {
             $members = Member::all();
