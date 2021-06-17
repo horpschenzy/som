@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Livestream;
 use App\Member;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class AttendanceController extends Controller
 {
@@ -17,9 +18,20 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $livestream = Livestream::all();
-        $members = Member::all();
-        $users = User::where('user_type', 'STUDENT')->get();
+        $user = Auth::user();
+        
+
+        if ($user->isSupervisor()) {
+            $members = Member::where('centre', $user->supervisor_location)->get();
+            $livestream = Livestream::all();
+            $users = User::where('user_type', 'STUDENT')->whereHas('member', function ($query) use ($user) {
+                $query->where('centre', $user->supervisor_location);
+            })->get();
+        } else {
+            $livestream = Livestream::all();
+            $members = Member::all();
+            $users = User::where('user_type', 'STUDENT')->get();
+        }
         return view('admin.attendance', compact('livestream', 'members', 'users'));
     }
 
