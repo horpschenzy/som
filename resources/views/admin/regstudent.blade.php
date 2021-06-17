@@ -56,6 +56,7 @@
                                         <th>Address</th>
                                         <th>Payment</th>
                                         <th>Payment Type</th>
+                                        <th>Total Payment Made</th>
                                         <th>Region</th>
                                     </tr>
                                 </thead>
@@ -81,8 +82,9 @@
                                         <td>{{$member->expectation}}</td>
                                         <td>{{$member->centre}}</td>
                                         <td>{{$member->address}}</td>
-                                        <td>{{$member->payment}}</td>
+                                        <td>{{ number_format($member->payment/100)}}</td>
                                         <td>{{$member->paymenttype}}</td>
+                                        <td>{{ number_format($member->total_payments /100) }}</td>
                                         <td>{{$member->region}}</td>
                                     </tr>
 

@@ -7,6 +7,7 @@ use App\Payment;
 use App\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -39,7 +40,12 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         if ($user->isSupervisor()) {
-            $members = Member::where('centre', $user->supervisor_location)->get();
+
+            $members = Member::where('centre', $user->supervisor_location)->join('payments', 'members.user_id', '=', 'payments.user_id')
+                ->select('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
+                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'payments.requested_amount')
+                ->get();
+
             $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
                 $query->where('centre', $user->supervisor_location);
             })->get();
