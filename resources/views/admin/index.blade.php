@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="text-white">
                                             <h6 class="text-uppercase mb-3 font-size-16 text-white">Total Applicants</h6>
-                                            <h2 class="mb-4 text-white">{{ $members - 1 }}</h2>
+                                            <h2 class="mb-4 text-white">{{ $members  }}</h2>
                                         </div>
                                     </div>
                                 </div>

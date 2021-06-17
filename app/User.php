@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Interfaces\UserTypes;
 
 class User extends Authenticatable
 {
@@ -43,10 +44,15 @@ class User extends Authenticatable
     }
 
     public function isAdmin(){
-        return $this->user_type == "ADMIN";
+        return $this->user_type == UserTypes::ADMIN;
     }
 
+    public function isSupervisor(){
+        return $this->user_type == UserTypes::SUPERVISOR;
+    }
+    
+
     public function isStudent(){
-        return $this->user_type == "STUDENT";
+        return $this->user_type == UserTypes::STUDENT;
     }
 }

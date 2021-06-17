@@ -6,6 +6,7 @@ use App\Livestream;
 use App\Payment;
 use App\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -16,9 +17,21 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $members = Member::count();
-        $paidmembers = Payment::count();
-        $revenuengn = Payment::sum('requested_amount');
+        $user = Auth::user();
+        if ($user->isSupervisor()) {
+            $members = Member::where('centre', $user->supervisor_location)->count();
+            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
+                $query->where('centre', $user->supervisor_location);
+            })->distinct('user_id')->count();
+            $revenuengn = Payment::whereHas('user.member', function ($query) use ($user) {
+                $query->where('centre', $user->supervisor_location);
+            })->sum('requested_amount');
+        } else {
+            $members = Member::count();
+            $paidmembers = Payment::distinct('user_id')->count();
+            $revenuengn = Payment::sum('requested_amount');
+        }
+
         return view('admin.index', compact('members', 'paidmembers', 'revenuengn'));
     }
 
@@ -28,15 +41,32 @@ class AdminController extends Controller
 
     public function regstudent()
     {
-        $members = Member::all();
-        $paidmembers = Payment::all();
+        $user = Auth::user();
+        if ($user->isSupervisor()) {
+            $members = Member::where('centre', $user->supervisor_location)->get();
+            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
+                $query->where('centre', $user->supervisor_location);
+            })->get();
+        } else {
+            $members = Member::all();
+            $paidmembers = Payment::all();
+        }
+
         return view('admin.regstudent', compact('members', 'paidmembers'));
     }
 
     public function paidstudent()
     {
-        $members = Member::all();
-        $paidmembers = Payment::all();
+        $user = Auth::user();
+        if ($user->isSupervisor()) {
+            $members = Member::where('centre', $user->supervisor_location)->get();
+            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
+                $query->where('centre', $user->supervisor_location);
+            })->get();
+        } else {
+            $members = Member::all();
+            $paidmembers = Payment::all();
+        }
         return view('admin.paidstudent', compact('members', 'paidmembers'));
     }
 
