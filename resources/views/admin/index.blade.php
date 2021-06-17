@@ -93,6 +93,34 @@
                         </div>
 
                         <!-- row ends here -->
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                            <strong>OVERVIEW</strong>
+                            <P>Segun Obadje Teaching Ministries (SOTM) School of Ministry is a new creation, bible-based school with the vision of equipping believers for ministry and helping men
+                                so that men and women come into the light of purpose and God’s preordination.
+                                The School is a 6-week spiritual boot camp, with various activities ranging from classes,
+                                 project works, tests, assignments, book review etc, all contributing to the equipping of the attendees.
+                                <strong>This year, the school will have both online and onsite students</strong>.
+                            </P>
+                        </div>
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                            <strong>E-CENTRES</strong>
+                            <P>The onsite students shall gather at various approved learning centres which
+                                 we refer to as E-centres. An E-centre is saddled with the primary responsibility
+                                  of creating a conducive environment for the students to encounter God across the various
+                                 line up of school activities while also maintaining the standard of excellence in delivery that the school stands for.
+                                <strong>In other to achieve these, every e-centre must carefully read and execute this document for SOM 2021.</strong>.
+                            </P>
+                            <p>
+                                The School of Ministry 2021 will run between the 19th of June, 2021 to the 7th of August, 2021. The school will run for
+                                the duration of 6 weeks; 4 weeks of lectures (Fridays, and Saturdays). Examinations will be conducted on Sunday,
+                                25th of July, 2021. The Project Defence is to be conducted on Friday, the 30th of July and Saturday, the 31st of July,
+                                2021 while the graduation ceremony will hold on Saturday, 7th of August, 2021. (Check the time table for full details)
+                            </p>
+                        </div>
 
                         <div class="row mb-4">
                             <div class="col-xl-3">
@@ -119,43 +147,102 @@
                                         </div>
 
                                         <div class="mt-5">
-                                            <h5 class="font-size-14 mb-4">Recent activity :</h5>
+                                            <h5 class="font-size-14 mb-4"><strong>ORDER OF CLASS PROCEDINGS</strong></h5>
+                                            <hr>
+                                            <div class="">
+                                                <h5 class="font-size-14 mb-4"><span style="color: red">  FRIDAY CLASSES</span></h5>
+                                                <table>
+                                                    <thead>
+                                                        <th>Description</th>
+                                                        <th>Time</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Students Signing in</td>
+                                                            <td>5:30-5:45</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> Prayers</td>
+                                                            <td>5:45-6:00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>LECTURE I</td>
+                                                            <td>6:00-7:00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>BREAK</td>
+                                                            <td>7:00-7:10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>LECTURE II</td>
+                                                            <td>7:10-8:10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>TEST</td>
+                                                            <td>8:10-8:20</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Announcement</td>
+                                                            <td>8:20-8:25</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Students Signing out</td>
+                                                            <td>8:25-8:30</td>
+                                                        </tr>
 
-                                            <ul class="list-unstyled activity-feed ml-1">
-                                                <li class="feed-item">
-                                                    <div class="feed-item-list">
-                                                        <div>
-                                                            <div class="date">15 Jul</div>
-                                                            <p class="activity-text mb-0">Responded to need “Volunteer Activities”</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                    </tbody>
+                                                </table>
+                                            </div>
 
-                                                <li class="feed-item">
-                                                    <div class="feed-item-list">
-                                                        <div>
-                                                            <div class="date">14 Jul</div>
-                                                            <p class="activity-text mb-0">neque porro quisquam est <a href="" class="text-success">@Christi</a> dolorem ipsum quia dolor sit amet</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <div class="feed-item-list">
-                                                        <div>
-                                                            <div class="date">14 Jul</div>
-                                                            <p class="activity-text mb-0">Sed ut perspiciatis unde omnis iste natus error sit “Volunteer Activities”</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <div class="feed-item-list">
-                                                        <div>
-                                                            <div class="date">13 Jul</div>
-                                                            <p class="activity-text mb-0">Responded to need “Volunteer Activities”</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                            <hr>
+                                            <div class="">
+                                                <h5 class="font-size-14 mb-4"><span style="color: red"> SATURDAY CLASSES</span></h5>
+                                                <table>
+                                                    <thead>
+                                                        <th>Description</th>
+                                                        <th>Time</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Students Signing in</td>
+                                                            <td>7:30-7:45</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> Prayers</td>
+                                                            <td>7:45-8:00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>LECTURE I</td>
+                                                            <td>8:00-10:00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>BREAK</td>
+                                                            <td>10:00-10:15</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>LECTURE II</td>
+                                                            <td>10:15-11:15</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>TEST</td>
+                                                            <td>11:15-11:30</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Announcement</td>
+                                                            <td>11:30-11:35</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Students Signing out</td>
+                                                            <td>11:35-11:45</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -171,97 +258,90 @@
 
                                             <div class="table-responsive">
                                                 <table class="table table-bordered border-primary mb-0">
-
                                                     <thead>
                                                         <tr>
                                                             <th>Week</th>
                                                             <th>Date</th>
-                                                            <th colspan="3"><div class="text-center"> Time</div></th>
+                                                            <th><div class="text-center"> Course</div></th>
+                                                            <th>Duration</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <th>1</th>
-                                                            <td>FRIDAY
-                                                                11/06/2021
-                                                                </td>
-                                                            <td colspan="3"><div class="text-center"> NIL</div></td>
-
-
-                                                        </tr>
-                                                        <tr>
-                                                            <th>1</th>
-                                                            <td>SATURDAY
-                                                                12/06/2021
-                                                                </td>
+                                                            <th rowspan="3">1</th>
+                                                            <td>Saturday, June 19</td>
                                                             <td>Ministry Basic Course <strong>(MBC)</strong></td>
-                                                            <td>Break</td>
+                                                            <td><strong>3 Hours</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="2">Friday, June 25</td>
+                                                            <td>Project Writing and Presentation  <strong>(PWP)</strong></td>
+                                                            <td><strong>1 Hours</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Church Growth Course <strong>(CGC)</strong></td>
+                                                            <td><strong>1 Hours</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th rowspan="3">2</th>
+                                                            <td rowspan="2">Saturday, June 26</td>
                                                             <td>Ministry Basic Course <strong>(MBC)</strong></td>
-
+                                                            <td><strong>3 Hours</strong></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>2</th>
-                                                            <td>FRIDAY
-                                                                18/06/2021
-                                                                </td>
-                                                            <td>Project Writing and Presentation <strong>(PWP)</strong></td>
-                                                            <td>Break</td>
-                                                            <td>World evangelization Course  <strong>(WEC)</strong></td>
 
+                                                            <td><div>Church Growth Course <strong>(CGC)</strong></div></td>
+                                                            <td><strong>1 Hours</strong></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>2</th>
-                                                            <td>SATURDAY
-                                                                19/06/2021
-                                                                </td>
+                                                            <td>Friday, July 2</td>
+                                                            <td>World Evangelization Course<strong>(WEC)</strong></td>
+                                                            <td><strong>3 Hours</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th rowspan="4">3</th>
+                                                            <td rowspan="2">Saturday, July 3</td>
+                                                            <td>Church Management Course <strong>(CMC)</strong></td>
+                                                            <td><strong>3 Hours</strong></td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>Ministry Basic Course <strong>(MBC)</strong></td>
-                                                            <td>Break</td>
-                                                            <td>World evangelization Course  <strong>(WEC)</strong></td>
-
+                                                            <td><strong>3 Hours</strong></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>3</th>
-                                                            <td>FRIDAY 25/06/2021</td>
-                                                            <td colspan="3"><div class="text-center">Church Growth Course <strong>(CGC)</strong></div></td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <th>3</th>
-                                                            <td>SATURDAY
-                                                                26/06/2021
+                                                            <td rowspan="2">Friday, July 9</td>
+                                                            <td> Program Management & Planning Course <strong>(PMC)</strong> /
+                                                                Social Media in Ministry<strong>(SMM)</strong>
                                                                 </td>
-                                                            <td>Church Management Course  <strong>(CMC)</strong></td>
-                                                            <td>Break</td>
-                                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                                                <td><strong>1 Hours</strong></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>4</th>
-                                                            <td>FRIDAY
-                                                                02/07/2021
-                                                                </td>
-                                                            <td>Social Media for Ministry <strong>(PMC / SMM)</strong></td>
-                                                            <td>Break</td>
-                                                            <td>Leadership and Ministry Ethics <strong>(LME)</strong></td>
+                                                            <td>Leadership & Ministry Ethics Course (LME)</td>
+                                                            <td><strong>1 Hours</strong></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>4</th>
-                                                            <td>SATURDAY
-                                                                03/07/2021
-                                                                </td>
-                                                            <td>Social Media for Ministry <strong>(DAC)</strong></td>
-                                                            <td>Break</td>
-                                                            <td>Church Management Course  <strong>(CMC)</strong></td>
+                                                            <td rowspan="5">4</td>
+                                                            <td rowspan="2">Saturday, July 10</td>
+                                                            <td>Dynamics of the Anointing Course (DAC)</td>
+                                                            <td><strong>1 Hours</strong></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>5</th>
-                                                            <td>FRIDAY
-                                                                09/07/2021
+                                                            <td>Church Management Course (CMC)</td>
+                                                            <td><strong>1 Hours</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3"> <div class="text-center"><strong>DOSSOM 2021</strong></div></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="2">Friday, July 23</td>
+                                                            <td>Leadership & Ministry Ethics Course (LME)</td>
+                                                            <td>1 hour</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Media & Music in Ministry (MMM) / <br>
+                                                                Emotional Intelligence in Ministry (EIM)
                                                                 </td>
-                                                            <td>Leadership and Ministry Ethics <strong>(LME)</strong></td>
-                                                            <td>Break</td>
-                                                            <td>Media and Music for Ministry / Emotional
-                                                                Intelligence
-                                                                  <strong>(MMM / EIM)</strong></td>
+                                                            <td><strong>1 Hours</strong></td>
                                                         </tr>
 
                                                     </tbody>
