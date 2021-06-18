@@ -37,6 +37,11 @@
                             <span>Paid Students</span>
                            </a>
                         </li>
+                        <li><a href="{{route('unpaidstudent')}}">
+                            <i class="mdi mdi-account"></i>
+                            <span>Outstanding Paymemts</span>
+                           </a>
+                        </li>
                     </ul>
                 </li>
                 <li>

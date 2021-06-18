@@ -80,6 +80,29 @@ class AdminController extends Controller
     }
 
 
+    public function unpaidstudent()
+    {
+        $user = Auth::user();
+        if ($user->isSupervisor()) {
+
+            $members = Member::where('centre', $user->supervisor_location)->join('payments', 'members.user_id', '!=', 'payments.user_id')
+                ->select('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
+                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'payments.requested_amount')
+                ->get();
+
+            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
+                $query->where('centre', $user->supervisor_location);
+            })->get();
+        } else {
+            $members = Member::join('payments', 'members.user_id', '!=', 'payments.user_id')
+                ->select('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
+                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'payments.requested_amount')
+                ->get();
+            $paidmembers = Payment::all();
+    }
+             return view('admin.unpaidstudent', compact('members', 'paidmembers'));
+    }
+
     public function assignment()
     {
         return view('admin.assignment');
