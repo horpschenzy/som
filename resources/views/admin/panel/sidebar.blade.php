@@ -96,12 +96,18 @@
                 </li>
 
                 <li>
+                    <a href="{{route('admin.email')}}" class=" waves-effect">
+                        <i class="mdi mdi-cash-multiple"></i>
+                        <span>emails</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{route('transaction')}}" class=" waves-effect">
                         <i class="mdi mdi-cash-multiple"></i>
                         <span>Payment</span>
                     </a>
                 </li>
-
                 {{-- <li class="menu-title">Components</li>
 
                 <li>

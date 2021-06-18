@@ -42,6 +42,7 @@
                                         <th>Last Name</th>
                                         <th>First Name</th>
                                         <th>Other Name</th>
+                                        <th>Reg Number</th>
                                         <th>Phone Numnber</th>
                                         <th>Email</th>
                                         <th>Status</th>
@@ -70,6 +71,7 @@
                                         <td>{{$member->surname}}</td>
                                         <td>{{$member->firstname}}</td>
                                         <td>{{$member->othername}}</td>
+                                        <td>{{ $member->reg_no}}</td>
                                         <td>{{$member->phonenumber}}</td>
                                         <td>{{$member->email}}</td>
                                         <td>{{$member->marital_status}}</td>

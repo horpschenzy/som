@@ -50,7 +50,7 @@ class User extends Authenticatable
     public function isSupervisor(){
         return $this->user_type == UserTypes::SUPERVISOR;
     }
-    
+
 
     public function isStudent(){
         return $this->user_type == UserTypes::STUDENT;

@@ -5,7 +5,7 @@
                 <div class="col-lg-6 col-md-7 col-12 col-sm-8">
                     <div class="header-contact">
                         <ul>
-                            <li><i class="fa fa-phone"></i>08065686560</li>
+                            <li><i class="fa fa-phone"></i>07087847070</li>
                             <li><i class="fa fa-envelope-o"></i><a href="mailto:som@segunobadje.org">
                                     som@segunobadje.org</a></li>
                         </ul>

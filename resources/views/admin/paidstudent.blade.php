@@ -43,6 +43,7 @@
                                         <tr>
                                             <th>Surname</th>
                                             <th>Firstname</th>
+                                            <th>Reg Number</th>
                                             <th>Amount</th>
                                             <th>Description</th>
                                         </tr>
@@ -53,6 +54,7 @@
                                             <tr>
                                                 <td>{{ $paidmember->surname }}</td>
                                                 <td>{{ $paidmember->firstname }}</td>
+                                                <td>{{ $paidmember->user->reg_no}}</td>
                                                 <td>{{ ($paidmember->requested_amount) / 100 }}</td>
                                                 <td> {{ $paidmember->description }}</td>
                                             </tr>

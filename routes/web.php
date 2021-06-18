@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,5 +79,15 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/end', 'LivestreamController@end');
         Route::post('/start', 'LivestreamController@start');
         Route::post('/delete/stream', 'LivestreamController@delete');
+        Route::get('/sendmail', 'AdminController@sendmail');
+        Route::get('/admin/email', 'AdminController@email')->name('admin.email');
     });
 });
+
+
+// Route::get('/email', function () {
+
+//     $users = User::all();
+//     return view('emails.welcomemail', compact( 'users'));
+
+// });
