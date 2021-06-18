@@ -13,6 +13,41 @@ use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
+    private $supervisor_location;
+    private $supervisor_region;
+    private $is_supervisor;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->populate_supervisor();
+            return $next($request);
+        });
+    }
+
+    private function populate_supervisor()
+    {
+        $user = Auth::user();
+        if ($user->isSupervisor()) {
+            $this->is_supervisor = true;
+            switch ($user->supervisor_location) {
+                case 'Others-ng':
+                    $this->supervisor_region = 'NG';
+                    $this->supervisor_location ='Others';
+                    break;
+                case 'Others-in':
+                    $this->supervisor_region = 'IN';
+                    $this->supervisor_location ='Others';
+                    break;
+
+                default:
+                    $this->supervisor_location = $user->supervisor_location;
+                    break;
+            }
+        } else {
+            $this->is_supervisor = false;
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -45,14 +80,15 @@ class AdminController extends Controller
 
     public function index()
     {
-        $user = Auth::user();
-        if ($user->isSupervisor()) {
-            $members = Member::where('centre', $user->supervisor_location)->count();
-            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
-                $query->where('centre', $user->supervisor_location);
+        if ($this->is_supervisor) {
+            $members = Member::where('centre', $this->supervisor_location)->region($this->supervisor_region)->count();
+            $paidmembers = Payment::whereHas('user.member', function ($query) {
+                $query->where('centre', $this->supervisor_location);
+                $query->region($this->supervisor_region);
             })->distinct('user_id')->count();
-            $revenuengn = Payment::whereHas('user.member', function ($query) use ($user) {
-                $query->where('centre', $user->supervisor_location);
+            $revenuengn = Payment::whereHas('user.member', function ($query) {
+                $query->where('centre', $this->supervisor_location);
+                $query->region($this->supervisor_region);
             })->sum('requested_amount');
         } else {
             $members = Member::count();
@@ -70,9 +106,8 @@ class AdminController extends Controller
 
     public function regstudent()
     {
-        $user = Auth::user();
-        if ($user->isSupervisor()) {
-            $members = Member::where('centre', $user->supervisor_location)->leftJoin('payments', 'members.user_id', '=', 'payments.user_id')
+        if ($this->is_supervisor) {
+            $members = Member::where('centre', $this->supervisor_location)->leftJoin('payments', 'members.user_id', '=', 'payments.user_id')
                 ->join('users', 'users.id', '=', 'members.user_id')
                 ->select(
                     'members.surname',
@@ -96,10 +131,12 @@ class AdminController extends Controller
                     'users.reg_no',
                     DB::raw('SUM(payments.requested_amount) as total_payments')
                 )
+                ->region($this->supervisor_region)
                 ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'users.reg_no', 'payments.requested_amount')
                 ->get();
-            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
-                $query->where('centre', $user->supervisor_location);
+            $paidmembers = Payment::whereHas('user.member', function ($query) {
+                $query->where('centre', $this->supervisor_location);
+                $query->region($this->supervisor_region);
             })->get();
         } else {
             $members = Member::leftJoin('payments', 'members.user_id', '=', 'payments.user_id')
@@ -136,11 +173,11 @@ class AdminController extends Controller
 
     public function paidstudent()
     {
-        $user = Auth::user();
-        if ($user->isSupervisor()) {
-            $members = Member::where('centre', $user->supervisor_location)->get();
-            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
-                $query->where('centre', $user->supervisor_location);
+        if ($this->is_supervisor) {
+            $members = Member::where('centre', $this->supervisor_location)->region($this->supervisor_region)->get();
+            $paidmembers = Payment::whereHas('user.member', function ($query) {
+                $query->where('centre', $this->supervisor_location);
+                $query->region($this->supervisor_region);
             })->get();
         } else {
             $members = Member::all();
@@ -152,16 +189,16 @@ class AdminController extends Controller
 
     public function unpaidstudent()
     {
-        $user = Auth::user();
-        if ($user->isSupervisor()) {
+        if ($this->is_supervisor) {
 
-            $members = Member::where('centre', $user->supervisor_location)->join('payments', 'members.user_id', '!=', 'payments.user_id')
+            $members = Member::where('centre', $this->supervisor_location)->region($this->supervisor_region)->join('payments', 'members.user_id', '!=', 'payments.user_id')
                 ->select('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
                 ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'payments.requested_amount')
                 ->get();
 
-            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
-                $query->where('centre', $user->supervisor_location);
+            $paidmembers = Payment::whereHas('user.member', function ($query) {
+                $query->where('centre', $this->supervisor_location);
+                $query->region($this->supervisor_region);
             })->get();
         } else {
             $members = Member::join('payments', 'members.user_id', '!=', 'payments.user_id')
