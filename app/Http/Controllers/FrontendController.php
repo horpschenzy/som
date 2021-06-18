@@ -157,7 +157,7 @@ class FrontendController extends Controller
         } else {
             $member_id = $user_id;
         }
-        $user->reg_no = "SOM/2021/" .$member . $member_id;
+        $user->reg_no = "SOM/2021/" . $member_id;
         $user->save();
     }
 
