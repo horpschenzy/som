@@ -154,7 +154,7 @@
                                                 <table>
                                                     <thead>
                                                         <th>Description</th>
-                                                        <th>Time</th>
+                                                        <th style="font-size: 10px">Time(WAT-PM)</th>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
@@ -200,7 +200,7 @@
                                                 <table>
                                                     <thead>
                                                         <th>Description</th>
-                                                        <th>Time</th>
+                                                        <th style="font-size: 10px">Time (WAT-AM)</th>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
@@ -254,7 +254,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h4 class="card-title">SOM Time table</h4>
-                                            <p class="card-title-desc">Start time: 8am</p>
+
 
                                             <div class="table-responsive">
                                                 <table class="table table-bordered border-primary mb-0">

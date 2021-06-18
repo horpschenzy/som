@@ -18,9 +18,57 @@
                 </div>
             </div>
             <!-- end page title -->
+
             <div class="row">
                 @include('flash')
-                <div class="col-12">
+                <div class="card">
+                    <form method="POST" action="/livestream" enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-body">
+                            <div class="mb-3 row">
+                                <label for="text-input" class="col-md-2 col-form-label">Event Name</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" required type="text" value="{{old('event_name')}}" name="event_name" id="text-input">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                    <label for="file-input" class="col-md-2 col-form-label">Cover Image</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" required type="file" value="{{old('cover_image')}}" name="cover_image" id="file-input">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="example-url-input" class="col-md-2 col-form-label">MIXLR URL</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" type="url" value="{{old('mixlr_url')}}" name="mixlr_url" id="example-url-input">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="example-url-input" class="col-md-2 col-form-label">YOUTUBE URL</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" type="url" value="{{old('youtube_url')}}" name="youtube_url" id="example-url-input">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="example-url-input" class="col-md-2 col-form-label">VIMEO URL</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" type="url" value="{{old('vimeo_url')}}" name="vimeo_url" id="example-url-input">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="example-url-input" class="col-md-2 col-form-label">Description</label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" required name="description"></textarea>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="text-center mb-3">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add Stream
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                {{-- <div class="col-12">
                     <div class="card">
                     <form method="POST" action="/livestream" enctype="multipart/form-data">
                         @csrf
@@ -67,33 +115,13 @@
                         </div>
                     </form>
                     </div>
-                </div>
+                </div> --}}
             </div>
-            {{-- <div class="row">
-                <div class="col-xl-3"></div>
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-body text-center">
 
-                            <h4 class="card-title">Popup with video or map</h4>
-                            <p class="card-title-desc">In this example lazy-loading of images is enabled for the next image based on move direction. </p>
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <a class="popup-youtube btn btn-secondary" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube Video</a>
-                                    <a class="popup-vimeo btn btn-secondary" href="https://vimeo.com/45830194">Open Vimeo Video</a>
-                                    <a class="popup-gmaps btn btn-secondary" href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom">Open Mixlr</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3"></div>
-            </div> --}}
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    {{-- <div class="card">
                         <div class="card-body">
                             <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
@@ -138,6 +166,54 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div> --}}
+                    <div class="card">
+                        <div class="card-body">
+                            <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Event Name</th>
+                                        <th>MIXLR URL</th>
+                                        <th>YOUTUBE URL</th>
+                                        <th>VIMEO URL</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach ($livestreams as $livestream)
+                                    <tr>
+                                        <td>{{ $livestream->event_name }}</td>
+                                        <td>{{ $livestream->mixlr_url }}</td>
+                                        <td>{{ $livestream->youtube_url }}</td>
+                                        <td>{{ $livestream->vimeo_url }}</td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ $livestream->description }}</p></td>
+                                        <td>{{ ucfirst($livestream->status) }}</td>
+                                        <td>
+                                            <div class="dropdown dropdown-topbar d-inline-block">
+                                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Action <i class="mdi mdi-chevron-down"></i>
+                                                    </a>
+
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                    @if ($livestream->status == 'not started')
+                                                        <a class="dropdown-item" onclick="startStream({{ $livestream->id }})">Start</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        @elseif ($livestream->status == 'started')
+                                                        <a class="dropdown-item" onclick="endStream({{ $livestream->id }})">End</a>
+                                                        <div class="dropdown-divider"></div>
+                                                    @endif
+                                                    <a class="dropdown-item" onclick="deleteStream({{ $livestream->id }})">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!-- end col -->
@@ -145,7 +221,112 @@
 
             <!-- end row -->
 
+            {{-- <div class="row">
+                <div class="col-12">
+                    @include('admin.flash-message')
+                    <div class="card">
+                        <form method="POST" action="/livestream" enctype="multipart/form-data">
+                            @csrf
+                            <div class="card-body">
+                                <div class="mb-3 row">
+                                    <label for="text-input" class="col-md-2 col-form-label">Event Name</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" required type="text" value="{{old('event_name')}}" name="event_name" id="text-input">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                        <label for="file-input" class="col-md-2 col-form-label">Cover Image</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" required type="file" value="{{old('cover_image')}}" name="cover_image" id="file-input">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="example-url-input" class="col-md-2 col-form-label">MIXLR URL</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="url" value="{{old('mixlr_url')}}" name="mixlr_url" id="example-url-input">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="example-url-input" class="col-md-2 col-form-label">YOUTUBE URL</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="url" value="{{old('youtube_url')}}" name="youtube_url" id="example-url-input">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="example-url-input" class="col-md-2 col-form-label">VIMEO URL</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="url" value="{{old('vimeo_url')}}" name="vimeo_url" id="example-url-input">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="example-url-input" class="col-md-2 col-form-label">Description</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" required name="description"></textarea>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="text-center mb-3">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add Stream
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> --}}
 
+            {{-- <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Event Name</th>
+                                        <th>MIXLR URL</th>
+                                        <th>YOUTUBE URL</th>
+                                        <th>VIMEO URL</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach ($livestreams as $livestream)
+                                    <tr>
+                                        <td>{{ $livestream->event_name }}</td>
+                                        <td>{{ $livestream->mixlr_url }}</td>
+                                        <td>{{ $livestream->youtube_url }}</td>
+                                        <td>{{ $livestream->vimeo_url }}</td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ $livestream->description }}</p></td>
+                                        <td>{{ ucfirst($livestream->status) }}</td>
+                                        <td>
+                                            <div class="dropdown dropdown-topbar d-inline-block">
+                                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Action <i class="mdi mdi-chevron-down"></i>
+                                                    </a>
+
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                    @if ($livestream->status == 'not started')
+                                                        <a class="dropdown-item" onclick="startStream({{ $livestream->id }})">Start</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        @elseif ($livestream->status == 'started')
+                                                        <a class="dropdown-item" onclick="endStream({{ $livestream->id }})">End</a>
+                                                        <div class="dropdown-divider"></div>
+                                                    @endif
+                                                    <a class="dropdown-item" onclick="deleteStream({{ $livestream->id }})">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div> --}}
 
         </div>
         <!-- container-fluid -->

@@ -8,9 +8,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-body text-center">
-                        <h3 class="card-title">Pre-Class Test</h3>
-                        <p class="card-text">Without taking this test you cannot start the next class.
-                        </p>
+                        <h3 class="card-title">Test</h3>
+
                         <a href="" class="btn btn-primary waves-effect waves-light">Start Now</a>
                     </div>
                 </div>

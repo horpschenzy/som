@@ -129,163 +129,268 @@ body {
                         </div>
                     </div>
                 </div>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    </button>
+                    <strong>OVERVIEW</strong>
+                    <P>Segun Obadje Teaching Ministries (SOTM) School of Ministry is a new creation, bible-based school with the vision of equipping believers for ministry and helping men
+                        so that men and women come into the light of purpose and God’s preordination.
+                        The School is a 6-week spiritual boot camp, with various activities ranging from classes,
+                         project works, tests, assignments, book review etc, all contributing to the equipping of the attendees.
+                        <strong>This year, the school will have both online and onsite students</strong>.
+                    </P>
+                </div>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    </button>
+                    <strong>E-CENTRES</strong>
+                    <P>The onsite students shall gather at various approved learning centres which
+                         we refer to as E-centres. An E-centre is saddled with the primary responsibility
+                          of creating a conducive environment for the students to encounter God across the various
+                         line up of school activities while also maintaining the standard of excellence in delivery that the school stands for.
+                        <strong>In other to achieve these, every e-centre must carefully read and execute this document for SOM 2021.</strong>.
+                    </P>
+                    <p>
+                        The School of Ministry 2021 will run between the 19th of June, 2021 to the 7th of August, 2021. The school will run for
+                        the duration of 6 weeks; 4 weeks of lectures (Fridays, and Saturdays). Examinations will be conducted on Sunday,
+                        25th of July, 2021. The Project Defence is to be conducted on Friday, the 30th of July and Saturday, the 31st of July,
+                        2021 while the graduation ceremony will hold on Saturday, 7th of August, 2021. (Check the time table for full details)
+                    </p>
+                </div>
                 <!-- end page title -->
-                <div class="col-lg-10">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">SOM Time table</h4>
-                            <p class="card-title-desc">Start time: 8am</p>
-
-                            <div class="table-responsive">
-                                <table class="table table-bordered border-primary mb-0">
-
-                                    <thead>
-                                        <tr>
-                                            <th>Week</th>
-                                            <th>Date</th>
-                                            <th colspan="3"><div class="text-center"> Time</div></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th>1</th>
-                                            <td>FRIDAY
-                                                11/06/2021
-                                                </td>
-                                            <td colspan="3"><div class="text-center"> NIL</div></td>
+                <div class="row mb-4">
+                    <div class="col-xl-3">
+                        <div class="card">
+                            <div class="card-body mt-n3 d-grid">
+                                {{-- <button class="btn btn-primary btn-block" id="btn-new-event"><i class="mdi mdi-plus-circle-outline"></i> Create New Event</button> --}}
 
 
-                                        </tr>
-                                        <tr>
-                                            <th>1</th>
-                                            <td>SATURDAY
-                                                12/06/2021
-                                                </td>
-                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
-                                            <td>Break</td>
-                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                <div id="external-events">
+                                    {{-- <br>
+                                    <p class="text-muted">Drag and drop your event or click in the calendar</p>
+                                    <div class="external-event fc-event bg-success" data-class="bg-success">
+                                        <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>New Event Planning
+                                    </div>
+                                    <div class="external-event fc-event bg-info" data-class="bg-info">
+                                        <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Meeting
+                                    </div>
+                                    <div class="external-event fc-event bg-warning" data-class="bg-warning">
+                                        <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Generating Reports
+                                    </div>
+                                    <div class="external-event fc-event bg-danger" data-class="bg-danger">
+                                        <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Create New theme
+                                    </div> --}}
+                                </div>
 
-                                        </tr>
-                                        <tr>
-                                            <th>2</th>
-                                            <td>FRIDAY
-                                                18/06/2021
-                                                </td>
-                                            <td>Project Writing and Presentation <strong>(PWP)</strong></td>
-                                            <td>Break</td>
-                                            <td>World evangelization Course  <strong>(WEC)</strong></td>
+                                <div class="mt-5">
+                                    <h5 class="font-size-14 mb-4"><strong>ORDER OF CLASS PROCEDINGS</strong></h5>
+                                    <hr>
+                                    <div class="">
+                                        <h5 class="font-size-14 mb-4"><span style="color: red">  FRIDAY CLASSES</span></h5>
+                                        <table>
+                                            <thead>
+                                                <th>Description</th>
+                                                <th style="font-size: 10px">Time (WAT-PM)</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Students Signing in</td>
+                                                    <td>5:30-5:45</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Prayers</td>
+                                                    <td>5:45-6:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>LECTURE I</td>
+                                                    <td>6:00-7:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>BREAK</td>
+                                                    <td>7:00-7:10</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>LECTURE II</td>
+                                                    <td>7:10-8:10</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>TEST</td>
+                                                    <td>8:10-8:20</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Announcement</td>
+                                                    <td>8:20-8:25</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Students Signing out</td>
+                                                    <td>8:25-8:30</td>
+                                                </tr>
 
-                                        </tr>
-                                        <tr>
-                                            <th>2</th>
-                                            <td>SATURDAY
-                                                19/06/2021
-                                                </td>
-                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
-                                            <td>Break</td>
-                                            <td>World evangelization Course  <strong>(WEC)</strong></td>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                                        </tr>
-                                        <tr>
-                                            <th>3</th>
-                                            <td>FRIDAY 25/06/2021</td>
-                                            <td colspan="3"><div class="text-center">Church Growth Course <strong>(CGC)</strong></div></td>
+                                    <hr>
+                                    <div class="">
+                                        <h5 class="font-size-14 mb-4"><span style="color: red"> SATURDAY CLASSES</span></h5>
+                                        <table>
+                                            <thead>
+                                                <th>Description</th>
+                                                <th style="font-size: 10px">Time (WAT-AM)</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Students Signing in</td>
+                                                    <td>7:30-7:45</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Prayers</td>
+                                                    <td>7:45-8:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>LECTURE I</td>
+                                                    <td>8:00-10:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>BREAK</td>
+                                                    <td>10:00-10:15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>LECTURE II</td>
+                                                    <td>10:15-11:15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>TEST</td>
+                                                    <td>11:15-11:30</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Announcement</td>
+                                                    <td>11:30-11:35</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Students Signing out</td>
+                                                    <td>11:35-11:45</td>
+                                                </tr>
 
-                                        </tr>
-                                        <tr>
-                                            <th>3</th>
-                                            <td>SATURDAY
-                                                26/06/2021
-                                                </td>
-                                            <td>Church Management Course  <strong>(CMC)</strong></td>
-                                            <td>Break</td>
-                                            <td>Ministry Basic Course <strong>(MBC)</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <th>4</th>
-                                            <td>FRIDAY
-                                                02/07/2021
-                                                </td>
-                                            <td>Social Media for Ministry <strong>(PMC / SMM)</strong></td>
-                                            <td>Break</td>
-                                            <td>Leadership and Ministry Ethics <strong>(LME)</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <th>4</th>
-                                            <td>SATURDAY
-                                                03/07/2021
-                                                </td>
-                                            <td>Social Media for Ministry <strong>(DAC)</strong></td>
-                                            <td>Break</td>
-                                            <td>Church Management Course  <strong>(CMC)</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <th>5</th>
-                                            <td>FRIDAY
-                                                09/07/2021
-                                                </td>
-                                            <td>Leadership and Ministry Ethics <strong>(LME)</strong></td>
-                                            <td>Break</td>
-                                            <td>Media and Music for Ministry / Emotional
-                                                Intelligence
-                                                  <strong>(MMM / EIM)</strong></td>
-                                        </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                                    </tbody>
-                                </table>
+
+
+
+                                </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 col-md-3 mt-4">
-                        {{-- <div class="text-center">
-                            <p class="text-muted">Center modal</p>
-                            <!-- Small modal -->
-                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Center modal</button>
-                        </div> --}}
+                    <!-- end col-->
 
-                        <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title mt-0">Center modal</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                                        <p class="mb-0">Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
-                                        </p>
-                                    </div>
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
+                    <div class="col-xl-9">
+                        <div class="card mt-4 mt-xl-0 mb-0">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">SOM Time table</h4>
 
-                        <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title mt-0">Center modal</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered border-primary mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Week</th>
+                                                    <th>Date</th>
+                                                    <th><div class="text-center"> Course</div></th>
+                                                    <th>Duration</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th rowspan="3">1</th>
+                                                    <td>Saturday, June 19</td>
+                                                    <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                                    <td><strong>3 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="2">Friday, June 25</td>
+                                                    <td>Project Writing and Presentation  <strong>(PWP)</strong></td>
+                                                    <td><strong>1 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Church Growth Course <strong>(CGC)</strong></td>
+                                                    <td><strong>1 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="3">2</th>
+                                                    <td rowspan="2">Saturday, June 26</td>
+                                                    <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                                    <td><strong>3 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td><div>Church Growth Course <strong>(CGC)</strong></div></td>
+                                                    <td><strong>1 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Friday, July 2</td>
+                                                    <td>World Evangelization Course<strong>(WEC)</strong></td>
+                                                    <td><strong>3 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="4">3</th>
+                                                    <td rowspan="2">Saturday, July 3</td>
+                                                    <td>Church Management Course <strong>(CMC)</strong></td>
+                                                    <td><strong>3 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ministry Basic Course <strong>(MBC)</strong></td>
+                                                    <td><strong>3 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="2">Friday, July 9</td>
+                                                    <td> Program Management & Planning Course <strong>(PMC)</strong> /
+                                                        Social Media in Ministry<strong>(SMM)</strong>
+                                                        </td>
+                                                        <td><strong>1 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Leadership & Ministry Ethics Course (LME)</td>
+                                                    <td><strong>1 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="5">4</td>
+                                                    <td rowspan="2">Saturday, July 10</td>
+                                                    <td>Dynamics of the Anointing Course (DAC)</td>
+                                                    <td><strong>1 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Church Management Course (CMC)</td>
+                                                    <td><strong>1 Hours</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3"> <div class="text-center"><strong>DOSSOM 2021</strong></div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="2">Friday, July 23</td>
+                                                    <td>Leadership & Ministry Ethics Course (LME)</td>
+                                                    <td>1 hour</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Media & Music in Ministry (MMM) / <br>
+                                                        Emotional Intelligence in Ministry (EIM)
+                                                        </td>
+                                                    <td><strong>1 Hours</strong></td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="modal-body">
-                                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                                        <p class="mb-0">Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
-                                        </p>
-                                    </div>
+
                                 </div>
-                                <!-- /.modal-content -->
                             </div>
-                            <!-- /.modal-dialog -->
                         </div>
-                    </div>
+                    </div> <!-- end col -->
+
                 </div>
+                <!-- end row -->
 
 
 

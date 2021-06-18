@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
         Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');
         Route::get('/member/classroom', 'MemberController@classroom')->name('member.classroom');
+        Route::get('/member/classroom/{id}/{type}', 'MemberController@showClassroom');
         Route::get('/member/test', 'MemberController@test')->name('member.test');
         Route::get('/member/transaction', 'MemberController@transaction')->name('member.transaction');
         Route::get('/member/profile', 'MemberController@profile')->name('member.profile');
@@ -72,6 +73,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/transaction', 'AdminController@transaction')->name('transaction');
         Route::get('/profile', 'AdminController@profile')->name('profile');
         Route::get('/classroom', 'AdminController@classroom')->name('classroom');
+        Route::get('/classroom/{id}/{type}', 'AdminController@showClassroom');
         Route::get('/test', 'AdminController@test')->name('test');
         Route::get('/result', 'AdminController@result')->name('result');
         Route::get('/livestream', 'AdminController@livestream')->name('livestream');

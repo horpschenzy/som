@@ -55,6 +55,8 @@ class LivestreamController extends Controller
     {
         $validate  = Validator::make($request->all(), [
             'event_name' => 'required',
+            'url' => 'required',
+            'type' => 'required',
             'cover_image'=> 'file|image|mimes:jpeg,png,gif,webp',
         ]);
         if($validate->fails()){
@@ -66,7 +68,7 @@ class LivestreamController extends Controller
         }
 
 
-        $data = $request->only(['event_name', 'mixlr_url','youtube_url','vimeo_url', 'type', 'description']);
+        $data = $request->only(['event_name', 'url', 'type', 'description']);
 
         if($request->hasFile('cover_image')){
             $cover_image = $request->file('cover_image');
@@ -83,3 +85,5 @@ class LivestreamController extends Controller
         }
     }
 }
+
+
