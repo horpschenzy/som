@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\PaymentStatus;
 use App\Livestream;
 use App\Payment;
 use App\Member;
@@ -33,11 +34,11 @@ class AdminController extends Controller
             switch ($user->supervisor_location) {
                 case 'Others-ng':
                     $this->supervisor_region = 'NG';
-                    $this->supervisor_location ='Others';
+                    $this->supervisor_location = 'Others';
                     break;
                 case 'Others-in':
                     $this->supervisor_region = 'IN';
-                    $this->supervisor_location ='Others';
+                    $this->supervisor_location = 'Others';
                     break;
 
                 default:
@@ -191,23 +192,20 @@ class AdminController extends Controller
     {
         if ($this->is_supervisor) {
 
-            $members = Member::where('centre', $this->supervisor_location)->region($this->supervisor_region)->join('payments', 'members.user_id', '!=', 'payments.user_id')
-                ->select('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
-                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'payments.requested_amount')
+            $members = Member::where('centre', $this->supervisor_location)->region($this->supervisor_region)->where('payment_status', '!=', PaymentStatus::PAID)->join('payments', 'members.user_id', '!=', 'payments.user_id')
+                ->join('users', 'users.id', '=', 'members.user_id')
+                ->select('users.reg_no','members.surname','members.user_id', 'members.payment', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
+                ->groupBy('users.reg_no','members.surname','members.user_id', 'members.payment', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region')
                 ->get();
-
-            $paidmembers = Payment::whereHas('user.member', function ($query) {
-                $query->where('centre', $this->supervisor_location);
-                $query->region($this->supervisor_region);
-            })->get();
         } else {
             $members = Member::join('payments', 'members.user_id', '!=', 'payments.user_id')
-                ->select('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
-                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'payments.requested_amount')
+                ->join('users', 'users.id', '=', 'members.user_id')
+                ->where('payment_status', '!=', PaymentStatus::PAID)
+                ->select('users.reg_no', 'members.surname','members.user_id', 'members.payment', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
+                ->groupBy('users.reg_no', 'members.surname','members.user_id', 'members.payment', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region')
                 ->get();
-            $paidmembers = Payment::all();
         }
-        return view('admin.unpaidstudent', compact('members', 'paidmembers'));
+        return view('admin.unpaidstudent', compact('members'));
     }
 
     public function assignment()

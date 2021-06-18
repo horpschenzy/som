@@ -40,6 +40,8 @@ Route::get('/invoice', 'FrontendController@invoice')->name('frontend.invoice');
 // PAYSTACK
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::get('/payment/backfill', 'PaymentController@backfill');
+
 
 
 Route::middleware(['auth'])->group(function () {

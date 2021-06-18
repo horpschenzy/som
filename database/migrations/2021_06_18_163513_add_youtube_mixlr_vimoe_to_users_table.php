@@ -29,7 +29,9 @@ class AddYoutubeMixlrVimoeToUsersTable extends Migration
     public function down()
     {
         Schema::table('livestreams', function (Blueprint $table) {
-            //
+            $table->dropColumn(['mixlr_url','youtube_url','vimeo_url']);
+            $table->string('url', 255);
+            $table->string('type', 100);
         });
     }
 }
