@@ -56,7 +56,7 @@
                                         <a href="javascript: void(0);">
                                             {{-- <img src="{{asset('assets/images/users/user-4.jpg')}}" class="rounded mr-75"
                                                 alt="profile image" height="64" width="64"> --}}
-                                                <img src="{{ Auth::user()->member->profile_picture != "" ? url( 'storage/image/'.Auth::user()->member->profile_picture ) : asset('assets/images/users/default.png') }}" class="rounded mr-75"
+                                                <img src="{{ isset(Auth::user()->member) && Auth::user()->member->profile_picture != "" ? url( 'storage/image/'.Auth::user()->member->profile_picture ) : asset('assets/images/users/default.png') }}" class="rounded mr-75"
                                                 alt="profile image" height="128">
 
                                         </a>
