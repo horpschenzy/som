@@ -23,6 +23,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123456'),
         ]);
 
+        User::firstOrCreate([
+            'name' => 'student',
+            'reg_no' => 'student',
+            'email' => 'student@gmail.com',
+            'user_type' => UserTypes::STUDENT,
+            'access' => 1
+        ], [
+            'password' => bcrypt('111111'),
+        ]);
+
         foreach(Locations::NG as $key => $value){
             $location = strtolower($key);
             User::firstOrCreate([
