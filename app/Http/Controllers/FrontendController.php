@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\PaymentAmounts;
 use App\User;
 use App\Member;
 use Illuminate\Http\Request;
@@ -49,7 +50,22 @@ class FrontendController extends Controller
     {
         $user = Auth::user();
         $member = Member::where('email', $user->email)->first();
-        return view('frontend.payment', compact('user', 'member'));
+        $amount_left = getAmountToPay();
+
+
+        switch ($amount_left) {
+            case PaymentAmounts::BIG_INSTALLMENT:
+                $amounts_to_pay = [PaymentAmounts::SMALL_INSTALLMENT, PaymentAmounts::BIG_INSTALLMENT];
+                break;
+            case PaymentAmounts::SMALL_INSTALLMENT:
+                $amounts_to_pay = [PaymentAmounts::SMALL_INSTALLMENT];
+                break;
+
+            default:
+                $amounts_to_pay = [$amount_left];
+                break;
+        }
+        return view('frontend.payment', compact('user', 'member','amounts_to_pay','amount_left'));
     }
 
     public function globalpayment()
