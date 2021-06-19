@@ -61,6 +61,12 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="{{ route('assignment')}}" class="wave-effect">
+                    <i class="mdi mdi-teach"></i>
+                    <span>Assignments</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
