@@ -6,6 +6,7 @@ use App\User;
 use App\Member;
 use App\Livestream;
 use App\Payment;
+use App\Assignment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -47,13 +48,14 @@ class MemberController extends Controller
 
     public function test()
     {
-        return view('members.test');
+        $assignments = Assignment::with(['submissions' => function($q)
+        {
+            $q->where('member_id',Auth::id());
+        }])->get();
+        return view('members.test', compact('assignments'));
     }
 
-    public function assignment()
-    {
-        return view('members.assignment');
-    }
+
 
     public function profile()
     {
