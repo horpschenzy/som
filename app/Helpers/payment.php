@@ -40,6 +40,9 @@ function getAmountToPay($user_id= null){
                 elseif($total_payment == PaymentAmounts::BIG_INSTALLMENT){
                     $amount = PaymentAmounts::SMALL_INSTALLMENT;
                 }
+                elseif($total_payment == PaymentAmounts::TWO_SMALL_INSTALLMENTS){
+                    $amount = PaymentAmounts::SMALL_INSTALLMENT;
+                }
                 elseif($total_payment == PaymentAmounts::TWO_INSTALLMENT_TOTAL || $total_payment == PaymentAmounts::THREE_INSTALLMENT_TOTAL ){
                     $amount = 0;
                 }
