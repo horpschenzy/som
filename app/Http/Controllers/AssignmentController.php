@@ -18,7 +18,7 @@ class AssignmentController extends Controller
     {
         $assignments = Assignment::with(['submissions' => function($q)
         {
-            $q->where('application_id',Auth::id());
+            $q->where('member_id',Auth::id());
         }])->get();
         return view('members.assignment',compact('assignments'));
     }

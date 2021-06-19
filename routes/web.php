@@ -51,7 +51,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/member/test', 'MemberController@test')->name('member.test');
         Route::get('/member/transaction', 'MemberController@transaction')->name('member.transaction');
         Route::get('/member/profile', 'MemberController@profile')->name('member.profile');
-        Route::get('/member/assignment', 'MemberController@assignment')->name('member.assignment');
+        // Route::get('/member/assignment', 'MemberController@assignment')->name('member.assignment');
+        Route::get('/member/assignment', 'AssignmentController@memberAssignment')->name('member.assignment');
         Route::post('/member/profile/save', 'MemberController@updateProfile')->name('member.profile.update');
 
         Route::get('/member/result', 'MemberController@result')->name('member.result');
@@ -68,7 +69,17 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/unpaidstudent', 'AdminController@unpaidstudent')->name('unpaidstudent');
         Route::get('/announcement', 'AnnouncementController@index')->name('announcement');
         Route::get('/attendance', 'AttendanceController@index')->name('attendance');
+
+        //ADMIN ASSIGNMENT
         route::get('/assignment', 'AssignmentController@index')->name('assignment');
+        Route::post('/assignment', 'AssignmentController@store');
+        Route::post('edit/assignment/{id}', 'AssignmentController@update');
+        Route::post('delete/assignment', 'AssignmentController@deleteAssignment');
+        Route::post('submit/assignment/{id}', 'ApplicationAssignmentController@store');
+        Route::get('/view/submissions/{id}', 'ApplicationAssignmentController@viewSubmissions');
+        Route::post('/mark/assignment/{id}', 'ApplicationAssignmentController@markAssignment');
+
+        //ADMIN ATTENDANCE
         Route::get('/attendanceresult', 'AttendanceController@attendanceresult')->name('attendanceresult');
         Route::get('/mark', 'AttendanceController@mark')->name('mark');
         Route::get('/transaction', 'AdminController@transaction')->name('transaction');

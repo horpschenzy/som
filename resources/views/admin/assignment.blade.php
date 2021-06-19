@@ -29,10 +29,10 @@
                 </div>
             </div>
             <!-- end page title -->
-            @if (auth()->user()->usertype == 'admin')
+            @if (auth()->user()->user_type == 'ADMIN')
             <div class="row">
                 <div class="col-12">
-                    @include('admin.flash-message')
+                    @include('flash')
                     <div class="card">
                     <form method="POST" action="/assignment" enctype="multipart/form-data">
                         @csrf
