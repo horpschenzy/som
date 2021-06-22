@@ -2,69 +2,103 @@
 
 @section('content')
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
-            {{-- <div class="row">
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-primary">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-cube-outline float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Test 1</h6>
-                                <h2 class="mb-4 text-white">87%</h2>
-                                <span class="badge bg-success">87% </span> <span class="ms-2">Excellent</span>
-                            </div>
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title-box">
+                        <h4>Dashboard</h4>
+                            <ol class="breadcrumb m-0">
+                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                               {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
+                                <li class="breadcrumb-item active">Test</li>
+                            </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+                @include('flash')
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Test ID</th>
+                                        <th>Topic</th>
+                                        <th>Score</th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach ($assignments as $assignment)
+                                    <tr>
+                                        <td>{{ $assignment->id }}</td>
+                                        <td>{{ $assignment->topic }}</td>
+                                        <td>{{ ($assignment->submissions) ? $assignment->submissions[0]->score ?? 0 : 0   }}</td>
+
+                                    </tr>
+                                    <div class="modal fade" id="submitAssignment{{$assignment->id}}" tabindex="-1" aria-labelledby="submitAssignment" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="assignToFamily">Submit {{ $assignment->topic }} </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/submit/assignment/{{ $assignment->id }}" method="post" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <div class="card-body">
+                                                            <input type="text" value="{{ $assignment->id }}" name="id" hidden>
+                                                            <div class="mb-3 row">
+                                                                <label for="text-input" class="col-md-4 col-form-label">Test</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" type="file" name="document" id="text-input">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="text-input" class="col-md-4 col-form-label">Test</label>
+                                                                <div class="col-md-8">
+                                                                    <textarea class="form-control" name="text"></textarea>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-primary">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-buffer float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Test 2</h6>
-                                <h2 class="mb-4 text-white">32%</h2>
-                                <span class="badge bg-danger"> 32% </span> <span class="ms-2">You Failed</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-primary">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-tag-text-outline float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Test 3</h6>
-                                <h2 class="mb-4 text-white">50%</h2>
-                                <span class="badge bg-warning"> 50% </span> <span class="ms-2">Average Performance</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-primary">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-briefcase-check float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Test 4</h6>
-                                <h2 class="mb-4 text-white">89%</h2>
-                                <span class="badge bg-success">+89% </span> <span class="ms-2">Excellent performance</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
+                <!-- end col -->
+            </div>
+
+            <!-- end row -->
+
+
+
         </div>
+        <!-- container-fluid -->
     </div>
+    <!-- End Page-content -->
+
+        @include('admin.panel.footer')
+
+
 </div>
 
 @endsection
@@ -78,14 +112,6 @@
 <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
 <script src="{{asset('assets/libs/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
 
-
-
-<!-- plugin js -->
-<script src="{{ asset('assets/libs/moment/min/moment.min.js')}}"></script>
-<script src="{{ asset('assets/libs/jquery-ui-dist/jquery-ui.min.js')}}"></script>
-
 <!-- App js -->
 <script src="{{asset('assets/js/app.js')}}"></script>
-
-
 @endpush

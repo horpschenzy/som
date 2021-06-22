@@ -8,33 +8,32 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Payment for School of Ministry</h4>
-                       <p class="card-title-desc">All payments must be made before 29th of June.</p>
+                        <h4 class="card-title">Upload Student Results</h4>
+                       <p class="card-title-desc">The table below shows all students test done, kindly uplaod results</p>
 
                         <div class="table-responsive">
                             <table class="table table-bordered border-primary mb-0">
 
                                 <thead>
                                     <tr>
-                                        <th>Date</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Description</th>
-                                        <th>Amount</th>
-                                        <th>Balance</th>
+                                        <th>ID</th>
+                                        <th>Test Name</th>
+                                        <th>Number of Students</th>
+                                        <th>Upload Result</th>
                                         <th>Action</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th>17-03-2021</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>One-Off</td>
-                                        <td> 8,000</td>
-                                        <td>none</td>
+                                        <th>17</th>
+                                        <td>MCM</td>
+                                        <td>212</td>
                                         <td>
-                                            <a href="#" class="btn btn-primary">Payment</a>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        </td>
+                                        <td>
+                                            <a href="" class="btn btn-success">Submit</a>
                                         </td>
                                     </tr>
 

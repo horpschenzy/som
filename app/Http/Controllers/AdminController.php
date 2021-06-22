@@ -6,6 +6,7 @@ use App\Livestream;
 use App\Payment;
 use App\Member;
 use App\User;
+use App\Assignment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -164,6 +165,12 @@ public function sendmail() {
     public function result()
     {
         return view('admin.result');
+    }
+
+    public function testresult()
+    {
+        $assignments = Assignment::all();
+        return view('members.testresult', compact( 'assignments'));
     }
 
     public function transaction()

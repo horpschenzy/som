@@ -31,7 +31,7 @@
                                         <th>Test ID</th>
                                         <th>Topic</th>
                                         <th>Link</th>
-                                        <th>Score</th>
+
 
                                     </tr>
                                 </thead>
@@ -42,7 +42,7 @@
                                         <td>{{ $assignment->id }}</td>
                                         <td>{{ $assignment->topic }}</td>
                                         <td><a href="{{ $assignment->url }}" target="_blank">{{ $assignment->url }}</a></td>
-                                        <td>{{ ($assignment->submissions) ? $assignment->submissions[0]->score ?? 0 : 0   }}</td>
+
 
                                     </tr>
                                     <div class="modal fade" id="submitAssignment{{$assignment->id}}" tabindex="-1" aria-labelledby="submitAssignment" aria-hidden="true">

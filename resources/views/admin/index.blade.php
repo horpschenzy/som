@@ -323,7 +323,7 @@
                                                             <td rowspan="5">4</td>
                                                             <td rowspan="2">Saturday, July 10</td>
                                                             <td>Dynamics of the Anointing Course (DAC)</td>
-                                                            <td><strong>1 Hours</strong></td>
+                                                            <td><strong>2 Hours</strong></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Church Management Course (CMC)</td>

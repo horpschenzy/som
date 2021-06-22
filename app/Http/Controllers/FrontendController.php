@@ -206,6 +206,15 @@ class FrontendController extends Controller
         return redirect('/globalpayment')->with('success', 'kindly complete your registration by making payment');
     }
 
+    public function schedule()
+    {
+        return view('frontend.schedule');
+    }
+
+    public function centres()
+    {
+        return view('frontend.centres');
+    }
     /**
      * Display the specified resource.
      *
