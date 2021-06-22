@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\User;
+use App\Assignment;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 // FRONTEND
 Route::get('/', 'FrontendController@index')->name('frontend.index');
 Route::get('/courses', 'FrontendController@courses')->name('frontend.courses');
+Route::get('/schedule', 'FrontendController@schedule')->name('frontend.schedule');
+Route::get('/centres', 'FrontendController@centres')->name('frontend.centres');
 Route::get('/about-us', 'FrontendController@about')->name('frontend.about');
 Route::get('/contact-us', 'FrontendController@contact')->name('frontend.contact');
 Route::get('/login-register', 'FrontendController@login')->name('frontend.log-in');
@@ -88,6 +92,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/profile', 'AdminController@profile')->name('profile');
         Route::get('/classroom', 'AdminController@classroom')->name('classroom');
         Route::get('/classroom/{id}/{type}', 'AdminController@showClassroom');
+
+        //ADMIN TEST
         Route::get('/test', 'AdminController@test')->name('test');
         Route::get('/result', 'AdminController@result')->name('result');
         Route::get('/livestream', 'AdminController@livestream')->name('livestream');
@@ -108,3 +114,10 @@ Route::middleware(['auth'])->group(function () {
 //     return view('emails.welcomemail', compact( 'users'));
 
 // });
+
+// Route::get('/testresult', function () {
+
+//          $assignments = Assignment::all();
+//          return view('members.testresult', compact( 'assignments'));
+
+//      });

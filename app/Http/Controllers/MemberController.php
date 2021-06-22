@@ -28,10 +28,7 @@ class MemberController extends Controller
         return view('members.index');
     }
 
-    public function result()
-    {
-        return view('members.result');
-    }
+
 
     public function classroom()
     {
@@ -53,6 +50,16 @@ class MemberController extends Controller
             $q->where('member_id',Auth::id());
         }])->get();
         return view('members.test', compact('assignments'));
+    }
+
+    public function result()
+    {
+        $assignments = Assignment::with(['submissions' => function($q)
+        {
+            $q->where('member_id',Auth::id());
+        }])->get();
+        return view('members.result', compact('assignments'));
+
     }
 
 

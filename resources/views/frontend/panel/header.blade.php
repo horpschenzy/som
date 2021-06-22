@@ -75,6 +75,8 @@
                                     <li><a href="{{route('frontend.index')}}"> HOME </a></li>
                                     <li><a href="{{route('frontend.about')}}"> ABOUT </a></li>
                                     <li><a href="{{route('frontend.courses')}}"> COURSES </a></li>
+                                    <li><a href="{{route('frontend.schedule')}}">STUDENT SCHEDULE </a></li>
+                                    <li><a href="{{route('frontend.centres')}}"> E-CENTRES </a></li>
                                     <li><a href="{{route('frontend.contact')}}"> CONTACT </a></li>
                                 </ul>
                             </nav>
