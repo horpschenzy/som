@@ -16,4 +16,12 @@ class Member extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeRegion($query, $region)
+    {
+        if ($region) {
+           return $query->whereRegion($region);
+        }
+        return $query;
+    }
 }

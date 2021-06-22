@@ -44,6 +44,8 @@ Route::get('/invoice', 'FrontendController@invoice')->name('frontend.invoice');
 // PAYSTACK
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::get('/payment/backfill', 'PaymentController@backfill');
+
 
 
 Route::middleware(['auth'])->group(function () {
@@ -51,7 +53,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/payment', 'FrontendController@payment')->name('frontend.payment');
         Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');
         Route::get('/member/classroom', 'MemberController@classroom')->name('member.classroom');
-        Route::get('/member/classroom/{id}/{type}', 'MemberController@showClassroom');
+        Route::get('/member/classroom/{id}/{type}', 'MemberController@showClassroom')->name('member.classroom.show');
         Route::get('/member/test', 'MemberController@test')->name('member.test');
         Route::get('/member/transaction', 'MemberController@transaction')->name('member.transaction');
         Route::get('/member/profile', 'MemberController@profile')->name('member.profile');
@@ -102,6 +104,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/sendmail', 'AdminController@sendmail');
         Route::get('/admin/email', 'AdminController@email')->name('admin.email');
     });
+
 });
 
 

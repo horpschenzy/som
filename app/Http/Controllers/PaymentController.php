@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Paystack;
 use App\Payment;
 use App\Interfaces\PaymentAmounts;
+use App\Interfaces\PaymentStatus;
 use Carbon\Carbon;
 
 class PaymentController extends Controller
@@ -70,20 +71,22 @@ class PaymentController extends Controller
             $amount_left = getAmountToPay($payment->user_id);
             $initial_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('INITIAL_PAYMENT_CUTOFF') );
             $final_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('FINAL_PAYMENT_CUTOFF') );
-            $give_access = false;
 
-            if($amount_left = 0){
-                $give_access = true;
+            if($amount_left == 0){
+                User::where('id',$payment->user_id)->update([
+                    'access' => 1
+                ]);
+                Member::where('user_id',$payment->user_id)->update([
+                    'payment_status' => PaymentStatus::PAID
+                ]);
 
             }
             elseif($amount_left <= PaymentAmounts::SMALL_INSTALLMENT && Carbon::now()->lessThan( $final_payment_cutoff)){
-                $give_access = true;
-            }
-
-
-            if($give_access){
                 User::where('id',$payment->user_id)->update([
                     'access' => 1
+                ]);
+                Member::where('user_id',$payment->user_id)->update([
+                    'payment_status' => PaymentStatus::PARTLY_PAID
                 ]);
             }
 
@@ -94,6 +97,39 @@ class PaymentController extends Controller
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
+    }
+
+    public function backfill(){
+        $members = Member::all();
+        foreach($members as $member){
+            $amount_left = getAmountToPay($member->user_id);
+            echo $member->user_id.'-----'.$amount_left."<br/>";
+            if($amount_left == 0){
+                User::where('id',$member->user_id)->update([
+                    'access' => 1
+                ]);
+                Member::where('user_id',$member->user_id)->update([
+                    'payment_status' => PaymentStatus::PAID
+                ]);
+            }
+            elseif( $amount_left <= PaymentAmounts::SMALL_INSTALLMENT && $amount_left > 0){
+                User::where('id',$member->user_id)->update([
+                    'access' => 1
+                ]);
+                Member::where('user_id',$member->user_id)->update([
+                    'payment_status' => PaymentStatus::PARTLY_PAID
+                ]);
+            }
+            elseif( $amount_left <= PaymentAmounts::BIG_INSTALLMENT && $amount_left > PaymentAmounts::SMALL_INSTALLMENT){
+                User::where('id',$member->user_id)->update([
+                    'access' => 0
+                ]);
+                Member::where('user_id',$member->user_id)->update([
+                    'payment_status' => PaymentStatus::PARTLY_PAID
+                ]);
+            }
+
+        }
     }
 }
 

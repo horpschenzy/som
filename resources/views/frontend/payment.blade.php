@@ -10,31 +10,46 @@
                         <div id="lg2" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+                                    <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8"
+                                        class="form-horizontal" role="form">
                                         <div class="row" style="margin-bottom:40px;justify-content: center;">
                                             <div class="col-md-8 col-md-offset-2">
                                                 <strong style="text-align: center">
-                                                   Name: {{ $member->firstname. " " . $member->surname  }}
+                                                    Name: {{ $member->firstname. " " . $member->surname  }}
                                                 </strong>
                                                 <p>
                                                     Email: {{ $user->email }} <br />
-                                                    Amount: {{ getAmountToPay() / 100 }}
-                                                </p>
+                                                </p><br/>
 
 
-                                                <input type="email" class="form-control hidden" name="email" value="{{$user->email}}" placeholder="Your Email">
-                                                <input type="text" class="form-control hidden" name="amount" value="{{getAmountToPay()}}" placeholder="Your Amount">
+                                                <input type="email" class="form-control hidden" name="email"
+                                                    value="{{$user->email}}" placeholder="Your Email">
+                                                <strong>Amount</strong>
+                                                <select name="amount" class="form-control" id="amount">
+                                                    @foreach ($amounts_to_pay as $amount)
+                                                    <option value="{{ $amount }}">
+                                                        {{ number_format($amount /100) }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <br/>
+                                                {{-- <input type="text" class="form-control hidden" name="amount"
+                                                    value="{{getAmountToPay()}}" placeholder="Your Amount"> --}}
 
                                                 <input type="hidden" name="quantity" value="1">
                                                 <input type="hidden" name="currency" value="NGN">
-                                                <input type="hidden" name="metadata" value="{{ json_encode($array = ['first_name' => $member->firstname, 'last_name' => $member->surname,'phonenumber' => $member->phonenumber, 'paymenttype' => $member->paymenttype, 'user_id' => $user->id]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
-                                                <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
+                                                <input type="hidden" name="metadata"
+                                                    value="{{ json_encode($array = ['first_name' => $member->firstname, 'last_name' => $member->surname,'phonenumber' => $member->phonenumber, 'paymenttype' => $member->paymenttype, 'user_id' => $user->id]) }}">
+                                                {{-- For other necessary things you want to add to your payload. it is optional though --}}
+                                                <input type="hidden" name="reference"
+                                                    value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
                                                 {{ csrf_field() }} {{-- works only when using laravel 5.1, 5.2 --}}
 
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}"> {{-- employ this in place of csrf_field only in laravel 5.0 --}}
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                {{-- employ this in place of csrf_field only in laravel 5.0 --}}
 
                                                 <p>
-                                                    <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
+                                                    <button class="btn btn-success btn-lg btn-block" type="submit"
+                                                        value="Pay Now!">
                                                         <i class="fa fa-plus-circle fa-lg"></i> Pay Now!
                                                     </button>
                                                 </p>
@@ -144,17 +159,3 @@ selection.addEventListener('change', () => {
 
 
 @endpush
-
-
-
-
-
-
-
-
-
-
-
-
-
-

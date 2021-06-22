@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\PaymentStatus;
 use App\Livestream;
 use App\Payment;
 use App\Member;
@@ -14,45 +15,82 @@ use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
+    private $supervisor_location;
+    private $supervisor_region;
+    private $is_supervisor;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->populate_supervisor();
+            return $next($request);
+        });
+    }
+
+    private function populate_supervisor()
+    {
+        $user = Auth::user();
+        if ($user->isSupervisor()) {
+            $this->is_supervisor = true;
+            switch ($user->supervisor_location) {
+                case 'Others-ng':
+                    $this->supervisor_region = 'NG';
+                    $this->supervisor_location = 'Others';
+                    break;
+                case 'Others-in':
+                    $this->supervisor_region = 'IN';
+                    $this->supervisor_location = 'Others';
+                    break;
+
+                default:
+                    $this->supervisor_location = $user->supervisor_location;
+                    break;
+            }
+        } else {
+            $this->is_supervisor = false;
+        }
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
 
-public function email() {
-    return view('admin.email');
-}
-
-public function sendmail() {
-
-    $users =User::all();
-
-    foreach ($users as $user) {
-
-        $details = [];
-        $details['name'] = $user->name;
-        $details['reg_no'] = $user->reg_no;
-        $this->email = $user->email;
-        Mail::send('emails.welcomemail', $details , function($message){
-            $message->to($this->email)->subject('Welcome To School of Ministry 2021');
-        });
-
+    public function email()
+    {
+        return view('admin.email');
     }
-    return view('admin.email');
-}
+
+    public function sendmail()
+    {
+
+        $users = User::all();
+
+        foreach ($users as $user) {
+
+            $details = [];
+            $details['name'] = $user->name;
+            $details['reg_no'] = $user->reg_no;
+            $this->email = $user->email;
+            Mail::send('emails.welcomemail', $details, function ($message) {
+                $message->to($this->email)->subject('Welcome To School of Ministry 2021');
+            });
+        }
+        return view('admin.email');
+    }
 
 
     public function index()
     {
-        $user = Auth::user();
-        if ($user->isSupervisor()) {
-            $members = Member::where('centre', $user->supervisor_location)->count();
-            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
-                $query->where('centre', $user->supervisor_location);
+        if ($this->is_supervisor) {
+            $members = Member::where('centre', $this->supervisor_location)->region($this->supervisor_region)->count();
+            $paidmembers = Payment::whereHas('user.member', function ($query) {
+                $query->where('centre', $this->supervisor_location);
+                $query->region($this->supervisor_region);
             })->distinct('user_id')->count();
-            $revenuengn = Payment::whereHas('user.member', function ($query) use ($user) {
-                $query->where('centre', $user->supervisor_location);
+            $revenuengn = Payment::whereHas('user.member', function ($query) {
+                $query->where('centre', $this->supervisor_location);
+                $query->region($this->supervisor_region);
             })->sum('requested_amount');
         } else {
             $members = Member::count();
@@ -63,31 +101,71 @@ public function sendmail() {
         return view('admin.index', compact('members', 'paidmembers', 'revenuengn'));
     }
 
-    public function announcement(){
+    public function announcement()
+    {
         return view('admin.announcement');
     }
 
     public function regstudent()
     {
-        $user = Auth::user();
-        if ($user->isSupervisor()) {
-
-            $members = Member::where('centre', $user->supervisor_location)->join('payments', 'members.user_id', '=', 'payments.user_id')
-                ->select('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
-                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'payments.requested_amount')
+        if ($this->is_supervisor) {
+            $members = Member::where('centre', $this->supervisor_location)->leftJoin('payments', 'members.user_id', '=', 'payments.user_id')
+                ->join('users', 'users.id', '=', 'members.user_id')
+                ->select(
+                    'members.surname',
+                    'members.firstname',
+                    'members.othername',
+                    'members.phonenumber',
+                    'members.email',
+                    'members.marital_status',
+                    'members.gender',
+                    'members.is_born_again',
+                    'members.born_again_time',
+                    'members.is_spirit_filled',
+                    'members.current_church',
+                    'members.reason',
+                    'members.expectation',
+                    'members.centre',
+                    'members.address',
+                    'members.payment',
+                    'members.paymenttype',
+                    'members.region',
+                    'users.reg_no',
+                    DB::raw('SUM(payments.requested_amount) as total_payments')
+                )
+                ->region($this->supervisor_region)
+                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'users.reg_no', 'payments.requested_amount')
                 ->get();
-
-            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
-                $query->where('centre', $user->supervisor_location);
+            $paidmembers = Payment::whereHas('user.member', function ($query) {
+                $query->where('centre', $this->supervisor_location);
+                $query->region($this->supervisor_region);
             })->get();
         } else {
-
-            $members = Member::join('payments', 'members.user_id', '=', 'payments.user_id')
-
-                ->join('users', 'users.id','=','members.user_id')
-                ->select('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region',
-                'users.reg_no', DB::raw('SUM(payments.requested_amount) as total_payments'))
-                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region','users.reg_no', 'payments.requested_amount')
+            $members = Member::leftJoin('payments', 'members.user_id', '=', 'payments.user_id')
+                ->join('users', 'users.id', '=', 'members.user_id')
+                ->select(
+                    'members.surname',
+                    'members.firstname',
+                    'members.othername',
+                    'members.phonenumber',
+                    'members.email',
+                    'members.marital_status',
+                    'members.gender',
+                    'members.is_born_again',
+                    'members.born_again_time',
+                    'members.is_spirit_filled',
+                    'members.current_church',
+                    'members.reason',
+                    'members.expectation',
+                    'members.centre',
+                    'members.address',
+                    'members.payment',
+                    'members.paymenttype',
+                    'members.region',
+                    'users.reg_no',
+                    DB::raw('SUM(payments.requested_amount) as total_payments')
+                )
+                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'users.reg_no', 'payments.requested_amount')
                 ->get();
             $paidmembers = Payment::all();
         }
@@ -97,11 +175,11 @@ public function sendmail() {
 
     public function paidstudent()
     {
-        $user = Auth::user();
-        if ($user->isSupervisor()) {
-            $members = Member::where('centre', $user->supervisor_location)->get();
-            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
-                $query->where('centre', $user->supervisor_location);
+        if ($this->is_supervisor) {
+            $members = Member::where('centre', $this->supervisor_location)->region($this->supervisor_region)->get();
+            $paidmembers = Payment::whereHas('user.member', function ($query) {
+                $query->where('centre', $this->supervisor_location);
+                $query->region($this->supervisor_region);
             })->get();
         } else {
             $members = Member::all();
@@ -113,25 +191,22 @@ public function sendmail() {
 
     public function unpaidstudent()
     {
-        $user = Auth::user();
-        if ($user->isSupervisor()) {
+        if ($this->is_supervisor) {
 
-            $members = Member::where('centre', $user->supervisor_location)->join('payments', 'members.user_id', '!=', 'payments.user_id')
-                ->select('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
-                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'payments.requested_amount')
+            $members = Member::where('centre', $this->supervisor_location)->region($this->supervisor_region)->where('payment_status', '!=', PaymentStatus::PAID)->join('payments', 'members.user_id', '!=', 'payments.user_id')
+                ->join('users', 'users.id', '=', 'members.user_id')
+                ->select('users.reg_no','members.surname','members.user_id', 'members.payment', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
+                ->groupBy('users.reg_no','members.surname','members.user_id', 'members.payment', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region')
                 ->get();
-
-            $paidmembers = Payment::whereHas('user.member', function ($query) use ($user) {
-                $query->where('centre', $user->supervisor_location);
-            })->get();
         } else {
             $members = Member::join('payments', 'members.user_id', '!=', 'payments.user_id')
-                ->select('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
-                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'payments.requested_amount')
+                ->join('users', 'users.id', '=', 'members.user_id')
+                ->where('payment_status', '!=', PaymentStatus::PAID)
+                ->select('users.reg_no', 'members.surname','members.user_id', 'members.payment', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', DB::raw('SUM(payments.requested_amount) as total_payments'))
+                ->groupBy('users.reg_no', 'members.surname','members.user_id', 'members.payment', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region')
                 ->get();
-            $paidmembers = Payment::all();
-    }
-             return view('admin.unpaidstudent', compact('members', 'paidmembers'));
+        }
+        return view('admin.unpaidstudent', compact('members'));
     }
 
     public function assignment()
@@ -154,7 +229,7 @@ public function sendmail() {
     public function showClassroom($id, $type)
     {
         $livestream = Livestream::where('status', 'started')->first();
-        return view('admin.indexclassroom', compact('livestream','type'));
+        return view('admin.indexclassroom', compact('livestream', 'type'));
     }
 
     public function test()

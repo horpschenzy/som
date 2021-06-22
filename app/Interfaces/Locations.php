@@ -9,13 +9,15 @@ interface Locations {
         'AGRICOLA' => 'Agricola',
         'AKURE' => 'Akure',
         'ONDO' => 'Ondo',
-        'OSHOGBO' => 'Osogbo'
+        'OSHOGBO' => 'Osogbo',
+        'OTHERS-NG' => 'Others-ng'
 
     ];
     const IN = [
         'US' => 'US',
         'EUROPE' => 'Europe',
         'ASIA' => 'Asia',
-        'UAE' => 'UAE'
+        'UAE' => 'UAE',
+        'OTHERS-IN' => 'Others-in'
     ];
 }
