@@ -22,6 +22,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('member.elective')}}" class=" waves-effect">
+                        <i class="mdi mdi-book-multiple"></i>
+                        <span>Elective</span>
+                    </a>
+                </li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-folder-account-outline"></i>
                         <span>Exam and Test</span>

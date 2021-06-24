@@ -60,6 +60,8 @@ Route::middleware(['auth'])->group(function () {
         // Route::get('/member/assignment', 'MemberController@assignment')->name('member.assignment');
         Route::get('/member/assignment', 'AssignmentController@memberAssignment')->name('member.assignment');
         Route::post('/member/profile/save', 'MemberController@updateProfile')->name('member.profile.update');
+        route::get('/viewelective', 'ElectiveController@show')->name('member.elective');
+        route::post('/storeelective', 'ElectiveController@memberstore');
 
         Route::get('/member/result', 'MemberController@result')->name('member.result');
         Route::post('/member/password/change', 'MemberController@changePassword')->name('member.password.change');
@@ -75,9 +77,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/unpaidstudent', 'AdminController@unpaidstudent')->name('unpaidstudent');
         Route::get('/announcement', 'AnnouncementController@index')->name('announcement');
         Route::get('/attendance', 'AttendanceController@index')->name('attendance');
+        //ADMIN ELECTIVES
+        Route::get('/elective', 'ElectiveController@create')->name('elective');
+        Route::POST('/elective', 'ElectiveController@store');
+
 
         //ADMIN ASSIGNMENT
-        route::get('/assignment', 'AssignmentController@index')->name('assignment');
+        Route::get('/assignment', 'AssignmentController@index')->name('assignment');
         Route::post('/assignment', 'AssignmentController@store');
         Route::post('edit/assignment/{id}', 'AssignmentController@update');
         Route::post('delete/assignment', 'AssignmentController@deleteAssignment');
