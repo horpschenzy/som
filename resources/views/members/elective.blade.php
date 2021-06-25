@@ -63,7 +63,11 @@
                                                 <td>{{$item->name}}</td>
                                                 <td>{{$item->Description}}</td>
                                                 <td> <div class="form-check form-switch form-switch-lg" dir="ltr">
-                                                    <input type="checkbox" name="elective" class="form-check-input" id="customSwitchsizelg">
+                                                    @if ($studentrestricted)
+                                                    <input type="radio" {{ ($item->id == $studentrestricted->elective_id) ? 'checked' : '' }} name="restricted" value="{{ $item->id }}" class="form-check-input" id="customSwitchsizelg">
+                                                    @else
+                                                    <input type="radio" name="restricted" value="{{ $item->id }}" class="form-check-input" id="customSwitchsizelg">
+                                                    @endif
                                                 </div></td>
                                             </tr>
                                         @endforeach
@@ -99,7 +103,7 @@
                                                 <td>{{$special->name}}</td>
                                                 <td>{{$special->Description}}</td>
                                                 <td> <div class="form-check form-switch form-switch-lg" dir="ltr">
-                                                    <input type="checkbox" {{ in_array($special->id, $specialids) ? 'checked' : '' }} name="specials[]" value="{{ $special->id }}" class="form-check-input" id="customSwitchsizelg">
+                                                    <input type="radio" {{ in_array($special->id, $specialids) ? 'checked' : '' }} name="special{{ $special->grade }}" value="{{ $special->id }}" class="form-check-input" id="customSwitchsizelg" required>
                                                 </div></td>
                                             </tr>
                                         @endforeach

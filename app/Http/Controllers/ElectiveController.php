@@ -69,9 +69,11 @@ class ElectiveController extends Controller
 
         $validate  = Validator::make($request->all(), [
             'restricted' => 'required',
-            'specials.0' => 'required',
+            'special1' => 'required',
+            'special2' => 'required',
         ], [
-            'specials.0.required' => 'Kindly select at least one special elective.'
+            'special1.required' => 'Kindly select at least one special elective from the first group.',
+            'special2.required' => 'Kindly select at least one special elective from the first group.',
         ]);
         if($validate->fails()){
             $notification = array(
@@ -80,7 +82,7 @@ class ElectiveController extends Controller
             );
             return redirect()->back()->with($notification);
         }
-        $specials = $request->specials;
+        // $specials = $request->specials;
         $member = Member::where('user_id', Auth::id())->first();
         $check_if_registered = StudentSubject::where('user_id', Auth::id())->where('type', 'RESTRICTED')->first();
         if ($check_if_registered) {
@@ -101,16 +103,23 @@ class ElectiveController extends Controller
             $elective->save();
         }
 
-        if ($specials) {
-            foreach ($specials as $special) {
+        // if ($specials) {
+            // foreach ($specials as $special) {
                 $elective = new StudentSubject;
                 $elective->member_id = $member->id;
                 $elective->user_id = Auth::id();
-                $elective->elective_id = $special;
+                $elective->elective_id = $request->special1;
                 $elective->type = 'SPECIAL';
                 $elective->save();
-            }
-        }
+
+                $elective = new StudentSubject;
+                $elective->member_id = $member->id;
+                $elective->user_id = Auth::id();
+                $elective->elective_id = $request->special2;
+                $elective->type = 'SPECIAL';
+                $elective->save();
+            // }
+        // }
 
         $notification = array(
             'message' => 'Course Added Successfully!',
