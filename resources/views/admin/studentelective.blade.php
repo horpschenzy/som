@@ -16,68 +16,7 @@
     <div class="page-content">
         <div class="container-fluid">
 
-            <!-- start page title -->
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="page-title-box">
-                        <h4>Choose Elective</h4>
-                            <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Electives</li>
-                            </ol>
-                    </div>
-                </div>
-
-            </div>
             <!-- end page title -->
-
-            <!-- end page title -->
-            <div class="row">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            @include('flash')
-                            <div class="card-body">
-                                <form method="POST" action="/elective">
-                                    @csrf
-                                    <div class="card-body">
-                                        <div class="mb-3 row">
-                                            <label for="text-input" class="col-md-2 col-form-label">Elective Name</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" required type="text" value="{{old('name')}}" name="name" id="text-input">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="text-input" class="col-md-2 col-form-label">Elective Type</label>
-                                            <div class="col-md-10">
-                                                <select name="type" id="" class="form-control" required>
-                                                    <option selected disabled>Choose Elective Type</option>
-                                                    <option value="RESTRICTED">RESTRICTED ELECTIVE COURSE</option>
-                                                    <option value="SPECIAL">SPECIAL ELECTIVE COURSES</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="example-url-input" class="col-md-2 col-form-label">Description</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" required value="{{old('description')}}" name="description"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-center mb-3">
-                                        <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add Elective
-                                        </button>
-                                    </div>
-                                </form>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-12">
@@ -88,24 +27,32 @@
                                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <th>ID</th>
+                                        <th>Reg No</th>
                                         <th>Special Elective</th>
                                         <th>Restricted Elective</th>
+                                        <th>Centre</th>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>4</td>
-                                            <td>Special</td>
+                                            <td>REG/SOM/2010/003</td>
                                             <td>Nil</td>
+                                            <td>PWP – Project Writing and Presentation</td>
+                                            <td>Ife-ife</td>
                                         </tr>
                                         <tr>
                                             <td>5</td>
-                                            <td>Nil</td>
-                                            <td>Restricted</td>
+                                            <td>REG/SOM/2010/003</td>
+                                            <td>PWP – Project Writing and Presentation</td>
+                                            <td>MMM – Media & Music in Ministry</td>
+                                            <td>Ile-ife</td>
                                         </tr>
                                         <tr>
                                             <td>6</td>
-                                            <td>Special</td>
-                                            <td>Restricted</td>
+                                            <td>REG/SOM/2010/003</td>
+                                            <td>PWP – Project Writing and Presentation</td>
+                                            <td>PWP – Project Writing and Presentation / MMM – Media & Music in Ministry</td>
+                                            <td>Ikeja</td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -26,7 +26,7 @@
             <!-- end page title -->
             <form action="/storeelective" method="POST">
                  @csrf
-                <div class="row-col-md-12">
+                {{-- <div class="row-col-md-12">
                     <div class="card">
                         <div class="card-body">
                             <h5>Restricted Elective</h5>
@@ -39,6 +39,40 @@
                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="row">
+                    <div class="col-12">
+                        @include('flash')
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Restricted Elective</h5>
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach ($restricted as $item)
+                                            <tr>
+                                                <td>{{$item->name}}</td>
+                                                <td>{{$item->Description}}</td>
+                                                <td> <div class="form-check form-switch form-switch-lg" dir="ltr">
+                                                    <input type="checkbox" name="elective" class="form-check-input" id="customSwitchsizelg">
+                                                </div></td>
+                                            </tr>
+                                        @endforeach
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
                     </div>
                 </div>
