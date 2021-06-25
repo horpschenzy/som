@@ -80,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
         //ADMIN ELECTIVES
         Route::get('/elective', 'ElectiveController@create')->name('elective');
         Route::POST('/elective', 'ElectiveController@store');
+        Route::get('/studentelective', 'ElectiveController@studentelective')->name('studentelective');
 
 
         //ADMIN ASSIGNMENT

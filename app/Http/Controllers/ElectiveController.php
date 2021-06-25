@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Validator;
 
 class ElectiveController extends Controller
 {
+
+    public function studentelective()
+    {
+        return view('admin.studentelective');
+
+    }
     public function create()
     {
         return view('admin.elective');

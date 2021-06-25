@@ -62,10 +62,21 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('elective')}}" class="wave-effect">
-                    <i class="mdi mdi-teach"></i>
-                    <span>Elective</span>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-folder-multiple"></i>
+                        <span>Electives</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('elective')}}">
+                            <i class="mdi mdi-folder-move"></i>
+                            Add Elective</a>
+                        </li>
+                        <li><a href="{{route('studentelective')}}">
+                            <i class="mdi mdi-television"></i>
+                            <span> View Elective</span>
+                           </a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{{ route('assignment')}}" class="wave-effect">
