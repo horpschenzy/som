@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Member;
 use App\Elective;
+use App\StudentSubject;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ElectiveController extends Controller
 {
@@ -16,7 +20,16 @@ class ElectiveController extends Controller
     {
         $restricted = Elective::where('type', 'RESTRICTED')->get();
         $specials = Elective::where('type', 'SPECIAL')->get();
-        return view('members.elective', compact('restricted','specials'));
+        $studentrestricted = StudentSubject::where('user_id', Auth::id())->where('type', 'RESTRICTED')->first();
+        $studentspecials = StudentSubject::where('user_id', Auth::id())->where('type', 'SPECIAL')->get();
+
+        $specialids = [];
+        if ($studentspecials) {
+            foreach ($studentspecials as $studentspecial) {
+                $specialids[] = $studentspecial->elective_id;
+            }
+        }
+        return view('members.elective', compact('restricted','specials', 'studentrestricted', 'specialids'));
     }
 
     public function store(Request $request)
@@ -45,28 +58,62 @@ class ElectiveController extends Controller
 
     public function memberstore(Request $request) {
 
-        dd($request);
+        // dd($request->all());
 
-        $this->validate($request,[
-            'name' => 'required',
-            'type' => 'required',
-            'reg_no' => 'required',
-            'description'
+
+        $validate  = Validator::make($request->all(), [
+            'restricted' => 'required',
+            'specials.0' => 'required',
+        ], [
+            'specials.0.required' => 'Kindly select at least one special elective.'
         ]);
+        if($validate->fails()){
+            $notification = array(
+                'message' => $validate->messages()->first(),
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+        $specials = $request->specials;
+        $member = Member::where('user_id', Auth::id())->first();
+        $check_if_registered = StudentSubject::where('user_id', Auth::id())->where('type', 'RESTRICTED')->first();
+        if ($check_if_registered) {
+            StudentSubject::where('user_id', Auth::id())->where('type', 'RESTRICTED')
+                                         ->update(['elective_id'=>$request->input('restricted')]);
+            $check_if_registered_special = StudentSubject::where('user_id', Auth::id())->where('type', 'SPECIAL')->first();
 
-        $elective = new Elective;
-        $elective->name = $request->input('name');
-        $elective->type = $request->input('type');
-        $elective->description = $request->input('description');
+            if ($check_if_registered_special) {
+                StudentSubject::where('user_id', Auth::id())->where('type', 'SPECIAL')->delete();
+            }
+        }
+        else{
+            $elective = new StudentSubject;
+            $elective->member_id = $member->id;
+            $elective->user_id = Auth::id();
+            $elective->elective_id = $request->input('restricted');
+            $elective->type = 'RESTRICTED';
+            $elective->save();
+        }
 
-        if ($elective->save())
+        if ($specials) {
+            foreach ($specials as $special) {
+                $elective = new StudentSubject;
+                $elective->member_id = $member->id;
+                $elective->user_id = Auth::id();
+                $elective->elective_id = $special;
+                $elective->type = 'SPECIAL';
+                $elective->save();
+            }
+        }
 
         $notification = array(
-            'message' => 'Assignment Added Successfully!',
+            'message' => 'Course Added Successfully!',
             'alert-type' => 'success'
         );
 
-        return view('admin.elective')->with($notification);
+        return back()->with($notification);
+
+
 
 
     }
