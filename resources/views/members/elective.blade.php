@@ -30,14 +30,14 @@
                     <div class="card">
                         <div class="card-body">
                             <h5>Restricted Elective</h5>
-                            <select class="form-control" name="retricted" id="">
-                                <option disable>Choose Restricted Elective</option>
+                            <select class="form-control" name="restricted" id="" required>
+                                <option value="">Choose Restricted Elective</option>
                                 @foreach ($restricted as $item)
-                                <option value="{{$item->name}}">{{$item->name}}</option>
+                                    @if ($studentrestricted)
+                                    <option {{ ($item->id == $studentrestricted->elective_id) ? 'selected' : '' }} value="{{$item->id}}">{{$item->name}}</option>
+                                    @endif
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach
-
-
-
                             </select>
                         </div>
                     </div>
@@ -60,11 +60,12 @@
 
                                     <tbody>
                                         @foreach ($specials as $special)
+
                                             <tr>
                                                 <td>{{$special->name}}</td>
                                                 <td>{{$special->Description}}</td>
                                                 <td> <div class="form-check form-switch form-switch-lg" dir="ltr">
-                                                    <input type="checkbox" name="elective" class="form-check-input" id="customSwitchsizelg">
+                                                    <input type="checkbox" {{ in_array($special->id, $specialids) ? 'checked' : '' }} name="specials[]" value="{{ $special->id }}" class="form-check-input" id="customSwitchsizelg">
                                                 </div></td>
                                             </tr>
                                         @endforeach
