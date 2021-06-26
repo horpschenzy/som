@@ -55,4 +55,9 @@ class User extends Authenticatable
     public function isStudent(){
         return $this->user_type == UserTypes::STUDENT;
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class,'user_id','id');
+    }
 }
