@@ -21,7 +21,8 @@ class ElectiveController extends Controller
     }
     public function create()
     {
-        return view('admin.elective');
+        $electives = Elective::all();
+        return view('admin.elective', compact('electives'));
     }
 
     public function show()
