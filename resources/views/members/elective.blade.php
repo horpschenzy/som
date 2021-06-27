@@ -24,7 +24,7 @@
             <!-- end page title -->
 
             <!-- end page title -->
-            <form action="/storeelective" method="POST">
+            <form action="{{ route('elective.store') }}" method="POST">
                  @csrf
                 {{-- <div class="row-col-md-12">
                     <div class="card">
@@ -66,7 +66,7 @@
                                                     @if ($studentrestricted)
                                                     <input type="radio" {{ ($item->id == $studentrestricted->elective_id) ? 'checked' : '' }} name="restricted" value="{{ $item->id }}" class="form-check-input" id="customSwitchsizelg">
                                                     @else
-                                                    <input type="radio" name="restricted" value="{{ $item->id }}" class="form-check-input" id="customSwitchsizelg">
+                                                    <input type="radio" name="restricted" checked value="{{ $item->id }}" class="form-check-input" id="customSwitchsizelg">
                                                     @endif
                                                 </div></td>
                                             </tr>
@@ -103,7 +103,7 @@
                                                 <td>{{$special->name}}</td>
                                                 <td>{{$special->Description}}</td>
                                                 <td> <div class="form-check form-switch form-switch-lg" dir="ltr">
-                                                    <input type="radio" {{ in_array($special->id, $specialids) ? 'checked' : '' }} name="special{{ $special->grade }}" value="{{ $special->id }}" class="form-check-input" id="customSwitchsizelg" required>
+                                                    <input type="radio" {{ in_array($special->id, $specialids) ? 'checked' : '' }} name="special-{{ $special->id }}" value="{{ $special->id }}" class="form-check-input special-elective" id="customSwitchsizelg">
                                                 </div></td>
                                             </tr>
                                         @endforeach
@@ -111,7 +111,7 @@
 
                                     </tbody>
                                 </table>
-                                <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                <button type="submit" id="special-elective-btn" class="btn btn-primary w-100" disabled>Submit</button>
                             </div>
 
                         </div>
@@ -153,6 +153,36 @@
 
 <!-- App js -->
 <script src="{{asset('assets/js/app.js')}}"></script>
+<script type="text/javascript">
+var selectedElectives = [];
+    (function ($) {
+    "use strict";
+
+    
+    $('body .special-elective').on("click", function(){
+        let value = $(this).val();
+        let selectedElectivesCount = $('body .special-elective:checked').length;
+
+        if(selectedElectivesCount < 2){
+            $('#special-elective-btn').prop('disabled',true);
+        }
+        else if(selectedElectivesCount == 2){
+            $('#special-elective-btn').prop('disabled',false);
+        }
+        else if( selectedElectivesCount > 2){
+            $('body .special-elective[value="'+selectedElectives[0]+'"]').prop('checked',false);
+            selectedElectives.shift(1)
+        }
+
+        if(selectedElectives.indexOf(value) === -1){
+            selectedElectives.push(value);            
+        }
+
+        
+    });
+})(jQuery);
+</script>
+
 
 
 @endpush

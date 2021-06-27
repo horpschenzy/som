@@ -61,7 +61,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/member/assignment', 'AssignmentController@memberAssignment')->name('member.assignment');
         Route::post('/member/profile/save', 'MemberController@updateProfile')->name('member.profile.update');
         route::get('/viewelective', 'ElectiveController@show')->name('member.elective');
-        route::post('/storeelective', 'ElectiveController@memberstore');
+        route::post('/storeelective', 'ElectiveController@memberstore')->name('elective.store');
 
         Route::get('/member/result', 'MemberController@result')->name('member.result');
         Route::post('/member/password/change', 'MemberController@changePassword')->name('member.password.change');

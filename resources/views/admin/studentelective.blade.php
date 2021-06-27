@@ -33,14 +33,35 @@
                                         <th>Centre</th>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>REG/SOM/2010/003</td>
-                                            <td>Nil</td>
-                                            <td>PWP – Project Writing and Presentation</td>
-                                            <td>Ife-ife</td>
-                                        </tr>
-                                        <tr>
+                                        @if ($student_electives)
+                                            @foreach ($student_electives as $student_elective)
+
+                                                <tr>
+                                                    <td>{{ $student_elective->id }}</td>
+                                                    <td>{{ $student_elective->reg_no }}</td>
+                                                    <td>
+                                                        @if ($student_elective->electives)
+                                                            <ul>
+                                                            @foreach ($student_elective->electives as $item)
+                                                                @if($item->elective->type == 'SPECIAL')
+                                                                <li> {{$item->elective->name}} </li>
+                                                                @endif
+                                                            @endforeach
+                                                            </ul>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($student_elective->electives)
+                                                            @foreach ($student_elective->electives as $item)
+                                                                {{ ($item->elective->type == 'RESTRICTED')? $item->elective->name : ''}}
+                                                            @endforeach
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ $student_elective->member->centre }}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                        {{-- <tr>
                                             <td>5</td>
                                             <td>REG/SOM/2010/003</td>
                                             <td>PWP – Project Writing and Presentation</td>
@@ -53,7 +74,7 @@
                                             <td>PWP – Project Writing and Presentation</td>
                                             <td>PWP – Project Writing and Presentation / MMM – Media & Music in Ministry</td>
                                             <td>Ikeja</td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>

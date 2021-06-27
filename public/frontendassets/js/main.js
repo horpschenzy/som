@@ -835,4 +835,9 @@
         resetPaymentType();
         handlePaymentTypeChange();
     });
+
+    $('body .special-elective').on("click", function(){
+        alert("ok");
+        console.log($('body .special-elective').length)
+    });
 })(jQuery);
