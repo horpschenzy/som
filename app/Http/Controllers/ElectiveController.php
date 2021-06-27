@@ -122,7 +122,7 @@ class ElectiveController extends Controller
         // }
 
         $notification = array(
-            'message' => 'Course Added Successfully!',
+            'message' => 'Elective Added Successfully!',
             'alert-type' => 'success'
         );
 
