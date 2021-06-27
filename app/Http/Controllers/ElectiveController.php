@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Member;
 use App\Elective;
 use App\StudentSubject;
@@ -14,7 +15,9 @@ class ElectiveController extends Controller
 
     public function studentelective()
     {
-        return view('admin.studentelective');
+        $student_electives = User::with('member')->whereHas('electives')->with('electives')->where('user_type', 'STUDENT')->get();
+        // dd($student_electives);
+        return view('admin.studentelective', compact('student_electives'));
     }
     public function create()
     {
