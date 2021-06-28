@@ -45,6 +45,8 @@ Route::get('/invoice', 'FrontendController@invoice')->name('frontend.invoice');
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 Route::get('/payment/backfill', 'PaymentController@backfill');
+Route::get('/payment/giveUsersDueAccess', 'PaymentController@giveUsersDueAccess');
+
 
 
 
