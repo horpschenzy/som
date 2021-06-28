@@ -84,32 +84,30 @@
                     <div class="card">
                         @include('flash')
                         <div class="card-body">
+                            @if (count($electives))
                             <div class="table-responsive">
                                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
-                                        <th>ID</th>
-                                        <th>Special Elective</th>
-                                        <th>Restricted Elective</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Elective Type</th>
                                     </thead>
                                     <tbody>
+                                        @foreach ($electives as $elective)
                                         <tr>
-                                            <td>4</td>
-                                            <td>Special</td>
-                                            <td>Nil</td>
+                                            <td>{{$elective->name}}</td>
+                                            <td>{{$elective->Description}}</td>
+                                            <td>{{$elective->type}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Nil</td>
-                                            <td>Restricted</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Special</td>
-                                            <td>Restricted</td>
+                                        @endforeach
+
+
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
+                            @else ( No Data Electives)
+                            @endif
                         </div>
                     </div>
                 </div>
