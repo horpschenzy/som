@@ -58,7 +58,7 @@
                                                 <td>{{ $paidmember->firstname }}</td>
                                                 <td>{{ $paidmember->user->reg_no}}</td>
                                                 <td>{{ @$paidmember->member->centre}}</td>
-                                                <td>{{ $paidmember->member->region == "NG" ? 'Nigeria' : 'International'  }}</td>
+                                                <td>{{ @$paidmember->member->region == "NG" ? 'Nigeria' : 'International'  }}</td>
                                                 <td>{{ ($paidmember->requested_amount) / 100 }}</td>
                                                 <td> {{ $paidmember->description }}</td>
                                             </tr>
