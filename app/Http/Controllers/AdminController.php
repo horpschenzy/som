@@ -176,16 +176,14 @@ class AdminController extends Controller
     public function paidstudent()
     {
         if ($this->is_supervisor) {
-            $members = Member::where('centre', $this->supervisor_location)->region($this->supervisor_region)->get();
-            $paidmembers = Payment::whereHas('user.member', function ($query) {
+            $paidmembers = Payment::with('member')->whereHas('user.member', function ($query) {
                 $query->where('centre', $this->supervisor_location);
                 $query->region($this->supervisor_region);
             })->get();
         } else {
-            $members = Member::all();
-            $paidmembers = Payment::all();
+            $paidmembers = Payment::with('member')->get();
         }
-        return view('admin.paidstudent', compact('members', 'paidmembers'));
+        return view('admin.paidstudent', compact('paidmembers'));
     }
 
 

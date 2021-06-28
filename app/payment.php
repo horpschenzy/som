@@ -13,6 +13,6 @@ class Payment extends Model
 
     public function member()
     {
-        return $this->belongsTo(Member::class);
+        return $this->hasOneThrough(Member::class,User::class,'id', 'id');
     }
 }

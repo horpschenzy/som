@@ -44,6 +44,8 @@
                                             <th>Surname</th>
                                             <th>Firstname</th>
                                             <th>Reg Number</th>
+                                            <th>Centre</th>
+                                            <th>Region</th>
                                             <th>Amount</th>
                                             <th>Description</th>
                                         </tr>
@@ -55,6 +57,8 @@
                                                 <td>{{ $paidmember->surname }}</td>
                                                 <td>{{ $paidmember->firstname }}</td>
                                                 <td>{{ $paidmember->user->reg_no}}</td>
+                                                <td>{{ @$paidmember->member->centre}}</td>
+                                                <td>{{ $paidmember->member->region == "NG" ? 'Nigeria' : 'International'  }}</td>
                                                 <td>{{ ($paidmember->requested_amount) / 100 }}</td>
                                                 <td> {{ $paidmember->description }}</td>
                                             </tr>
