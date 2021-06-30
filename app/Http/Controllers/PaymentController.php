@@ -479,8 +479,8 @@ class PaymentController extends Controller
 
         if ($payment->status) {
             $amount_left = getAmountToPay($payment->user_id);
-            $initial_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('INITIAL_PAYMENT_CUTOFF'));
-            $final_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('FINAL_PAYMENT_CUTOFF'));
+            // $initial_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('INITIAL_PAYMENT_CUTOFF'));
+            // $final_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('FINAL_PAYMENT_CUTOFF'));
 
             if ($amount_left == 0) {
                 User::where('id', $payment->user_id)->update([
@@ -489,7 +489,7 @@ class PaymentController extends Controller
                 Member::where('user_id', $payment->user_id)->update([
                     'payment_status' => PaymentStatus::PAID
                 ]);
-            } elseif ($amount_left <= PaymentAmounts::SMALL_INSTALLMENT && Carbon::now()->lessThan($final_payment_cutoff)) {
+            } elseif ($amount_left <= PaymentAmounts::SMALL_INSTALLMENT) {
                 User::where('id', $payment->user_id)->update([
                     'access' => 1
                 ]);
