@@ -21,7 +21,8 @@ class ElectiveController extends Controller
     }
     public function create()
     {
-        return view('admin.elective');
+        $electives = Elective::all();
+        return view('admin.elective', compact('electives'));
     }
 
     public function show()
@@ -125,7 +126,7 @@ class ElectiveController extends Controller
 
 
         $notification = array(
-            'message' => 'Course Added Successfully!',
+            'message' => 'Elective Added Successfully!',
             'alert-type' => 'success'
         );
 

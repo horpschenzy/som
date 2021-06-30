@@ -479,8 +479,8 @@ class PaymentController extends Controller
 
         if ($payment->status) {
             $amount_left = getAmountToPay($payment->user_id);
-            $initial_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('INITIAL_PAYMENT_CUTOFF'));
-            $final_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('FINAL_PAYMENT_CUTOFF'));
+            // $initial_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('INITIAL_PAYMENT_CUTOFF'));
+            // $final_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('FINAL_PAYMENT_CUTOFF'));
 
             if ($amount_left == 0) {
                 User::where('id', $payment->user_id)->update([
@@ -489,7 +489,7 @@ class PaymentController extends Controller
                 Member::where('user_id', $payment->user_id)->update([
                     'payment_status' => PaymentStatus::PAID
                 ]);
-            } elseif ($amount_left <= PaymentAmounts::SMALL_INSTALLMENT && Carbon::now()->lessThan($final_payment_cutoff)) {
+            } elseif ($amount_left <= PaymentAmounts::SMALL_INSTALLMENT) {
                 User::where('id', $payment->user_id)->update([
                     'access' => 1
                 ]);
@@ -504,6 +504,31 @@ class PaymentController extends Controller
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
+    }
+
+    public function giveUsersDueAccess()
+    {
+        $users = User::with(['member', 'payments'])->get();
+        $bad = 0;
+        foreach ($users as $key => $user) {
+            $total_payments = $user->payments->sum('requested_amount');
+            $user_should_have_access = $total_payments >= PaymentAmounts::BIG_INSTALLMENT ? true : false;
+            if ($user->access) {
+                if (!$user_should_have_access) {
+                    User::where('id',$user->id)->update([
+                        'access' => 0
+                    ]);
+                    echo "<b>Revoked Access</b> for <b>" . $user->name . "</b> because only payment of <b>" . number_format(($total_payments / 100)) . "</b> was found<br/>";
+                }
+            } else {
+                if ($user_should_have_access) {
+                    User::where('id',$user->id)->update([
+                        'access' => 1
+                    ]);
+                    echo "<b>Gave Access</b> to <b>" . $user->name . "</b> because a payment of <b>" . number_format(($total_payments / 100)) . "</b> was found<br/>";
+                }
+            }
+        }
     }
 
     public function backfill()
@@ -573,83 +598,82 @@ class PaymentController extends Controller
                     'region' => in_array($data->centre, ["US", "Europe", "Asia", "UAE"]) ? 'IN' : 'NG',
                     'password' => $data->email
                 ];
-                dump( "Creating new user ", $new_user);
-                $user_controller->store(new Request($new_user));   
+                dump("Creating new user ", $new_user);
+                $user_controller->store(new Request($new_user));
                 $user = User::with(['member', 'payments'])->where('email', $data->email)->first();
             }
             $total_payments = $user->payments->sum('requested_amount');
-                $needs_payment = false;
-                switch ($data->transactionId) {
-                    case 'Successful':
-                        if ($total_payments != $actual_value) {
-                            dump('Successful' . '---' . $total_payments . '---' . $actual_value);
-                            $needs_payment = true;
-                        }
-                        break;
-                    case 'seen/3000':
-                        $actual_value = PaymentAmounts::SMALL_INSTALLMENT;
-                        if ($total_payments != $actual_value) {
-                            dump('seen/3000' . '---' . $total_payments . '---' . $actual_value);
-                            $needs_payment = true;
-                        }
-                        break;
-
-                    case 'seen/6250':
-                        $actual_value = PaymentAmounts::BIG_INSTALLMENT;
-                        if ($total_payments != $actual_value) {
-                            dump('seen/6250' . '---' . $total_payments . '---' . $actual_value);
-                            $needs_payment = true;
-                        }
-
-                        break;
-
-                    default:
-                        dump('eww' . '---' . $data->transactionId . '---' . $total_payments . '---' . $actual_value);
-                        break;
-                }
-                if ($needs_payment) {
-                    dump( "Creating new payment ", $data, $actual_value);
-                    $payment = new Payment;
-                    $payment->transactionId = '';
-                    $payment->status = 'Approved';
-                    $payment->customeremail = $data->email;
-                    $payment->gateway_response = '';
-                    $payment->paid_at = '';
-                    $payment->channel = 'backfill';
-                    $payment->requested_amount = $actual_value;
-                    $payment->currency = 'NGN';
-                    $payment->user_id = $user->id;
-                    $payment->firstname = $data->firstname;
-                    $payment->surname = $data->surname;
-                    $payment->description = $data->payment_type;
-
-                    $payment->save();
-
-
-                    if ($actual_value >= PaymentAmounts::ONE_OFF ) {
-                        User::where('id', $payment->user_id)->update([
-                            'access' => 1
-                        ]);
-                        Member::where('user_id', $payment->user_id)->update([
-                            'payment_status' => PaymentStatus::PAID
-                        ]);
-                    } 
-                    else if ($actual_value >= PaymentAmounts::BIG_INSTALLMENT ) {
-                        User::where('id', $payment->user_id)->update([
-                            'access' => 1
-                        ]);
-                        Member::where('user_id', $payment->user_id)->update([
-                            'payment_status' => PaymentStatus::PARTLY_PAID
-                        ]);
-                    } else{
-                        User::where('id', $payment->user_id)->update([
-                            'access' => 0
-                        ]);
-                        Member::where('user_id', $payment->user_id)->update([
-                            'payment_status' => PaymentStatus::UNPAID
-                        ]);
+            $needs_payment = false;
+            switch ($data->transactionId) {
+                case 'Successful':
+                    if ($total_payments != $actual_value) {
+                        dump('Successful' . '---' . $total_payments . '---' . $actual_value);
+                        $needs_payment = true;
                     }
+                    break;
+                case 'seen/3000':
+                    $actual_value = PaymentAmounts::SMALL_INSTALLMENT;
+                    if ($total_payments != $actual_value) {
+                        dump('seen/3000' . '---' . $total_payments . '---' . $actual_value);
+                        $needs_payment = true;
+                    }
+                    break;
+
+                case 'seen/6250':
+                    $actual_value = PaymentAmounts::BIG_INSTALLMENT;
+                    if ($total_payments != $actual_value) {
+                        dump('seen/6250' . '---' . $total_payments . '---' . $actual_value);
+                        $needs_payment = true;
+                    }
+
+                    break;
+
+                default:
+                    dump('eww' . '---' . $data->transactionId . '---' . $total_payments . '---' . $actual_value);
+                    break;
+            }
+            if ($needs_payment) {
+                dump("Creating new payment ", $data, $actual_value);
+                $payment = new Payment;
+                $payment->transactionId = '';
+                $payment->status = 'Approved';
+                $payment->customeremail = $data->email;
+                $payment->gateway_response = '';
+                $payment->paid_at = '';
+                $payment->channel = 'backfill';
+                $payment->requested_amount = $actual_value;
+                $payment->currency = 'NGN';
+                $payment->user_id = $user->id;
+                $payment->firstname = $data->firstname;
+                $payment->surname = $data->surname;
+                $payment->description = $data->payment_type;
+
+                $payment->save();
+
+
+                if ($actual_value >= PaymentAmounts::ONE_OFF) {
+                    User::where('id', $payment->user_id)->update([
+                        'access' => 1
+                    ]);
+                    Member::where('user_id', $payment->user_id)->update([
+                        'payment_status' => PaymentStatus::PAID
+                    ]);
+                } else if ($actual_value >= PaymentAmounts::BIG_INSTALLMENT) {
+                    User::where('id', $payment->user_id)->update([
+                        'access' => 1
+                    ]);
+                    Member::where('user_id', $payment->user_id)->update([
+                        'payment_status' => PaymentStatus::PARTLY_PAID
+                    ]);
+                } else {
+                    User::where('id', $payment->user_id)->update([
+                        'access' => 0
+                    ]);
+                    Member::where('user_id', $payment->user_id)->update([
+                        'payment_status' => PaymentStatus::UNPAID
+                    ]);
                 }
+            }
 
 
             //Check if member exists, if not create
