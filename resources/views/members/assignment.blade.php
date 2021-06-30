@@ -43,8 +43,13 @@
                                     <tr>
                                         <td>{{ $assignment->id }}</td>
                                         <td>{{ $assignment->topic }}</td>
-                                        <td><a href="{{ $assignment->url }}" target="_blank">{{ $assignment->url }}</a></td>
-                                        <td>{{ ($assignment->submissions) ? $assignment->submissions[0]->score ?? 0 : 0   }}</td>
+                                        <td>
+                                            @if ($assignment->submissions && isset($assignment->submissions[0]))
+                                            DONE
+                                            @else
+                                            <a href="{{ $assignment->url }}" target="_blank">{{ $assignment->url }}</a></td>
+                                            @endif
+                                            <td>{{ ($assignment->submissions) ? $assignment->submissions[0]->score ?? 0 : 0   }}</td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

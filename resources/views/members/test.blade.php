@@ -41,7 +41,13 @@
                                     <tr>
                                         <td>{{ $assignment->id }}</td>
                                         <td>{{ $assignment->topic }}</td>
-                                        <td><a href="{{ $assignment->url }}" target="_blank">{{ $assignment->url }}</a></td>
+                                        <td>
+                                            @if ($assignment->submissions && isset($assignment->submissions[0]))
+                                            DONE
+                                            @else
+                                            <a href="{{ $assignment->url }}" target="_blank">{{ $assignment->url }}</a></td>
+                                            @endif
+                                        </td>
 
 
                                     </tr>
