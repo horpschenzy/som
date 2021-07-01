@@ -1,4 +1,8 @@
 @extends('admin.layouts.app')
+@section('extra-js')
+<script src="https://cdn.jwplayer.com/libraries/LbETsLcA.js"></script>
+
+@endsection
 
 @section('content')
 <div class="main-content">
@@ -31,13 +35,29 @@
                                         <p class="card-title-desc">{{ $livestream->description }}</p>
 
                                         <!-- 1:1 aspect ratio -->
-                                        <div class="ratio ratio-4x3">
+                                        <div class="ratio ratio-21x9">
                                             @if ($type == 'Youtube')
                                                 <iframe src="{{ $livestream->youtube_url }}" title="{{ $livestream->event_name }}" allowfullscreen></iframe>
                                             @elseif ($type == 'Vimeo')
                                                 <iframe src="{{ $livestream->vimeo_url }}" title="{{ $livestream->event_name }}" allowfullscreen></iframe>
                                             @elseif ($type == 'Mixlr')
-                                                <iframe src="{{ $livestream->mixlr_url }}" title="{{ $livestream->event_name }}" width="100%" height="180px" scrolling="no" frameborder="no" marginheight="0" marginwidth="0"></iframe>
+                                                {{-- <iframe src="{{ $livestream->mixlr_url }}" title="{{ $livestream->event_name }}" width="100%" height="180px" scrolling="no" frameborder="no" marginheight="0" marginwidth="0"></iframe> --}}
+                                                <div id="player"></div>
+                                                <script type="text/javascript">
+                                                var playerInstance = jwplayer("player");
+                                                playerInstance.setup({
+                                                    primary: 'html5',
+                                                    playlist: [{
+                                                    sources: [{
+                                                        file: "https://edge.mixlr.com/channel/jokqn",
+                                                        type: 'mp3'
+                                                    }]
+                                                    }],
+                                                    width: 480,
+                                                    height: 40
+                                                });
+                                                </script>
+
                                             @endif
                                         </div>
                                         @else
@@ -67,20 +87,20 @@
 @endsection
 
 @push('scripts')
-        <script src="/admin/assets/libs/jquery/jquery.min.js"></script>
-        <script src="/admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/admin/assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="/admin/assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="/admin/assets/libs/node-waves/waves.min.js"></script>
-        <script src="/admin/assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+        <script src={{asset('assets/libs/jquery/jquery.min.js')}}></script>
+        <script src={{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}></script>
+        <script src={{asset('assets/libs/metismenu/metisMenu.min.js') }}></script>
+        <script src={{ asset('assets/libs/simplebar/simplebar.min.js')}}></script>
+        <script src={{ asset('assets/libs/node-waves/waves.min.js')}}></script>
+        <script src={{ asset('assets/libs/jquery-sparkline/jquery.sparkline.min.js')}}></script>
 
 @endpush
 
 @push('charts')
-        <script src="/admin/assets/libs/morris.js/morris.min.js"></script>
-        <script src="/admin/assets/libs/raphael/raphael.min.js"></script>
+        <script src={{ asset('assets/libs/morris.js/morris.min.js')}}></script>
+        <script src={{ asset('assets/libs/raphael/raphael.min.js')}}></script>
 
-        <script src="/admin/assets/js/pages/dashboard.init.js"></script>
+        <script src={{ asset('assets/js/pages/dashboard.init.js')}}></script>
 
-        <script src="/admin/assets/js/app.js"></script>
+        <script src={{ asset('assets/js/app.js')}}></script>
 @endpush
