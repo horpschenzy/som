@@ -1,5 +1,8 @@
 @extends('members.layouts.app')
+@section('extra-js')
+<script src="https://cdn.jwplayer.com/libraries/LbETsLcA.js"></script>
 
+@endsection
 @section('content')
 <div class="main-content">
     <div class="page-content">
@@ -36,7 +39,22 @@
                                             @elseif ($type == 'Vimeo')
                                                 <iframe src="{{ $livestream->vimeo_url }}" title="{{ $livestream->event_name }}" allowfullscreen></iframe>
                                             @elseif ($type == 'Mixlr')
-                                                <iframe src="{{ $livestream->mixlr_url }}" title="{{ $livestream->event_name }}" width="100%" height="180px" scrolling="no" frameborder="no" marginheight="0" marginwidth="0"></iframe>
+                                                {{-- <iframe src="{{ $livestream->mixlr_url }}" title="{{ $livestream->event_name }}" width="100%" height="180px" scrolling="no" frameborder="no" marginheight="0" marginwidth="0"></iframe> --}}
+                                                <div id="player"></div>
+                                                <script type="text/javascript">
+                                                    var playerInstance = jwplayer("player");
+                                                    playerInstance.setup({
+                                                        primary: 'html5',
+                                                        playlist: [{
+                                                        sources: [{
+                                                            file: "https://edge.mixlr.com/channel/jokqn",
+                                                            type: 'mp3'
+                                                        }]
+                                                        }],
+                                                        width: 480,
+                                                        height: 40
+                                                    });
+                                                </script>
                                             @endif
                                         </div>
                                         @else
