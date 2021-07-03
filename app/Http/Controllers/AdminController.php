@@ -273,6 +273,11 @@ class AdminController extends Controller
         }
         $user->access = 1;
         $user->save();
+
+        DB::table('access_log')->insert([
+            'user_id' => $user->id,
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString()
+        ]);
         return "<div class='alert alert-success alert-block'>
         <strong>".$user->name." has been given access</strong>
     </div>";
