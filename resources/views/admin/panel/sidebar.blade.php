@@ -42,6 +42,11 @@
                             <span>Outstanding Paymemts</span>
                            </a>
                         </li>
+                        <li><a href="{{route('admin.give-access')}}">
+                            <i class="mdi mdi-account"></i>
+                            <span>Give Access</span>
+                           </a>
+                        </li>
                     </ul>
                 </li>
                 <li>

@@ -184,7 +184,7 @@ class FrontendController extends Controller
 
 
     public function globalstore(Request $request)
-    {exit
+    {exit();
         $this->validate($request, [
 
             'surname' => 'required',

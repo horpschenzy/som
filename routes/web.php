@@ -112,6 +112,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/delete/stream', 'LivestreamController@delete');
         Route::get('/sendmail', 'AdminController@sendmail');
         Route::get('/admin/email', 'AdminController@email')->name('admin.email');
+
+        Route::get('/admin/give-access', 'AdminController@giveAccess')->name('admin.give-access');
     });
 
 });
