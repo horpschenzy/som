@@ -256,6 +256,61 @@ class AdminController extends Controller
     {
         return view('admin.profile');
     }
+
+    public function giveAccess()
+    {
+        if($this->is_supervisor){
+            abort(401);
+        }
+        $users = User::where('access',0)->get();
+        return view('admin.give-access', compact('users'));
+    }
+
+    public function processAccess(User $user)
+    {
+        if($this->is_supervisor){
+            abort(401);
+        }
+        $user->access = 1;
+        $user->save();
+        return "<div class='alert alert-success alert-block'>
+        <strong>".$user->name." has been given access</strong>
+    </div>";
+    }
+
+
+    public function getUserDetails(User $user){
+        $member = Member::where('members.user_id',$user->id)
+                ->leftJoin('payments', 'members.user_id', '=', 'payments.user_id')
+                ->join('users', 'users.id', '=', 'members.user_id')
+                ->select(
+                    'members.surname',
+                    'members.firstname',
+                    'members.othername',
+                    'members.phonenumber',
+                    'members.email',
+                    'members.marital_status',
+                    'members.gender',
+                    'members.is_born_again',
+                    'members.born_again_time',
+                    'members.is_spirit_filled',
+                    'members.current_church',
+                    'members.reason',
+                    'members.expectation',
+                    'members.centre',
+                    'members.address',
+                    'members.payment',
+                    'members.paymenttype',
+                    'members.region',
+                    'users.reg_no',
+                    DB::raw('SUM(payments.requested_amount) as total_payments')
+                )
+                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'users.reg_no', 'payments.requested_amount')
+                ->first();
+        return view('admin.partials.user-detail', compact('member'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

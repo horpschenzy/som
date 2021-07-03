@@ -114,6 +114,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/email', 'AdminController@email')->name('admin.email');
 
         Route::get('/admin/give-access', 'AdminController@giveAccess')->name('admin.give-access');
+        Route::get('/admin/get-user-details/{user?}', 'AdminController@getUserDetails')->name('admin.get-user-details');
+        Route::post('/admin/process-access/{user?}', 'AdminController@processAccess')->name('admin.process-access');
+        
+        
     });
 
 });
