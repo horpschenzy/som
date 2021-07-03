@@ -18,6 +18,10 @@
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div class="login-register-wrapper">
                     @include('frontend.inc.message')
+                    <div class="alert alert-danger alert-block">
+                        <strong>Registration is closed</strong>
+                    </div>
+                    {{--  
                     <div class="region-navigator">
                         <a class="active" data-region="NG">Nigerian Students</a>
                         <a data-region="IN">International Students</a>
@@ -70,7 +74,7 @@
 
                         </div>
                     </div>
-
+                    --}}
 
                 </div>
             </div>
