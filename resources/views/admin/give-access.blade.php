@@ -136,7 +136,7 @@
                 $('#give-access').removeClass('d-none');
                 currentUser = $(this).val();
 
-                let userDetailsURL = "{{ secure_url(route('admin.get-user-details',[],false)) }}/" + currentUser;
+                let userDetailsURL = "{{ route('admin.get-user-details',[],false) }}/" + currentUser;
                 
                 $.get(userDetailsURL, function(response){
                     $('#user-detail').html(response);
@@ -150,7 +150,7 @@
                     return false;
                 }
 
-                let url = "{{ secure_url(route('admin.process-access',[],false)) }}/" + currentUser;
+                let url = "{{ route('admin.process-access',[],false) }}/" + currentUser;
                 $.post(url, function(response){
                     $('#select-student option[value="'+currentUser+'"]').remove();
                     $('#user-detail').html(response);
