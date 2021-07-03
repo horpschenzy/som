@@ -262,7 +262,7 @@ class AdminController extends Controller
         if($this->is_supervisor){
             abort(401);
         }
-        $users = User::where('access',0)->get();
+        $users = User::where('access',0)->get(); dd($users);
         return view('admin.give-access', compact('users'));
     }
 

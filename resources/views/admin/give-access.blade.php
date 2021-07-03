@@ -26,7 +26,7 @@
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
                             {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                            <li class="breadcrumb-item active">Paid Students</li>
+                            <li class="breadcrumb-item active">Give Access</li>
                         </ol>
                     </div>
                 </div>
@@ -136,7 +136,8 @@
                 $('#give-access').removeClass('d-none');
                 currentUser = $(this).val();
 
-                let userDetailsURL = "{{ route('admin.get-user-details') }}/" + currentUser;
+                let userDetailsURL = "{{ secure_url(route('admin.get-user-details',[],false)) }}/" + currentUser;
+                
                 $.get(userDetailsURL, function(response){
                     $('#user-detail').html(response);
                 });
@@ -149,7 +150,7 @@
                     return false;
                 }
 
-                let url = "{{ route('admin.process-access') }}/" + currentUser;
+                let url = "{{ secure_url(route('admin.process-access',[],false)) }}/" + currentUser;
                 $.post(url, function(response){
                     $('#select-student option[value="'+currentUser+'"]').remove();
                     $('#user-detail').html(response);
