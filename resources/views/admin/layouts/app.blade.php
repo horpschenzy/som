@@ -12,7 +12,7 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('frontendassets/img/favicon.png')}}">
         {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontendassets/img/favicon.png')}}"> --}}
-
+        @yield('extra-js')
         <!-- Bootstrap Css -->
         @stack('extra-css')
         <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
