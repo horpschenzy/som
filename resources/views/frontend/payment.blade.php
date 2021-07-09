@@ -25,7 +25,7 @@
                                                 <input type="email" class="form-control hidden" name="email"
                                                     value="{{$user->email}}" placeholder="Your Email">
                                                 <strong>Amount</strong>
-                                                <span>{{ $payment_link }}</span>
+                                                <span>{{ $amount }}</span>
                                                 <br />
                                                 {{-- <input type="text" class="form-control hidden" name="amount"
                                                     value="{{getAmountToPay()}}" placeholder="Your Amount"> --}}
@@ -44,7 +44,7 @@
                                                 @if ($payment_link != "")
                                                 <p>
                                                     <a class="btn btn-success btn-lg btn-block"
-                                                        href="{{ $paymeny_link }}" value="Pay Now!">
+                                                        href="{{ $payment_link }}" value="Pay Now!">
                                                         <i class="fa fa-plus-circle fa-lg"></i> Pay Now!
                                                     </a>
                                                 </p>
