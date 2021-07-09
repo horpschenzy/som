@@ -51,21 +51,24 @@ class FrontendController extends Controller
         $user = Auth::user();
         $member = Member::where('email', $user->email)->first();
         $amount_left = getAmountToPay();
-
+        $payment_link = "";
+        $payment_link_query_params = "?first_name=#{$member->firstname}&last_name=#{$member->surname}&full_name=#{$user->name}&registration_number=#{$user->reg_no}&email=#{$user->email}&phone=#{$member->phonenumber}";
 
         switch ($amount_left) {
             case PaymentAmounts::BIG_INSTALLMENT:
-                $amounts_to_pay = [PaymentAmounts::SMALL_INSTALLMENT, PaymentAmounts::BIG_INSTALLMENT];
+                $amounts_to_pay = PaymentAmounts::BIG_INSTALLMENT;
+                $payment_link = "https://paystack.com/pay/pxmt1rr8sd".$payment_link_query_params;
                 break;
             case PaymentAmounts::SMALL_INSTALLMENT:
-                $amounts_to_pay = [PaymentAmounts::SMALL_INSTALLMENT];
+                $amounts_to_pay = PaymentAmounts::SMALL_INSTALLMENT;
+                $payment_link = "https://paystack.com/pay/a1w928oh2r".$payment_link_query_params;
                 break;
 
             default:
-                $amounts_to_pay = [$amount_left];
+                $amounts_to_pay = $amount_left;
                 break;
         }
-        return view('frontend.payment', compact('user', 'member','amounts_to_pay','amount_left'));
+        return view('frontend.payment', compact('user', 'member','amounts_to_pay','amount_left','payment_link'));
     }
 
     public function globalpayment()

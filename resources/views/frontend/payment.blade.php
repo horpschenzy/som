@@ -19,19 +19,14 @@
                                                 </strong>
                                                 <p>
                                                     Email: {{ $user->email }} <br />
-                                                </p><br/>
+                                                </p><br />
 
 
                                                 <input type="email" class="form-control hidden" name="email"
                                                     value="{{$user->email}}" placeholder="Your Email">
                                                 <strong>Amount</strong>
-                                                <select name="amount" class="form-control" id="amount">
-                                                    @foreach ($amounts_to_pay as $amount)
-                                                    <option value="{{ $amount }}">
-                                                        {{ number_format($amount /100) }}</option>
-                                                    @endforeach
-                                                </select>
-                                                <br/>
+                                                <span>{{ $payment_link }}</span>
+                                                <br />
                                                 {{-- <input type="text" class="form-control hidden" name="amount"
                                                     value="{{getAmountToPay()}}" placeholder="Your Amount"> --}}
 
@@ -46,13 +41,15 @@
 
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 {{-- employ this in place of csrf_field only in laravel 5.0 --}}
-
+                                                @if ($payment_link != "")
                                                 <p>
-                                                    <button class="btn btn-success btn-lg btn-block" type="submit"
-                                                        value="Pay Now!">
+                                                    <a class="btn btn-success btn-lg btn-block"
+                                                        href="{{ $paymeny_link }}" value="Pay Now!">
                                                         <i class="fa fa-plus-circle fa-lg"></i> Pay Now!
-                                                    </button>
+                                                    </a>
                                                 </p>
+                                                @endif
+
                                             </div>
                                         </div>
                                     </form>

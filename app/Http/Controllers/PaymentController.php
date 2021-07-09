@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Interfaces\Locations;
 use App\Member;
 use App\User;
 use Illuminate\Support\Facades\Redirect;
@@ -14,418 +15,12 @@ use App\Payment;
 use App\Interfaces\PaymentAmounts;
 use App\Interfaces\PaymentStatus;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
-    private $backup_data;
-
     public function __construct()
     {
-        $this->backup_data = [
-            0 => [
-                'surname' => 'Shigbaja',
-                'firstname' => 'Sunday Promise',
-                'phonenumber' => '7065650547',
-                'email' => 'shigbaja.sp@gmail.com',
-                'centre' => 'Osogbo',
-                'payment' => '600000',
-                'payment_type' => 'Installment',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'attempted paying 3000 but abandoned',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            1 => [
-                'surname' => 'Gafarou',
-                'firstname' => 'Motunrayo',
-                'phonenumber' => '7031262621',
-                'email' => 'gafamui702@gmail.com',
-                'centre' => 'Agricola',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'not  seen',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            2 => [
-                'surname' => 'Olaleye',
-                'firstname' => 'Dammie',
-                'phonenumber' => '8160215922',
-                'email' => 'sammy_sammie@yahoo.com',
-                'centre' => 'Ondo',
-                'payment' => '315000',
-                'payment_type' => 'installment',
-                'updated_at' => '06-05-21 8:51',
-                'transactionId' => 'not  seen',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            3 => [
-                'surname' => 'Ikuyinminu',
-                'firstname' => 'Oladimeji',
-                'phonenumber' => '9032507887',
-                'email' => 'ioladimejielijah@gmail.com',
-                'centre' => 'Ondo',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'not seen',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            4 => [
-                'surname' => 'Olayode',
-                'firstname' => 'Israel',
-                'phonenumber' => '8067755960',
-                'email' => 'israelolayode@gmail.com',
-                'centre' => 'Others',
-                'payment' => '300000',
-                'payment_type' => 'Installment',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'not seen',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            5 => [
-                'surname' => 'Ategbe',
-                'firstname' => 'Kehinde',
-                'phonenumber' => '8143564789',
-                'email' => 'franciskenny36@gmail.com',
-                'centre' => 'Agricola',
-                'payment' => '300000',
-                'payment_type' => 'Installment',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'not successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            6 => [
-                'surname' => 'Odewale',
-                'firstname' => 'Dayo',
-                'phonenumber' => '8032165785',
-                'email' => 'dayoodewale12@gmail.com',
-                'centre' => 'Ile-Ife',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'not successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            7 => [
-                'surname' => 'Olagunju',
-                'firstname' => 'Amos Gbenga',
-                'phonenumber' => '7030373615',
-                'email' => 'olagunjuoluwagbemiga@gmail.com',
-                'centre' => 'Others',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'not successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            8 => [
-                'surname' => 'Okoruwa',
-                'firstname' => 'Joshua',
-                'phonenumber' => '2.35E+12',
-                'email' => 'okoruwajoshua96@gmail.com',
-                'centre' => 'Agricola',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            9 => [
-                'surname' => 'Okoruwa',
-                'firstname' => 'Melody',
-                'phonenumber' => '8059198494',
-                'email' => 'melodyokoruwa@gmail.com',
-                'centre' => 'Agricola',
-                'payment' => '300000',
-                'payment_type' => 'installment',
-                'updated_at' => '06-03-21 21:59',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            10 => [
-                'surname' => 'Olatunbosun',
-                'firstname' => 'John',
-                'phonenumber' => '7063673967',
-                'email' => 'johnolatunbosun@gmail.com',
-                'centre' => 'ikeja',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            11 => [
-                'surname' => 'Adebayo',
-                'firstname' => 'Adebiyi',
-                'phonenumber' => '9056581376',
-                'email' => 'biyiadebayo8@gmail.com',
-                'centre' => 'ikeja',
-                'payment' => '825000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-05-21 5:10',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            12 => [
-                'surname' => 'Oladapo',
-                'firstname' => 'Opeyemi',
-                'phonenumber' => '7063528874',
-                'email' => 'opeyemioladapo2@gmail.com',
-                'centre' => 'Ile-Ife',
-                'payment' => '300000',
-                'payment_type' => 'Installment',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            13 => [
-                'surname' => 'Akindele',
-                'firstname' => 'Noah',
-                'phonenumber' => '8068071694',
-                'email' => 'akindeleallahdey@gmail.com',
-                'centre' => 'Ile-Ife',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            14 => [
-                'surname' => 'Faseyi',
-                'firstname' => 'Lukman Oluwole John',
-                'phonenumber' => '7065579049',
-                'email' => 'kenhaghills@gmail.com',
-                'centre' => 'Ile-Ife',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            15 => [
-                'surname' => 'Okonkwo',
-                'firstname' => 'Nkiruka',
-                'phonenumber' => '8034922645',
-                'email' => 'nkiruka.okonkwo12@gmail.com',
-                'centre' => 'Lekki',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            16 => [
-                'surname' => 'Ogundipe',
-                'firstname' => 'Christianah',
-                'phonenumber' => '9099601545',
-                'email' => 'Christianahogundipe8@gmail.com',
-                'centre' => 'Lekki',
-                'payment' => '300000',
-                'payment_type' => 'installment',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            17 => [
-                'surname' => 'Oluwadare',
-                'firstname' => 'Oluyemisi',
-                'phonenumber' => '8168042998',
-                'email' => 'dunmoladare@gmail.com',
-                'centre' => 'Lekki',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            18 => [
-                'surname' => 'oyebade',
-                'firstname' => 'segun',
-                'phonenumber' => '8036560011',
-                'email' => 'bezaleelconcepts@gmail.com',
-                'centre' => 'Lekki',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-04-21 11:50',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            19 => [
-                'surname' => 'Omotosho',
-                'firstname' => 'Gabriel',
-                'phonenumber' => '8137565403',
-                'email' => 'omotoshogabriel15@gmail.com',
-                'centre' => 'Osogbo',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            20 => [
-                'surname' => 'Osunwusi',
-                'firstname' => 'Tomisin',
-                'phonenumber' => '2.35E+12',
-                'email' => 'tosinosunwusi@gmail.com',
-                'centre' => 'Osogbo',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            21 => [
-                'surname' => 'Jaiyeola',
-                'firstname' => 'Oludotun',
-                'phonenumber' => '8182602156',
-                'email' => 'oludotunj@gmail.com',
-                'centre' => 'Others',
-                'payment' => '625000',
-                'payment_type' => 'installment',
-                'updated_at' => '06-05-21 8:22',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            22 => [
-                'surname' => 'Makinde',
-                'firstname' => 'Babatunde',
-                'phonenumber' => '8068546978',
-                'email' => 'youngmak2013@gmail.com',
-                'centre' => 'Agricola',
-                'payment' => '600000',
-                'payment_type' => 'Installment',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'seen/3000',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            23 => [
-                'surname' => 'Olusi',
-                'firstname' => 'Joseph',
-                'phonenumber' => '8167033173',
-                'email' => 'jayolusi@gmail.com',
-                'centre' => 'ikeja',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => 'seen/6250',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            24 => [
-                'surname' => 'Solabi',
-                'firstname' => 'Akinyemi',
-                'phonenumber' => '7031277110',
-                'email' => 'trendzexpress@gmail.com',
-                'centre' => 'Agricola',
-                'payment' => '800000',
-                'payment_type' => 'oneoff',
-                'updated_at' => '06-03-21 16:33',
-                'transactionId' => '',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            26 => [
-                'surname' => 'Cornelius',
-                'firstname' => 'Onduru',
-                'phonenumber' => '8177037320',
-                'email' => 'corneltee@gmail.com',
-                'centre' => 'Lekki',
-                'payment' => '8,250',
-                'payment_type' => 'oneoff',
-                'updated_at' => '',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            27 => [
-                'surname' => 'Adebisola',
-                'firstname' => 'Ogunseye',
-                'phonenumber' => '8060033267',
-                'email' => 'adebisolaogunseye001@gmail.com',
-                'centre' => 'Ikeja',
-                'payment' => '6,250',
-                'payment_type' => 'Installment',
-                'updated_at' => '',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            28 => [
-                'surname' => 'Melody',
-                'firstname' => 'Okoruwa',
-                'phonenumber' => '8059198494',
-                'email' => 'melodyokoruwa@gmail.com',
-                'centre' => 'Agricola',
-                'payment' => '6,000',
-                'payment_type' => 'Installment',
-                'updated_at' => '',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            29 => [
-                'surname' => 'Adeola',
-                'firstname' => 'Iwarere ',
-                'phonenumber' => '7069544773',
-                'email' => 'iwarereadeola@gmail.com',
-                'centre' => 'Agricola',
-                'payment' => '8,250',
-                'payment_type' => 'oneoff',
-                'updated_at' => '',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            30 => [
-                'surname' => 'Onome',
-                'firstname' => 'Omatsola ',
-                'phonenumber' => '9020013964',
-                'email' => 'omatsolateminiyi@gmail.com',
-                'centre' => 'Agricola',
-                'payment' => '8,250',
-                'payment_type' => 'oneoff',
-                'updated_at' => '',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-            31 => [
-                'surname' => 'Olawumi',
-                'firstname' => 'Adeyeye ',
-                'phonenumber' => '7065217506',
-                'email' => 'olaadore@gmail.com',
-                'centre' => 'Akure',
-                'payment' => '8,250',
-                'payment_type' => 'oneoff',
-                'updated_at' => '',
-                'transactionId' => 'Successful',
-                'paidAt' => '',
-                'amounts_payed' => '',
-            ],
-        ];
     }
 
     /**
@@ -508,23 +103,29 @@ class PaymentController extends Controller
 
     public function giveUsersDueAccess()
     {
-        $users = User::with(['member', 'payments'])->get();
+        $users = User::with(['member', 'payments'])->whereHas('member', function($q){
+            $q->where('region', '!=', 'IN');
+        })->get();
+        $manual_access = DB::table('access_log')->get()->pluck('user_id')->toArray();
         $bad = 0;
         foreach ($users as $key => $user) {
+            if(in_array($user->id,$manual_access)){
+                continue;
+            }
             $total_payments = $user->payments->sum('requested_amount');
             $user_should_have_access = $total_payments >= PaymentAmounts::BIG_INSTALLMENT ? true : false;
             if ($user->access) {
                 if (!$user_should_have_access) {
-                    User::where('id',$user->id)->update([
-                        'access' => 0
-                    ]);
+                    // User::where('id',$user->id)->update([
+                    //     'access' => 0
+                    // ]);
                     echo "<b>Revoked Access</b> for <b>" . $user->name . "</b> because only payment of <b>" . number_format(($total_payments / 100)) . "</b> was found<br/>";
                 }
             } else {
                 if ($user_should_have_access) {
-                    User::where('id',$user->id)->update([
-                        'access' => 1
-                    ]);
+                    // User::where('id',$user->id)->update([
+                    //     'access' => 1
+                    // ]);
                     echo "<b>Gave Access</b> to <b>" . $user->name . "</b> because a payment of <b>" . number_format(($total_payments / 100)) . "</b> was found<br/>";
                 }
             }
