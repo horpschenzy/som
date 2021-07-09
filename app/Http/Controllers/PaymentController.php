@@ -109,23 +109,23 @@ class PaymentController extends Controller
         $manual_access = DB::table('access_log')->get()->pluck('user_id')->toArray();
         $bad = 0;
         foreach ($users as $key => $user) {
-            if(in_array($user->id,$manual_access)){
+            if(in_array($user->id,$manual_access) || $user->name == 'Beatrice Babalola'){
                 continue;
             }
             $total_payments = $user->payments->sum('requested_amount');
-            $user_should_have_access = $total_payments >= PaymentAmounts::BIG_INSTALLMENT ? true : false;
+            $user_should_have_access = $total_payments >= PaymentAmounts::ONE_OFF ? true : false;
             if ($user->access) {
                 if (!$user_should_have_access) {
-                    // User::where('id',$user->id)->update([
-                    //     'access' => 0
-                    // ]);
+                    User::where('id',$user->id)->update([
+                        'access' => 0
+                    ]);
                     echo "<b>Revoked Access</b> for <b>" . $user->name . "</b> because only payment of <b>" . number_format(($total_payments / 100)) . "</b> was found<br/>";
                 }
             } else {
                 if ($user_should_have_access) {
-                    // User::where('id',$user->id)->update([
-                    //     'access' => 1
-                    // ]);
+                    User::where('id',$user->id)->update([
+                        'access' => 1
+                    ]);
                     echo "<b>Gave Access</b> to <b>" . $user->name . "</b> because a payment of <b>" . number_format(($total_payments / 100)) . "</b> was found<br/>";
                 }
             }
