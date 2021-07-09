@@ -66,6 +66,7 @@ class FrontendController extends Controller
 
             default:
                 $amounts_to_pay = $amount_left;
+                $payment_link = "";
                 break;
         }
         return view('frontend.payment', compact('user', 'member','amounts_to_pay','amount_left','payment_link'));
