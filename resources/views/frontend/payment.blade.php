@@ -25,7 +25,7 @@
                                                 <input type="email" class="form-control hidden" name="email"
                                                     value="{{$user->email}}" placeholder="Your Email">
                                                 <strong>Amount</strong>
-                                                <span>{{ $amount }}</span>
+                                                <span>{{ $amount_left }}</span>
                                                 <br />
                                                 {{-- <input type="text" class="form-control hidden" name="amount"
                                                     value="{{getAmountToPay()}}" placeholder="Your Amount"> --}}
