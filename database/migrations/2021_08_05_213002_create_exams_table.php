@@ -20,6 +20,8 @@ class CreateExamsTable extends Migration
             $table->string('reg_no');
             $table->float('score');
             $table->timestamps();
+
+
         });
     }
 

@@ -140,7 +140,7 @@ body {
                         <tbody>
                             <td>{{Auth::user()->reg_no}}</td>
 
-                            <td>{{ $result->score }}</td>
+                            <td>{{ $results->score }}</td>
 
 
                         </tbody>

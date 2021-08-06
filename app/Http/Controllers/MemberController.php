@@ -27,7 +27,9 @@ class MemberController extends Controller
     public function index()
     {
         $regno = Auth::user()->reg_no;
-        $result = Exam::where('reg_no', $regno)->first();
+        $results = Exam::where('reg_no', $regno)->first();
+
+
 
         return view('members.index', compact('results'));
     }
