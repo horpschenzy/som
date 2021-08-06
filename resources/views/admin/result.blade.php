@@ -1,46 +1,74 @@
 @extends('admin.layouts.app')
+@push('extra-css')
+<link href="{{asset('assets/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
+@endpush
+
 
 @section('content')
 <div class="main-content">
 
     <div class="page-content">
         <div class="container-fluid">
-            <div class="col-lg-12">
+            @include('flash')
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Upload Student Results</h4>
-                       <p class="card-title-desc">The table below shows all students test done, kindly uplaod results</p>
 
-                        <div class="table-responsive">
-                            <table class="table table-bordered border-primary mb-0">
+                        <form action="/result" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-3">
+                                <label class="form-lable">CSV File Only</label>
+                                <input type="file" class="form-control" data-buttonname="btn-secondary" name="results">
+                            </div>
+                            <button class="btn btn-primary w-100" type="submit">Upload</button>
+                        </form>
 
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Test Name</th>
-                                        <th>Number of Students</th>
-                                        <th>Upload Result</th>
-                                        <th>Action</th>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                         <div class="col-lg-12">
+                             @if(count($examrecords))
+                                <div class="table-responsive">
+                                    <table class="table table-bordered border-primary mb-0">
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th>17</th>
-                                        <td>MCM</td>
-                                        <td>212</td>
-                                        <td>
-                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                        </td>
-                                        <td>
-                                            <a href="" class="btn btn-success">Submit</a>
-                                        </td>
-                                    </tr>
+                                        <thead>
+                                            <tr>
+                                                <th>Surname</th>
+                                                <th>Firstname</th>
+                                                <th>Reg Number</th>
+                                                <th>Score</th>
 
-                                </tbody>
-                            </table>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($examrecords as $record)
+                                            <tr>
+                                                <td>{{ $record->surname}}</td>
+                                                <td>{{ $record->firstname}}</td>
+                                                <td>
+                                                    {{ $record->reg_no}}
+                                                </td>
+                                                <td>
+                                                    {{ $record->score}}
+                                                </td>
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                              @else
+
+                                <p>No Exam Record found</p>
+
+                              @endif
+
                         </div>
-
                     </div>
                 </div>
             </div>

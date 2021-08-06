@@ -8,6 +8,7 @@ use App\Payment;
 use App\Member;
 use App\User;
 use App\Assignment;
+use App\Exam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -237,7 +238,9 @@ class AdminController extends Controller
 
     public function result()
     {
-        return view('admin.result');
+
+        $examrecords = Exam::all();
+        return view('admin.result', compact('examrecords'));
     }
 
     public function testresult()

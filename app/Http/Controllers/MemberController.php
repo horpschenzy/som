@@ -10,6 +10,7 @@ use App\Assignment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Exam;
 
 class MemberController extends Controller
 {
@@ -25,7 +26,10 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('members.index');
+        $regno = Auth::user()->reg_no;
+        $result = Exam::where('reg_no', $regno)->first();
+
+        return view('members.index', compact('results'));
     }
 
 

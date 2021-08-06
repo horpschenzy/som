@@ -43,6 +43,11 @@ class User extends Authenticatable
         return $this->hasOne(Member::class,'user_id','id');
     }
 
+    public function exam()
+    {
+        return $this->hasOne(Exam::class, 'reg_no', 'reg_no');
+    }
+
     public function isAdmin(){
         return $this->user_type == UserTypes::ADMIN;
     }

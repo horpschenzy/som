@@ -129,6 +129,23 @@ body {
                         </div>
                     </div>
                 </div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    </button>
+                    <strong>CONGRATULATIONS</strong>
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>Registration Number</th>
+                            <th>Score</th>
+                        </thead>
+                        <tbody>
+                            <td>{{Auth::user()->reg_no}}</td>
+
+                            <td>{{ $result->score }}</td>
+
+
+                        </tbody>
+                    </table>
+                </div>
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                     </button>
