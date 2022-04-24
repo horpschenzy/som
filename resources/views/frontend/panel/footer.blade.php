@@ -8,11 +8,14 @@
                             <h4>ABOUT US</h4>
                         </div>
                         <div class="footer-about">
-                            <p>SOTM School of Ministry (SOM) is a life transforming experience that redefines the capabilities and boundaries available to one as a Christian and a minister of the gospel.</p>
+                            <p>SOTM School of Ministry (SOM) is a life transforming experience that redefines the
+                                capabilities and boundaries available to one as a Christian and a minister of the
+                                gospel.</p>
                             <div class="f-contact-info">
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-home"></i>
-                                    <span>Piccadilly Suites, 3 Piccadilly Street, By SAMSUNG Office Igbo-Efon Junction/Traffic Light, Lekki-Epe Express Road, Lekki</span>
+                                    <span>Piccadilly Suites, 3 Piccadilly Street, behind Unity Bank Igbo-Efon
+                                        Junction/Traffic Light, Lekki-Epe Express Road, Lekki</span>
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-envelope-o"></i>
@@ -33,9 +36,9 @@
                         </div>
                         <div class="footer-list">
                             <ul>
-                                <li><a href="{{route('frontend.index')}}">Home</a></li>
-                                <li><a href="{{route('frontend.about')}}">About Us</a></li>
-                                <li><a href="{{route('frontend.courses')}}">Courses</a></li>
+                                <li><a href="{{ route('frontend.index') }}">Home</a></li>
+                                <li><a href="{{ route('frontend.about') }}">About Us</a></li>
+                                <li><a href="{{ route('frontend.courses') }}">Courses</a></li>
                             </ul>
                         </div>
                     </div>
@@ -47,12 +50,13 @@
                         </div>
                         <div class="footer-list">
                             <ul>
-                                <li><a href="{{route('frontend.courses')}}">Ministry Basic Course </a></li>
-                                <li><a href="{{route('frontend.courses')}}">Church Management Course </a></li>
-                                <li><a href="{{route('frontend.courses')}}">World Evangelization Course</a></li>
-                                <li><a href="{{route('frontend.courses')}}">Leadership and Minstry Ethics</a></li>
-                                <li><a href="{{route('frontend.courses')}}">Church Growth Course</a></li>
-                                <li><a href="{{route('frontend.courses')}}">Dynamics of the Anointing Course</a></li>
+                                <li><a href="{{ route('frontend.courses') }}">Ministry Basic Course </a></li>
+                                <li><a href="{{ route('frontend.courses') }}">Church Management Course </a></li>
+                                <li><a href="{{ route('frontend.courses') }}">World Evangelization Course</a></li>
+                                <li><a href="{{ route('frontend.courses') }}">Leadership and Minstry Ethics</a></li>
+                                <li><a href="{{ route('frontend.courses') }}">Church Growth Course</a></li>
+                                <li><a href="{{ route('frontend.courses') }}">Dynamics of the Anointing Course</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -67,7 +71,7 @@
                     <div class="copyright">
                         <p>
                             <a href="https://segunobadje.org">SOTM</a>
-                            School of Ministry © 2021
+                            School of Ministry © 2022
                         </p>
                     </div>
                 </div>
