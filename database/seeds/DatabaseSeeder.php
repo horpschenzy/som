@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'user_type' => UserTypes::ADMIN,
         ], [
-            'password' => bcrypt('123456'),
+            'password' => bcrypt('101010'),
         ]);
 
         User::firstOrCreate([
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'user_type' => UserTypes::STUDENT,
             'access' => 1
         ], [
-            'password' => bcrypt('111111'),
+            'password' => bcrypt('010101'),
         ]);
 
         foreach(Locations::NG as $key => $value){
@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
                 'user_type' => UserTypes::SUPERVISOR,
                 'supervisor_location' => $value
             ], [
-                'password' => bcrypt('205090'),
+                'password' => bcrypt('776498'),
             ]);
         }
 
@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
                 'user_type' => UserTypes::SUPERVISOR,
                 'supervisor_location' => $value
             ], [
-                'password' => bcrypt('205090'),
+                'password' => bcrypt('340851'),
             ]);
         }
         // $this->call(UserSeeder::class);
