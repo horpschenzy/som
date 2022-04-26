@@ -41,7 +41,7 @@ class FrontendController extends Controller
         return view('frontend.login-register');
     }
 
-    public function register()
+    public function register() 
     {
         return view('frontend.register-login');
     }
@@ -50,26 +50,33 @@ class FrontendController extends Controller
     {
         $user = Auth::user();
         $member = Member::where('email', $user->email)->first();
-        $amount_left = getAmountToPay();
-        $payment_link = "";
-        $payment_link_query_params = "?first_name=#{$member->firstname}&last_name=#{$member->surname}&full_name=#{$user->name}&registration_number=#{$user->reg_no}&email=#{$user->email}&phone=#{$member->phonenumber}";
-
-        switch ($amount_left) {
-            case PaymentAmounts::BIG_INSTALLMENT:
-                $amounts_to_pay = PaymentAmounts::BIG_INSTALLMENT;
-                $payment_link = "https://paystack.com/pay/pxmt1rr8sd".$payment_link_query_params;
-                break;
-            case PaymentAmounts::SMALL_INSTALLMENT:
-                $amounts_to_pay = PaymentAmounts::SMALL_INSTALLMENT;
-                $payment_link = "https://paystack.com/pay/a1w928oh2r".$payment_link_query_params;
-                break;
-
-            default:
-                $amounts_to_pay = $amount_left;
-                $payment_link = "";
-                break;
+        $payment_links = [];
+        $amounts_to_pay = getAmountToPay();
+        $payment_link_query_params = "?first_name=$member->firstname&last_name=$member->surname&surname=$member->surname&full_name=$user->name&registration_number=$user->reg_no&email=$user->email&phone=$member->phonenumber";
+        $amount_left = is_array($amounts_to_pay) ? $amounts_to_pay[count($amounts_to_pay) - 1] : $amounts_to_pay;
+        
+        if( is_array($amounts_to_pay) ) {
+            foreach ($amounts_to_pay as $key => $amount) {
+                switch ($amount) {
+                    case PaymentAmounts::SMALL_INSTALLMENT:
+                        $payment_links[] = "https://paystack.com/pay/som22p" . $payment_link_query_params;
+                        break;
+                    case PaymentAmounts::ONE_OFF:
+                        $payment_links[] = "https://paystack.com/pay/som22" . $payment_link_query_params;
+                        break;
+                    case PaymentAmounts::ONE_OFF_LATE:
+                        $payment_links[] = "https://paystack.com/pay/som22fp" . $payment_link_query_params;
+                        break;
+        
+                    default:
+    
+                        break;
+                }
+            }
         }
-        return view('frontend.payment', compact('user', 'member','amounts_to_pay','amount_left','payment_link'));
+        
+        
+        return view('frontend.payment', compact('user', 'member', 'amounts_to_pay', 'payment_links', 'amount_left'));
     }
 
     public function globalpayment()
@@ -107,7 +114,6 @@ class FrontendController extends Controller
      */
     public function store(Request $request)
     {
-        exit();
         $this->validate($request, [
 
             'surname' => 'required',
@@ -155,14 +161,14 @@ class FrontendController extends Controller
 
         switch ($request->region) {
             case 'NG':
-                return redirect()->route('frontend.payment')->with('success', 'kindly complete your registration by making payment');
+                return redirect()->route('frontend.payment')->with('success', 'Kindly complete your registration by making payment');
                 break;
             case 'IN':
-                return redirect()->route('frontend.confirmation')->with('success', 'kindly complete your registration by making payment');
+                return redirect()->route('frontend.confirmation')->with('success', 'Kindly complete your registration by making payment');
                 break;
 
             default:
-                return redirect()->route('frontend.payment')->with('success', 'kindly complete your registration by making payment');
+                return redirect()->route('frontend.payment')->with('success', 'Kindly complete your registration by making payment');
                 break;
         }
     }
@@ -188,7 +194,8 @@ class FrontendController extends Controller
 
 
     public function globalstore(Request $request)
-    {exit();
+    {
+        exit();
         $this->validate($request, [
 
             'surname' => 'required',
@@ -223,7 +230,7 @@ class FrontendController extends Controller
 
         $this->generateRegistrationNumber($user);
 
-        return redirect('/globalpayment')->with('success', 'kindly complete your registration by making payment');
+        return redirect('/globalpayment')->with('success', 'Kindly complete your registration by making payment');
     }
 
     public function schedule()

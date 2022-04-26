@@ -63,7 +63,7 @@
                                             <option value="oneoff">One-Off</option>
                                         </select>
                                         <select class="form-control mb-3" name="payment" id="">
-                                            <option value="20">$25</option>
+                                            <option value="30">$30</option>
                                         </select>
                                         <div class="button-box">
                                             <button class="default-btn" type="submit"><span>Register</span></button>

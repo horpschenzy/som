@@ -740,9 +740,9 @@
     var registrationRegion = "NG"; // "NG" | "IN"
     var paymentType = "oneoff";
     var center = "";
-    var oneOffOptions = '<option value="825000">&#8358;8,000</option>';
+    var oneOffOptions = '<option value="1030000">&#8358;10,000</option>';
     var intallmentOptions =
-        '<option value="625000">&#8358;6,000</option><option value="315000">&#8358;3,000</option>';
+                    '<option value="520000">&#8358;5,000</option>';
 
     $("#centre").on("change", function (e) {
         center = $(this).val();
@@ -778,24 +778,24 @@
     const resetPaymentType = () => {
         switch (registrationRegion) {
             case "NG":
-                oneOffOptions = '<option value="825000">&#8358;8,000</option>';
+                oneOffOptions = '<option value="1030000">&#8358;10,000</option>';
                 intallmentOptions =
-                    '<option value="625000">&#8358;6,000</option><option value="315000">&#8358;3,000</option>';
+                    '<option value="520000">&#8358;5,000</option>';
                 $("#payment-type").html(
                     '<option value="oneoff">One-Off Payment</option><option value="installment">Installment Payment</option>'
                 );
                 break;
             case "IN":
-                oneOffOptions = "<option value='25'>$25</option>";
+                oneOffOptions = "<option value='30'>$30</option>";
                 intallmentOptions = "";
                 $("#payment-type").html(
                     '<option value="oneoff">One-Off Payment</option>'
                 );
                 break;
             default:
-                oneOffOptions = '<option value="825000">&#8358;8,000</option>';
+                oneOffOptions = '<option value="1030000">&#8358;10,000</option>';
                 intallmentOptions =
-                    '<option value="625000">&#8358;6,000</option><option value="315000">&#8358;3,000</option>';
+                    '<option value="520000">&#8358;5,000</option>';
                 $("#payment-type").html(
                     '<option value="oneoff">One-Off Payment</option><option value="installment">Installment Payment</option>'
                 );
@@ -805,9 +805,9 @@
 
     const resetCentre = () => {
         let nigeriaOptions =
-            '<option disabled selected>Select your Preferred Centre</option><option value="Ile-Ife">Ile Ife</option><option value="Lekki">Lekki Lagos</option><option value="ikeja">Ikeja Lagos</option><option value="Agricola">Agricola Ibadan</option><option value="Akure">Akure</option><option value="Ondo">Ondo</option><option value="Osogbo">Osogbo</option><option value="Others">Others - I can\'t find my preferred Centre</option>';
+            '<option disabled selected>Select your Preferred Centre</option><option value="Ile-Ife">Ile Ife</option><option value="Lekki">Lekki Lagos</option><option value="ikeja">Ikeja Lagos</option><option value="Agricola">Agricola Ibadan</option><option value="Akure">Akure</option><option value="Osogbo">Osogbo</option><option value="Others">Others - I can\'t find my preferred Centre</option>';
         let internationalOptions =
-            '<option disabled selected>Select your Preferred Centre</option><option value="US">US</option><option value="Europe">Europe</option><option value="Asia">Asia</option><option value="UAE">UAE</option><option value="Others">Others - I can\'t find my preferred Centre</option>';
+            '<option disabled selected>Select your Preferred Centre</option><option value="Diaspora">Diaspora</option>';
         switch (registrationRegion) {
             case "NG":
                 $("[name=centre]").html(nigeriaOptions);

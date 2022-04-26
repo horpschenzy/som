@@ -55,6 +55,12 @@ class PaymentController extends Controller
 
         $paymentDetails = Paystack::getPaymentData();
 
+        $payment = Payment::where('transactionId', $paymentDetails['data']['id'])->first();
+
+        if($payment) {
+            return false;
+        }
+
         $payment = new Payment;
         $payment->transactionId = $paymentDetails['data']['id'];
         $payment->status = $paymentDetails['status'];
@@ -73,7 +79,8 @@ class PaymentController extends Controller
 
 
         if ($payment->status) {
-            $amount_left = getAmountToPay($payment->user_id);
+            $amounts_to_pay = getAmountToPay();
+            $amount_left = is_array($amounts_to_pay) ? $amounts_to_pay[count($amounts_to_pay) - 1] : $amounts_to_pay;
             // $initial_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('INITIAL_PAYMENT_CUTOFF'));
             // $final_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('FINAL_PAYMENT_CUTOFF'));
 
@@ -86,7 +93,7 @@ class PaymentController extends Controller
                 ]);
             } elseif ($amount_left <= PaymentAmounts::SMALL_INSTALLMENT) {
                 User::where('id', $payment->user_id)->update([
-                    'access' => 1
+                    'access' => 0
                 ]);
                 Member::where('user_id', $payment->user_id)->update([
                     'payment_status' => PaymentStatus::PARTLY_PAID

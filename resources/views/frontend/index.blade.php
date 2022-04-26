@@ -100,12 +100,12 @@
             <div class="course-slider-active nav-style-1 owl-carousel">
                 <div class="single-course">
                     <div class="course-img">
-                        <a href="course-details.html"><img class="animated"
+                        <a href="{{ route('frontend.register') }}"><img class="animated"
                                 src="{{ asset('frontendassets/img/ministry_basic.jpg') }}" alt=""></a>
                         <span>MBC</span>
                     </div>
                     <div class="course-content">
-                        <h4><a href="course-details.html">MINISTRY BASIC COURSE (MBC)</a></h4>
+                        <h4><a href="{{ route('frontend.register') }}">MINISTRY BASIC COURSE (MBC)</a></h4>
                     </div>
                     <div class="course-position-content">
                         <div class="credit-duration-wrap">
@@ -125,12 +125,12 @@
                 </div>
                 <div class="single-course">
                     <div class="course-img">
-                        <a href="course-details.html"><img class="animated"
+                        <a href="{{ route('frontend.register') }}"><img class="animated"
                                 src="{{ asset('frontendassets/img/church-mgt.jpg') }}" alt=""></a>
                         <span>CMC</span>
                     </div>
                     <div class="course-content">
-                        <h4><a href="course-details.html">CHURCH MANAGEMENT COURSE (CMC)</a></h4>
+                        <h4><a href="{{ route('frontend.register') }}">CHURCH MANAGEMENT COURSE (CMC)</a></h4>
                     </div>
                     <div class="course-position-content">
                         <div class="credit-duration-wrap">
@@ -150,12 +150,12 @@
                 </div>
                 <div class="single-course">
                     <div class="course-img">
-                        <a href="course-details.html"><img class="animated"
+                        <a href="{{ route('frontend.register') }}"><img class="animated"
                                 src="{{ asset('frontendassets/img/world-evangelism.jpg') }}" alt=""></a>
                         <span>WEC</span>
                     </div>
                     <div class="course-content">
-                        <h4><a href="course-details.html">WORLD EVANGELIZATION COURSE (WEC)</a></h4>
+                        <h4><a href="{{ route('frontend.register') }}">WORLD EVANGELIZATION COURSE (WEC)</a></h4>
                     </div>
                     <div class="course-position-content">
                         <div class="credit-duration-wrap">
@@ -175,12 +175,12 @@
                 </div>
                 <div class="single-course">
                     <div class="course-img">
-                        <a href="course-details.html"><img class="animated"
+                        <a href="{{ route('frontend.register') }}"><img class="animated"
                                 src="{{ asset('frontendassets/img/leadership-and-ministry.jpg') }}" alt=""></a>
                         <span>LME</span>
                     </div>
                     <div class="course-content">
-                        <h4><a href="course-details.html">LEADERSHIP AND MINISTRY ETHICS (LME)</a></h4>
+                        <h4><a href="{{ route('frontend.register') }}">LEADERSHIP AND MINISTRY ETHICS (LME)</a></h4>
                     </div>
                     <div class="course-position-content">
                         <div class="credit-duration-wrap">
@@ -200,12 +200,12 @@
                 </div>
                 <div class="single-course">
                     <div class="course-img">
-                        <a href="course-details.html"><img class="animated"
+                        <a href="{{ route('frontend.register') }}"><img class="animated"
                                 src="{{ asset('frontendassets/img/course/course-2.jpg') }}" alt=""></a>
                         <span>CGC</span>
                     </div>
                     <div class="course-content">
-                        <h4><a href="course-details.html">CHURCH GROWTH COURSE (CGC)</a></h4>
+                        <h4><a href="{{ route('frontend.register') }}">CHURCH GROWTH COURSE (CGC)</a></h4>
                     </div>
                     <div class="course-position-content">
                         <div class="credit-duration-wrap">
@@ -225,12 +225,12 @@
                 </div>
                 <div class="single-course">
                     <div class="course-img">
-                        <a href="course-details.html"><img class="animated"
+                        <a href="{{ route('frontend.register') }}"><img class="animated"
                                 src="{{ asset('frontendassets/img/course/course-2.jpg') }}" alt=""></a>
                         <span>DAC</span>
                     </div>
                     <div class="course-content">
-                        <h4><a href="course-details.html">DYNAMICS OF THE ANOINTING COURSE (DAC)</a></h4>
+                        <h4><a href="{{ route('frontend.register') }}">DYNAMICS OF THE ANOINTING COURSE (DAC)</a></h4>
                     </div>
                     <div class="course-position-content">
                         <div class="credit-duration-wrap">

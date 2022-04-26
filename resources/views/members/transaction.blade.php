@@ -25,16 +25,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if ($data)
-                                    <tr>
-                                        <th>{{ $data->paid_at}}</th>
-                                        <th>{{ $data->transactionId}}</th>
-                                        <td>{{ $data->customeremail}}</td>
-                                        <td>{{ $data->description}}</td>
-                                        <td>{{ $data->requested_amount / 100 }}</td>
+                                    @if ($payments)
+                                        @foreach ($payments as $payment)
+                                        <tr>
+                                            <th>{{ $payment->paid_at}}</th>
+                                            <th>{{ $payment->transactionId}}</th>
+                                            <td>{{ $payment->customeremail}}</td>
+                                            <td>{{ $payment->description}}</td>
+                                            <td>{{ number_format($payment->requested_amount / 100) }}</td>
 
 
-                                    </tr>
+                                        </tr>
+                                        @endforeach
+                                    
                                     @else
 
                                     <p>No Record Found</p>

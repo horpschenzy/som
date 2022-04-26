@@ -163,8 +163,8 @@ class MemberController extends Controller
     {
 
         $user = Auth::user();
-        $data = Payment::where('customeremail', $user->email)->first();
-        return view('members.transaction', compact('data'));
+        $payments = Payment::where('user_id', $user->id)->get();
+        return view('members.transaction', compact('payments'));
     }
     /**
      * Show the form for creating a new resource.

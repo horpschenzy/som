@@ -10,8 +10,6 @@
                         <div id="lg2" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8"
-                                        class="form-horizontal" role="form">
                                         <div class="row" style="margin-bottom:40px;justify-content: center;">
                                             <div class="col-md-8 col-md-offset-2">
                                                 <strong style="text-align: center">
@@ -22,13 +20,19 @@
                                                 </p><br />
 
 
-                                                <input type="email" class="form-control hidden" name="email"
-                                                    value="{{$user->email}}" placeholder="Your Email">
+                                                
                                                 <strong>Amount</strong>
                                                 <span>{{ number_format($amount_left/100)}}</span>
                                                 <br />
+                                                {{-- @if (count($payment_links) > 0)
+                                                @foreach ($amounts_to_pay as $key => $amount)
+                                                <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8"
+                                        class="form-horizontal" role="form"> --}}
+
+                                                <input type="email" class="form-control hidden" name="email"
+                                                    value="{{$user->email}}" placeholder="Your Email">
                                                 {{-- <input type="text" class="form-control hidden" name="amount"
-                                                    value="{{getAmountToPay()}}" placeholder="Your Amount"> --}}
+                                                    value="{{$amount}}" placeholder="Your Amount"> --}}
 
                                                 <input type="hidden" name="quantity" value="1">
                                                 <input type="hidden" name="currency" value="NGN">
@@ -41,18 +45,27 @@
 
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 {{-- employ this in place of csrf_field only in laravel 5.0 --}}
-                                                @if ($payment_link != "")
-                                                <p>
-                                                    <a class="btn btn-success btn-lg btn-block"
-                                                        href="{{ $payment_link }}" value="Pay Now!">
-                                                        <i class="fa fa-plus-circle fa-lg"></i> Pay Now!
-                                                    </a>
-                                                </p>
+                                                <br><br>
+                                                {{-- <button class="btn btn-success btn-lg btn-block"><i class="fa fa-lg fa-credit-card"></i>  Pay {{ number_format($amount/100) }}</button> --}}
+                                                @if (count($payment_links) > 0)
+                                                    @foreach ($amounts_to_pay as $key => $amount)
+                                                    <p>
+                                                        <a class="btn btn-success btn-lg btn-block"
+                                                            href="{{ $payment_links[$key] }}" value="Pay {{ number_format($amount/100) }}">
+                                                            <i class="fa fa-lg fa-credit-card"></i> Pay {{ number_format($amount/100) }}
+                                                        </a>
+                                                    </p>
+                                                    @endforeach
+                                                
                                                 @endif
 
+
+                                            {{-- </form>
+                                            @endforeach
+                                            @endif --}}
                                             </div>
                                         </div>
-                                    </form>
+
 
                                 </div>
                             </div>

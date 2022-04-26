@@ -18,10 +18,10 @@
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div class="login-register-wrapper">
                     @include('frontend.inc.message')
-                    <div class="alert alert-danger alert-block">
+                    {{-- <div class="alert alert-danger alert-block">
                         <strong>Registration is closed</strong>
-                    </div>
-                    {{--  
+                    </div> --}}
+
                     <div class="region-navigator">
                         <a class="active" data-region="NG">Nigerian Students</a>
                         <a data-region="IN">International Students</a>
@@ -52,7 +52,7 @@
                                     <option value="Ikeja">Ikeja Lagos</option>
                                     <option value="Agricola">Agricola Ibadan</option>
                                     <option value="Akure">Akure</option>
-                                    <option value="Ondo">Ondo</option>
+                                    {{-- <option value="Ondo">Ondo</option> --}}
                                     <option value="Osogbo">Osogbo</option>
                                     <option value="Others">Others - I can't find my preferred Centre</option>
                                 </select>
@@ -64,7 +64,7 @@
                                     <option value="installment">Installment Payment</option>
                                 </select>
                                 <select class="custom-select mb-10" name="payment">
-                                    <option value="825000">&#8358;8,000</option>
+                                    <option value="1030000">&#8358;10,000</option>
                                 </select>
 
                                 <div class="button-box mt-5">
@@ -74,7 +74,6 @@
 
                         </div>
                     </div>
-                    --}}
 
                 </div>
             </div>

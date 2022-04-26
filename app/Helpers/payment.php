@@ -14,43 +14,45 @@ function getAmountToPay($user_id= null){
         $user = User::find($user_id);
     }
 
-    $total_payment = Payment::where('customeremail', $user->email)->orWhere('user_id',$user->id)->sum('requested_amount');
+
     $initial_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('INITIAL_PAYMENT_CUTOFF') );
     $final_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('FINAL_PAYMENT_CUTOFF') );
 
-    if(!$total_payment){
-        $amount = $user->member->payment;
+    // $total_payment_before_cutoff = Payment::whereDate('created_at', '<=', $initial_payment_cutoff)->where('customeremail', $user->email)->orWhere('user_id',$user->id)->sum('requested_amount');
+    // $total_payment_after_cutoff = Payment::whereDate('created_at', '>', $initial_payment_cutoff)->where('customeremail', $user->email)->orWhere('user_id',$user->id)->sum('requested_amount');
+    $total_payment =intval( Payment::where('customeremail', $user->email)->orWhere('user_id',$user->id)->sum('requested_amount') );
+
+    $cuttoff_passed = Carbon::now()->greaterThan( $initial_payment_cutoff);
+
+    $one_off = $cuttoff_passed ? PaymentAmounts::ONE_OFF_LATE : PaymentAmounts::ONE_OFF;
+
+    
+    if(!$total_payment){ 
+        if($user->member->paymenttype == 'oneoff'){
+            $amount = [$one_off];
+        }
+        else{
+            $amount = $cuttoff_passed ? [$one_off] : [ PaymentAmounts::SMALL_INSTALLMENT , $one_off];
+        }
     }
     else{
-        switch ($user->member->paymenttype) {
-            case 'oneoff':
-                //Should not be possible, but if for some reason there is an edge case where there is a payment for a user and it is less that required
-                $amount = $total_payment < PaymentAmounts::ONE_OFF ? PaymentAmounts::ONE_OFF - $total_payment : 0;
-                break;
-            case 'installment':
-                if($total_payment == PaymentAmounts::SMALL_INSTALLMENT){
-                    //Is today after inital cut off?
-                    if(Carbon::now()->greaterThan( $initial_payment_cutoff) ){
-                        $amount = PaymentAmounts::BIG_INSTALLMENT;
-                    }
-                    else{
-                        $amount = PaymentAmounts::SMALL_INSTALLMENT;
-                    }
-                }
-                elseif($total_payment == PaymentAmounts::BIG_INSTALLMENT){
-                    $amount = PaymentAmounts::SMALL_INSTALLMENT;
-                }
-                elseif($total_payment == PaymentAmounts::TWO_SMALL_INSTALLMENTS){
-                    $amount = PaymentAmounts::SMALL_INSTALLMENT;
-                }
-                elseif($total_payment == PaymentAmounts::TWO_INSTALLMENT_TOTAL || $total_payment == PaymentAmounts::THREE_INSTALLMENT_TOTAL ){
-                    $amount = 0;
-                }
+
+        if($cuttoff_passed) { 
+            if($total_payment == PaymentAmounts::SMALL_INSTALLMENT){
+                $amount = [PaymentAmounts::ONE_OFF];
+            }
+            elseif($total_payment == PaymentAmounts::TWO_SMALL_INSTALLMENTS || $total_payment == PaymentAmounts::ONE_OFF || $total_payment == PaymentAmounts::ONE_OFF_LATE || $total_payment ==  PaymentAmounts::ONE_OFF + PaymentAmounts::SMALL_INSTALLMENT){
+                $amount = 0;
                 
-                break;
-            default:
-                abort(400, "There is a problem verifying your payment. Please contact admin");
-                break;
+            }
+        }
+        else {
+            if($total_payment == PaymentAmounts::SMALL_INSTALLMENT){
+                $amount = [PaymentAmounts::SMALL_INSTALLMENT];
+            }
+            elseif($total_payment == PaymentAmounts::TWO_SMALL_INSTALLMENTS || $total_payment == PaymentAmounts::ONE_OFF){
+                $amount = 0;
+            }
         }
     }
 
