@@ -105,7 +105,7 @@
 <!-- Ajax Mail -->
 <script src="{{asset('frontendassets/js/ajax-mail.js')}}"></script>
 <!-- Main JS -->
-<script src="{{asset('frontendassets/js/main.js')}}"></script>
+<script src="{{asset('frontendassets/js/main.js?version=1')}}"></script>
 
 
 @endpush

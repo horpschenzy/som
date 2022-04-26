@@ -85,5 +85,5 @@
     <!-- Ajax Mail -->
     <script src="assets/js/ajax-mail.js"></script>
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?version=1"></script>
 @endpush

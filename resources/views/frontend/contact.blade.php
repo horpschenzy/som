@@ -261,7 +261,7 @@
     google.maps.event.addDomListener(window, 'load', init);
 </script>
 <!-- Main JS -->
-<script src="{{ asset('frontendassets/js/main.js')}}"></script>
+<script src="{{ asset('frontendassets/js/main.js?version=1')}}"></script>
 
 
 @endpush
