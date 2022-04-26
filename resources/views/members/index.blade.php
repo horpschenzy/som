@@ -150,10 +150,8 @@ body {
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                     </button>
                     <strong>OVERVIEW</strong>
-                    <P>Segun Obadje Teaching Ministries (SOTM) School of Ministry is a new creation, bible-based school with the vision of equipping believers for ministry and helping men
-                        so that men and women come into the light of purpose and God’s preordination.
-                        The School is a 6-week spiritual boot camp, with various activities ranging from classes,
-                         project works, tests, assignments, book review etc, all contributing to the equipping of the attendees.
+                    <P>Segun Obadje Teaching Ministries (SOTM) School of Ministry is a new creation, bible-based school with the vision of equipping believers for ministry and helping men so that men and women come into the light of purpose and God’s pre-ordination.
+                        The School is a 6-week spiritual boot camp, with various activities ranging from classes, project works, tests, assignments, book review etc, all contributing to the equipping of the attendees.
                         <strong>This year, the school will have both online and onsite students</strong>.
                     </P>
                 </div>
@@ -168,10 +166,7 @@ body {
                         <strong>In other to achieve these, every e-centre must carefully read and execute this document for SOM 2022.</strong>.
                     </P>
                     <p>
-                        The School of Ministry 2022 will run between the 19th of June, 2022 to the 7th of August, 2022. The school will run for
-                        the duration of 6 weeks; 4 weeks of lectures (Fridays, and Saturdays). Examinations will be conducted on Sunday,
-                        25th of July, 2022. The Project Defence is to be conducted on Friday, the 30th of July and Saturday, the 31st of July,
-                        2022 while the graduation ceremony will hold on Saturday, 7th of August, 2022. (Check the time table for full details)
+                        The School of Ministry 2022 will run between the 28th of May, 2022 to the 9th of July, 2022. The school will run for the duration of 6 weeks; 4 weeks of lectures (Fridays, and Saturdays). Examinations will be conducted on Sunday, 19th of June, 2022. The Project Defence is to be conducted on Friday, the 24th and Saturday 25th of June, 2022 while the graduation ceremony will hold on Saturday, 2nd of July, 2022. (Check the time table for full details)
                     </p>
                 </div>
                 <!-- end page title -->
