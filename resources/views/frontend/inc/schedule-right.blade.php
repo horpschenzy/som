@@ -112,17 +112,6 @@
             <td>Graduation</td>
             <td></td>
         </tr>
-        <tr>
-            <td colspan="3">
-                <div class="text-center"><strong>DOSSOM 2021</strong></div>
-            </td>
-        </tr>
-        <tr>
-            <td rowspan="2">Friday, July 23</td>
-            <td>Leadership & Ministry Ethics Course (LME)</td>
-            <td>1 hour</td>
-        </tr>
-
 
     </tbody>
 </table>

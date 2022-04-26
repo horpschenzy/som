@@ -61,12 +61,12 @@
         </tr>
         <tr>
             <td>MMM & EIM</td>
-            <td>Media & Music in Ministry & Emotional Intelligence in Ministry</td>
+            <td>Media & Music in Ministry <br>& Emotional Intelligence in Ministry</td>
             <td>1</td>
         </tr>
         <tr>
             <td>PMC & SMM</td>
-            <td>Program Management & Planning Course & Social Media in Ministry</td>
+            <td>Program Management & Planning Course <br>& Social Media in Ministry</td>
             <td>1</td>
         </tr>
 
