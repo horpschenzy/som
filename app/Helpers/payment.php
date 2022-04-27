@@ -32,7 +32,7 @@ function getAmountToPay($user_id= null){
             $amount = [$one_off];
         }
         else{
-            $amount = $cuttoff_passed ? [$one_off] : [ PaymentAmounts::SMALL_INSTALLMENT , $one_off];
+            $amount = $cuttoff_passed ? [$one_off] : [ PaymentAmounts::SMALL_INSTALLMENT];
         }
     }
     else{
