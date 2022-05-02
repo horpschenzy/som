@@ -16,6 +16,7 @@ use App\Interfaces\PaymentAmounts;
 use App\Interfaces\PaymentStatus;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class PaymentController extends Controller
 {
@@ -50,16 +51,20 @@ class PaymentController extends Controller
      * Obtain Paystack payment information
      * @return void
      */
-    public function handleGatewayCallback()
+    public function handleGatewayCallback(Request $request)
     {
 
-        $paymentDetails = Paystack::getPaymentData();
+        $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))->get('https://api.paystack.co/transaction/verify/'.$request->reference);
+        // $paymentDetails = Paystack::getPaymentData();
+        $paymentDetails = $response->json(); 
 
         $payment = Payment::where('transactionId', $paymentDetails['data']['id'])->first();
 
         if($payment) {
             return false;
         }
+        parse_str(explode('?', $paymentDetails['data']['metadata']['referrer'])[1], $metadata);
+
 
         $payment = new Payment;
         $payment->transactionId = $paymentDetails['data']['id'];
@@ -70,10 +75,10 @@ class PaymentController extends Controller
         $payment->channel = $paymentDetails['data']['channel'];
         $payment->requested_amount = $paymentDetails['data']['requested_amount'];
         $payment->currency = $paymentDetails['data']['currency'];
-        $payment->user_id = $paymentDetails['data']['metadata']['user_id'];
-        $payment->firstname = $paymentDetails['data']['metadata']['first_name'];
-        $payment->surname = $paymentDetails['data']['metadata']['last_name'];
-        $payment->description = $paymentDetails['data']['metadata']['paymenttype'];
+        $payment->user_id = $metadata['user_id'];
+        $payment->firstname = $metadata['first_name'];
+        $payment->surname = $metadata['last_name'];
+        $payment->description = $metadata['paymenttype'];
 
         $payment->save();
 

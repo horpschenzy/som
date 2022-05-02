@@ -52,7 +52,7 @@ class FrontendController extends Controller
         $member = Member::where('email', $user->email)->first();
         $payment_links = [];
         $amounts_to_pay = getAmountToPay();
-        $payment_link_query_params = "?first_name=$member->firstname&last_name=$member->surname&surname=$member->surname&full_name=$user->name&registration_number=$user->reg_no&email=$user->email&phone=$member->phonenumber";
+        $payment_link_query_params = "?first_name=$member->firstname&last_name=$member->surname&surname=$member->surname&full_name=$user->name&registration_number=$user->reg_no&email=$user->email&phone=$member->phonenumber&paymenttype=$member->paymenttype&user_id=$user->id";
         $amount_left = is_array($amounts_to_pay) ? $amounts_to_pay[count($amounts_to_pay) - 1] : $amounts_to_pay;
         
         if( is_array($amounts_to_pay) ) {
