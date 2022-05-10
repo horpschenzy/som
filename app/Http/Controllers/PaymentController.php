@@ -125,7 +125,9 @@ class PaymentController extends Controller
                 continue;
             }
             $total_payments = $user->payments->sum('requested_amount');
-            $user_should_have_access = $total_payments >= PaymentAmounts::ONE_OFF ? true : false;
+            $amounts_to_pay = getAmountToPay($user->id);
+            $amount_left = is_array($amounts_to_pay) ? $amounts_to_pay[count($amounts_to_pay) - 1] : $amounts_to_pay;
+            $user_should_have_access = $amount_left == 0 ? true : false;
             if ($user->access) {
                 if (!$user_should_have_access) {
                     User::where('id',$user->id)->update([
