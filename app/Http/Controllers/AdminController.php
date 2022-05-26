@@ -269,7 +269,103 @@ class AdminController extends Controller
         return view('admin.give-access', compact('users'));
     }
 
-    public function processAccess(User $user)
+    public function processAccess(User $user, $reference)
+    {
+        if($this->is_supervisor){
+            abort(401);
+        }
+
+        $url = "https://api.paystack.co/transaction/verify/".$reference;
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => array(
+        "Authorization: Bearer ".env('PAYSTACK_SECRET_KEY')
+          ),
+         ));
+        
+        $response = curl_exec($curl);
+        $data = json_decode($response, true);
+
+        
+      
+        if($data['status']){
+
+            // if($user->id != $data['data']['metadata']['user_id']){
+            //     return "<div class='alert alert-danger alert-block'>
+            //     <strong> Payment verified by not made by the selected user ".$user->name."</strong>
+            // </div>";
+            // }
+
+            $payment = new Payment;
+            $payment->transactionId = $data['data'] ['id'];
+            $payment->status = $data['status'];
+            $payment->customeremail = $data['data']['customer']['email'];
+            $payment->gateway_response = $data['data']['gateway_response'];
+            $payment->paid_at = $data['data']['paid_at'];
+            $payment->channel = $data['data']['channel'];
+            $payment->requested_amount = $data['data']['requested_amount'];
+            $payment->currency = $data['data']['currency'];
+            $payment->user_id = $data['data']['metadata']['user_id'];
+            $payment->firstname = $data['data']['metadata']['first_name'];
+            $payment->surname = $data['data']['metadata']['last_name'];
+            $payment->description = $data['data']['metadata']['paymenttype'];
+
+            $payment->save();
+
+            DB::table('access_log')->insert([
+                'user_id' => $user->id,
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString()
+            ]);
+
+            //Bad but fastest way
+            if ($payment->status) {
+                $amounts_to_pay = getAmountToPay();
+                $amount_left = is_array($amounts_to_pay) ? $amounts_to_pay[count($amounts_to_pay) - 1] : $amounts_to_pay;
+                // $initial_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('INITIAL_PAYMENT_CUTOFF'));
+                // $final_payment_cutoff = Carbon::createFromFormat('d/m/Y', env('FINAL_PAYMENT_CUTOFF'));
+    
+                if ($amount_left == 0) {
+                    User::where('id', $payment->user_id)->update([
+                        'access' => 1
+                    ]);
+                    Member::where('user_id', $payment->user_id)->update([
+                        'payment_status' => PaymentStatus::PAID
+                    ]);
+                } elseif ($amount_left <= PaymentAmounts::SMALL_INSTALLMENT) {
+                    User::where('id', $payment->user_id)->update([
+                        'access' => 0
+                    ]);
+                    Member::where('user_id', $payment->user_id)->update([
+                        'payment_status' => PaymentStatus::PARTLY_PAID
+                    ]);
+                }
+            }
+
+            return "<div class='alert alert-success alert-block'>
+        <strong>".$user->name."'s payment has been verified</strong>
+    </div>";
+
+        }
+        else{
+            return "<div class='alert alert-danger alert-block'>
+            <strong> No payment found for ".$user->name."</strong>
+        </div>";
+    
+        }
+        
+        
+    }
+
+    /* public function processAccess(User $user)
     {
         if($this->is_supervisor){
             abort(401);
@@ -284,7 +380,7 @@ class AdminController extends Controller
         return "<div class='alert alert-success alert-block'>
         <strong>".$user->name." has been given access</strong>
     </div>";
-    }
+    } */
 
 
     public function getUserDetails(User $user){
@@ -327,6 +423,14 @@ class AdminController extends Controller
     public function create()
     {
         //
+    }
+
+    public function verifyPayments(){
+        if($this->is_supervisor){
+            abort(401);
+        }
+        $users = User::doesnthave('payments')->get();
+        return view('admin.verify-payments', compact('users'));
     }
 
     /**

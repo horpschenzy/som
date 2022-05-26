@@ -42,9 +42,14 @@
                             <span>Outstanding Paymemts</span>
                            </a>
                         </li>
-                        <li><a href="{{route('admin.give-access')}}">
+                        {{-- <li><a href="{{route('admin.give-access')}}">
                             <i class="mdi mdi-account"></i>
                             <span>Give Access</span>
+                           </a>
+                        </li> --}}
+                        <li><a href="{{route('admin.verify-payments')}}">
+                            <i class="mdi mdi-account"></i>
+                            <span>Verify Payments</span>
                            </a>
                         </li>
                     </ul>
