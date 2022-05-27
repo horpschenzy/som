@@ -283,11 +283,13 @@ class AdminController extends Controller
         $payment = Payment::where('transactionId', $paymentDetails['data']['id'])->first();
 
         if($payment) {
-            return false;
+                return "<div class='alert alert-danger alert-block'>
+                <strong> Payment already verified</strong>
+            </div>";
         }
         parse_str(explode('?', $paymentDetails['data']['metadata']['referrer'])[1], $metadata);
         
-        \Log::info("payment_details", [$paymentDetails]);
+        \Log::info("payment_details", [$paymentDetails]); 
       
         if($paymentDetails['status']){
 
