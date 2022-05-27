@@ -287,14 +287,15 @@ class AdminController extends Controller
         }
         parse_str(explode('?', $paymentDetails['data']['metadata']['referrer'])[1], $metadata);
         
+        \Log::info("payment_details", [$paymentDetails]);
       
         if($paymentDetails['status']){
 
-            // if($user->id != $data['data']['metadata']['user_id']){
-            //     return "<div class='alert alert-danger alert-block'>
-            //     <strong> Payment verified by not made by the selected user ".$user->name."</strong>
-            // </div>";
-            // }
+            if($user->id != $metadata['user_id']){
+                return "<div class='alert alert-danger alert-block'>
+                <strong> Payment verified by not made by the selected user ".$user->name."</strong>
+            </div>";
+            }
 
             $payment = new Payment;
             $payment->transactionId = $paymentDetails['data']['id'];
