@@ -276,7 +276,7 @@ class AdminController extends Controller
             abort(401);
         }
 
-        $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))->get('https://api.paystack.co/transaction/verify/'.$request->reference);
+        $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))->get('https://api.paystack.co/transaction/verify/'.$reference);
         // $paymentDetails = Paystack::getPaymentData();
         $paymentDetails = $response->json(); 
 
