@@ -275,29 +275,19 @@ class AdminController extends Controller
             abort(401);
         }
 
-        $url = "https://api.paystack.co/transaction/verify/".$reference;
-        $curl = curl_init();
+        $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))->get('https://api.paystack.co/transaction/verify/'.$request->reference);
+        // $paymentDetails = Paystack::getPaymentData();
+        $paymentDetails = $response->json(); 
 
-        curl_setopt_array($curl, array(
-        CURLOPT_URL => $url,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => "",
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "GET",
-        CURLOPT_HTTPHEADER => array(
-        "Authorization: Bearer ".env('PAYSTACK_SECRET_KEY')
-          ),
-         ));
-        
-        $response = curl_exec($curl);
-        $data = json_decode($response, true);
+        $payment = Payment::where('transactionId', $paymentDetails['data']['id'])->first();
 
+        if($payment) {
+            return false;
+        }
+        parse_str(explode('?', $paymentDetails['data']['metadata']['referrer'])[1], $metadata);
         
       
-        if($data['status']){
+        if($paymentDetails['status']){
 
             // if($user->id != $data['data']['metadata']['user_id']){
             //     return "<div class='alert alert-danger alert-block'>
@@ -306,20 +296,21 @@ class AdminController extends Controller
             // }
 
             $payment = new Payment;
-            $payment->transactionId = $data['data'] ['id'];
-            $payment->status = $data['status'];
-            $payment->customeremail = $data['data']['customer']['email'];
-            $payment->gateway_response = $data['data']['gateway_response'];
-            $payment->paid_at = $data['data']['paid_at'];
-            $payment->channel = $data['data']['channel'];
-            $payment->requested_amount = $data['data']['requested_amount'];
-            $payment->currency = $data['data']['currency'];
-            $payment->user_id = $data['data']['metadata']['user_id'];
-            $payment->firstname = $data['data']['metadata']['first_name'];
-            $payment->surname = $data['data']['metadata']['last_name'];
-            $payment->description = $data['data']['metadata']['paymenttype'];
+            $payment->transactionId = $paymentDetails['data']['id'];
+            $payment->status = $paymentDetails['status'];
+            $payment->customeremail = $paymentDetails['data']['customer']['email'];
+            $payment->gateway_response = $paymentDetails['data']['gateway_response'];
+            $payment->paid_at = $paymentDetails['data']['paid_at'];
+            $payment->channel = $paymentDetails['data']['channel'];
+            $payment->requested_amount = $paymentDetails['data']['requested_amount'];
+            $payment->currency = $paymentDetails['data']['currency'];
+            $payment->user_id = $metadata['user_id'];
+            $payment->firstname = $metadata['first_name'];
+            $payment->surname = $metadata['last_name'];
+            $payment->description = $metadata['paymenttype'];
 
             $payment->save();
+
 
             DB::table('access_log')->insert([
                 'user_id' => $user->id,
