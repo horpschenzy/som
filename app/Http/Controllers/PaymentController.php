@@ -122,11 +122,13 @@ class PaymentController extends Controller
         $bad = 0;
         foreach ($users as $key => $user) {
             if(in_array($user->id,$manual_access) || $user->name == 'Beatrice Babalola'){
+                $user->name." - Already has access <br/>";
                 continue;
             }
             $total_payments = $user->payments->sum('requested_amount');
             $amounts_to_pay = getAmountToPay($user->id);
             $amount_left = is_array($amounts_to_pay) ? $amounts_to_pay[count($amounts_to_pay) - 1] : $amounts_to_pay;
+
             $user_should_have_access = $amount_left == 0 ? true : false;
             if ($user->access) {
                 if (!$user_should_have_access) {
@@ -135,10 +137,19 @@ class PaymentController extends Controller
                     ]);
                     echo "<b>Revoked Access</b> for <b>" . $user->name . "</b> because only payment of <b>" . number_format(($total_payments / 100)) . "</b> was found<br/>";
                 }
+                else{
+                    echo "Payment updated for ".$user->name." <br/>";
+                    Member::where('user_id', $user->id)->update([
+                        'payment_status' => PaymentStatus::PAID
+                    ]);
+                }
             } else {
                 if ($user_should_have_access) {
                     User::where('id',$user->id)->update([
                         'access' => 1
+                    ]);
+                    Member::where('user_id', $user->id)->update([
+                        'payment_status' => PaymentStatus::PAID
                     ]);
                     echo "<b>Gave Access</b> to <b>" . $user->name . "</b> because a payment of <b>" . number_format(($total_payments / 100)) . "</b> was found<br/>";
                 }
