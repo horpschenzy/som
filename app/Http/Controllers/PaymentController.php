@@ -137,12 +137,12 @@ class PaymentController extends Controller
                     ]);
                     echo "<b>Revoked Access</b> for <b>" . $user->name . "</b> because only payment of <b>" . number_format(($total_payments / 100)) . "</b> was found<br/>";
                 }
-                else{
+                /* else{
                     echo "Payment updated for ".$user->name." <br/>";
                     Member::where('user_id', $user->id)->update([
                         'payment_status' => PaymentStatus::PAID
                     ]);
-                }
+                } */
             } else {
                 if ($user_should_have_access) {
                     User::where('id',$user->id)->update([
