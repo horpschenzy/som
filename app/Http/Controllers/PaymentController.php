@@ -115,14 +115,14 @@ class PaymentController extends Controller
 
     public function giveUsersDueAccess()
     {
-        $users = User::with(['member', 'payments'])->whereHas('member', function($q){
+        $users = User::with(['member', 'payments'])->where('email','teewhyjegz@gmail.com')->whereHas('member', function($q){
             $q->where('region', '!=', 'IN');
-        })->get();
+        })->get(); 
         $manual_access = DB::table('access_log')->get()->pluck('user_id')->toArray();
         $bad = 0;
         foreach ($users as $key => $user) {
-            if(in_array($user->id,$manual_access) || $user->name == 'Beatrice Babalola'){
-                $user->name." - Already has access <br/>";
+            if($user->access == 1){
+                echo $user->name." - Already has access <br/>";
                 continue;
             }
             $total_payments = $user->payments->sum('requested_amount');
@@ -137,12 +137,12 @@ class PaymentController extends Controller
                     ]);
                     echo "<b>Revoked Access</b> for <b>" . $user->name . "</b> because only payment of <b>" . number_format(($total_payments / 100)) . "</b> was found<br/>";
                 }
-                /* else{
+                else{
                     echo "Payment updated for ".$user->name." <br/>";
                     Member::where('user_id', $user->id)->update([
                         'payment_status' => PaymentStatus::PAID
                     ]);
-                } */
+                }
             } else {
                 if ($user_should_have_access) {
                     User::where('id',$user->id)->update([
