@@ -20,8 +20,7 @@ use App\Assignment;
 //     return view('welcome');
 // });
 
-Route::post('/password/forgot', 'Auth\ForgotPasswordController@sendsPasswordResetEmails')->name('password.forgot');
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
