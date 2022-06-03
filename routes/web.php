@@ -80,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/unpaidstudent', 'AdminController@unpaidstudent')->name('unpaidstudent');
         Route::get('/announcement', 'AnnouncementController@index')->name('announcement');
         Route::get('/attendance', 'AttendanceController@index')->name('attendance');
+        Route::post('/change/centre/{id}', 'AdminController@changeCentre')->name('changeCentre');
         //ADMIN ELECTIVES
         Route::get('/elective', 'ElectiveController@create')->name('elective');
         Route::POST('/elective', 'ElectiveController@store');
