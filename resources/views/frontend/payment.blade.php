@@ -47,7 +47,7 @@
                                                 {{-- employ this in place of csrf_field only in laravel 5.0 --}}
                                                 <br><br>
                                                 {{-- <button class="btn btn-success btn-lg btn-block"><i class="fa fa-lg fa-credit-card"></i>  Pay {{ number_format($amount/100) }}</button> --}}
-                                                @if (count($payment_links) > 0)
+                                                @if (count($payment_links) > 0 && $can_pay)
                                                     @foreach ($amounts_to_pay as $key => $amount)
                                                     <p>
                                                         <a class="btn btn-success btn-lg btn-block"
@@ -56,7 +56,10 @@
                                                         </a>
                                                     </p>
                                                     @endforeach
-                                                
+                                                @else
+                                                    <div class="alert alert-danger alert-block">
+                                                        <strong>Payment closed</strong>
+                                                    </div> 
                                                 @endif
 
 

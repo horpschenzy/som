@@ -15,6 +15,7 @@ use App\Payment;
 use App\Interfaces\PaymentAmounts;
 use App\Interfaces\PaymentStatus;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
@@ -53,6 +54,11 @@ class PaymentController extends Controller
      */
     public function handleGatewayCallback(Request $request)
     {
+        $user = Auth::user();
+
+        if($user->payments->count() == 0) {
+            return false;
+        }
 
         $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))->get('https://api.paystack.co/transaction/verify/'.$request->reference);
         // $paymentDetails = Paystack::getPaymentData();

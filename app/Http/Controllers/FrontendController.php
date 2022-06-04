@@ -54,6 +54,11 @@ class FrontendController extends Controller
         $amounts_to_pay = getAmountToPay();
         $payment_link_query_params = "?first_name=$member->firstname&last_name=$member->surname&surname=$member->surname&full_name=$user->name&registration_number=$user->reg_no&email=$user->email&phone=$member->phonenumber&paymenttype=$member->paymenttype&user_id=$user->id";
         $amount_left = is_array($amounts_to_pay) ? $amounts_to_pay[count($amounts_to_pay) - 1] : $amounts_to_pay;
+
+        $can_pay = true;
+        if($user->payments->count() == 0) {
+            $can_pay = false;
+        }
         
         if( is_array($amounts_to_pay) ) {
             foreach ($amounts_to_pay as $key => $amount) {
@@ -76,7 +81,7 @@ class FrontendController extends Controller
         }
         
         
-        return view('frontend.payment', compact('user', 'member', 'amounts_to_pay', 'payment_links', 'amount_left'));
+        return view('frontend.payment', compact('user', 'member', 'amounts_to_pay', 'payment_links', 'amount_left', 'can_pay'));
     }
 
     public function globalpayment()
