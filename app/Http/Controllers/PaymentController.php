@@ -121,7 +121,7 @@ class PaymentController extends Controller
 
     public function giveUsersDueAccess()
     {
-        $users = User::with(['member', 'payments'])->where('email','teewhyjegz@gmail.com')->whereHas('member', function($q){
+        $users = User::with(['member', 'payments'])->whereHas('member', function($q){
             $q->where('region', '!=', 'IN');
         })->get(); 
         $manual_access = DB::table('access_log')->get()->pluck('user_id')->toArray();
