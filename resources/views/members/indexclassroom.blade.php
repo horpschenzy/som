@@ -47,7 +47,7 @@
                                                         primary: 'html5',
                                                         playlist: [{
                                                         sources: [{
-                                                            file: "https://edge.mixlr.com/channel/jokqn",
+                                                            file: "{{ $livestream->mixlr_url }}",
                                                             type: 'mp3'
                                                         }]
                                                         }],
