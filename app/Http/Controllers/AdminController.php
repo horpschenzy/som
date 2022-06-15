@@ -146,6 +146,7 @@ class AdminController extends Controller
             $members = Member::leftJoin('payments', 'members.user_id', '=', 'payments.user_id')
                 ->join('users', 'users.id', '=', 'members.user_id')
                 ->select(
+                    'members.id',
                     'members.surname',
                     'members.firstname',
                     'members.othername',
@@ -167,7 +168,7 @@ class AdminController extends Controller
                     'users.reg_no',
                     DB::raw('SUM(payments.requested_amount) as total_payments')
                 )
-                ->groupBy('members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'users.reg_no', 'payments.requested_amount')
+                ->groupBy('members.id','members.surname', 'members.firstname', 'members.othername', 'members.phonenumber', 'members.email', 'members.marital_status', 'members.gender', 'members.is_born_again', 'members.born_again_time', 'members.is_spirit_filled', 'members.current_church', 'members.reason', 'members.expectation', 'members.centre', 'members.address', 'members.payment', 'members.paymenttype', 'members.region', 'users.reg_no', 'payments.requested_amount')
                 ->get();
             $paidmembers = Payment::all();
         }
@@ -468,9 +469,21 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function changeCentre(Request $request, $id)
     {
-        //
+        $member = Member::find($id);
+        $member->centre = $request->centre;
+        if($member->save()){
+            $user = User::find($member->user_id);
+            $user->supervisor_location =  $request->centre;
+            $user->save();
+
+            $notification = array(
+                'message' => 'Center changed successfully',
+                'alert-type' => 'success'
+            );
+            return back()->with($notification);
+        }
     }
 
     /**
